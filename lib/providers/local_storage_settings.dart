@@ -1,4 +1,4 @@
-import 'package:beltofdestiny/settings/models/settings.dart';
+import 'package:beltofdestiny/models/settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorageSettings extends ISettings {
