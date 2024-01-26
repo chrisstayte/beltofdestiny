@@ -1,3 +1,6 @@
+/// An interface for persistence of settings.
+///
+/// This interface is used by [SettingsProvider] to load and save settings.
 abstract class ISettings {
   Future<bool> getAudioOn({required bool defaultValue});
   Future<bool> getMusicOn({required bool defaultValue});

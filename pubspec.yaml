@@ -18,6 +18,10 @@ dependencies:
   flame: ^1.14.0
   flame_audio: ^2.1.7
   logger: ^2.0.2+1
+  gap: ^3.0.1
+  google_fonts: ^6.1.0
+  nes_ui: ^0.13.0
+  provider: ^6.1.1
 
 dev_dependencies:
   flutter_test:
@@ -32,4 +36,16 @@ flutter:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: 'assets/images/icon.png'
+  remove_alpha_ios: true
+  image_path: 'assets/app_icon/placeholder.png'
+  mac:
+    generate: true
+    image_path: 'assets/app_icon/placeholder.png'
+  web:
+    generate: true
+    image_path: 'assets/app_icon/placeholder.png'
+    background_color: '#14452F'
+    theme_color: '#14452F'
+  windows:
+    generate: true
+    image_path: 'assets/app_icon/placeholder.png'

@@ -1,7 +1,7 @@
 import 'package:beltofdestiny/models/settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LocalStorageSettings extends ISettings {
+class LocalStorageSettingsStore extends ISettings {
   final Future<SharedPreferences> instanceFuture =
       SharedPreferences.getInstance();
 
