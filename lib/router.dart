@@ -1,4 +1,5 @@
 import 'package:beltofdestiny/screens/credits_screen.dart';
+import 'package:beltofdestiny/screens/game_screen.dart';
 import 'package:beltofdestiny/screens/main_menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +15,20 @@ final router = GoRouter(
       routes: [
         GoRoute(
           path: 'game',
-          builder: (context, state) => const Placeholder(),
+          pageBuilder: (context, state) => CustomTransitionPage<void>(
+            key: state.pageKey,
+            child: GameScreen(
+              key: Key('game_screen'),
+            ),
+            transitionDuration: const Duration(milliseconds: 1050),
+            reverseTransitionDuration: const Duration(milliseconds: 1050),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) =>
+                    NesVerticalCloseTransition(
+              animation: animation,
+              child: child,
+            ),
+          ),
         ),
         GoRoute(
           path: 'credits',
@@ -32,8 +46,6 @@ final router = GoRouter(
               child: child,
             ),
           ),
-
-          // builder: (context, state) => const Placeholder(),
         ),
       ],
     ),

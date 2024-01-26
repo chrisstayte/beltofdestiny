@@ -19,7 +19,11 @@ class CreditsScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-            )
+            ),
+            const Gap(12),
+            Text('Made by:'),
+            const Gap(12),
+            Text('Chris Stayte'),
           ],
         ),
       ),
