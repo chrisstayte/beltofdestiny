@@ -100,13 +100,11 @@ class MainMenuScreen extends StatelessWidget {
                     ),
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 20.0),
-                      child: Expanded(
-                        child: NesRunningText(
-                          text: 'Save the world',
-                          textStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                          ),
+                      child: NesRunningText(
+                        text: 'Save the world',
+                        textStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
                         ),
                       ),
                     ),

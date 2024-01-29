@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:beltofdestiny/game/components/control_arm.dart';
-import 'package:beltofdestiny/game/components/control_arm_hitbox.dart';
-import 'package:beltofdestiny/game/components/machine.dart';
-import 'package:beltofdestiny/game/components/play_area.dart';
+import 'package:flutter/services.dart';
+
+import 'components/components.dart';
 import 'package:beltofdestiny/game_config.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
@@ -12,7 +11,12 @@ import 'package:flame/input.dart';
 import 'package:flame/palette.dart';
 import 'package:flutter/material.dart';
 
-class BeltOfDestiny extends FlameGame with SingleGameInstance, TapDetector {
+class BeltOfDestiny extends FlameGame
+    with
+        SingleGameInstance,
+        TapDetector,
+        KeyboardEvents,
+        HasCollisionDetection {
   BeltOfDestiny()
       : super(
           camera: CameraComponent.withFixedResolution(
@@ -25,7 +29,8 @@ class BeltOfDestiny extends FlameGame with SingleGameInstance, TapDetector {
   double get height => size.y;
 
   ControlArm _controlArm = ControlArm();
-  ControlArmHitbox _controlArmHitbox = ControlArmHitbox();
+
+  Vector2 _garbageStartingPosition = Vector2(gameWidth / 2, gameHeight);
 
   @override
   FutureOr<void> onLoad() async {
@@ -37,7 +42,6 @@ class BeltOfDestiny extends FlameGame with SingleGameInstance, TapDetector {
 
     // Control Arm
     world.add(_controlArm);
-    world.add(_controlArmHitbox..position = _controlArm.position);
 
     // Incinerator
     world.add(
@@ -47,6 +51,11 @@ class BeltOfDestiny extends FlameGame with SingleGameInstance, TapDetector {
     // Recycler
     world.add(Machine()..position = Vector2(width / 2 + 50, 25));
 
+    // Garbage
+    world.add(
+      Garbage()..position = _garbageStartingPosition,
+    );
+
     debugMode = true;
   }
 
@@ -54,5 +63,15 @@ class BeltOfDestiny extends FlameGame with SingleGameInstance, TapDetector {
   void onTap() {
     super.onTap();
     _controlArm.toggleDirection();
+  }
+
+  @override
+  KeyEventResult onKeyEvent(
+      RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    super.onKeyEvent(event, keysPressed);
+    if (event.isKeyPressed(LogicalKeyboardKey.space)) {
+      _controlArm.toggleDirection();
+    }
+    return KeyEventResult.handled;
   }
 }

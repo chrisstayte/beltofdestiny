@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game_config.dart';
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/palette.dart';
@@ -11,13 +12,23 @@ import 'package:flutter/material.dart';
 class ControlArm extends RectangleComponent
     with HasGameReference<BeltOfDestiny> {
   bool isSwitchedLeft = true;
-  double rotationAmount = 55;
+  final double _rotationAmount = 55;
 
   ControlArm()
       : super(
           anchor: Anchor.topCenter,
           size: Vector2(armWidth, armLength),
           paint: BasicPalette.red.paint(),
+          children: [
+            RectangleHitbox(
+              isSolid: true,
+              anchor: Anchor.topCenter,
+              size: Vector2(
+                armLength * 2,
+                armLength,
+              ),
+            ),
+          ],
         );
 
   @override
@@ -47,16 +58,16 @@ class ControlArm extends RectangleComponent
 
   void _setRotation() {
     angle = isSwitchedLeft
-        ? _degreesToRadians(rotationAmount)
-        : _degreesToRadians(-rotationAmount);
+        ? _degreesToRadians(_rotationAmount)
+        : _degreesToRadians(-_rotationAmount);
   }
 
   void _rotateWithEffect() {
     add(
       RotateEffect.to(
         isSwitchedLeft
-            ? _degreesToRadians(rotationAmount)
-            : _degreesToRadians(-rotationAmount),
+            ? _degreesToRadians(_rotationAmount)
+            : _degreesToRadians(-_rotationAmount),
         EffectController(duration: 0.15),
       ),
     );
