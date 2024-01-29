@@ -36,7 +36,10 @@ class GameScreen extends StatelessWidget {
                     const Expanded(
                       child: Text(
                         'SCORE: 42069',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'ArcadeYA',
+                        ),
                       ),
                     ),
                     IconButton(

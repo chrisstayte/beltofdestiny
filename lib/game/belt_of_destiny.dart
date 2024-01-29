@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import 'components/components.dart';
 import 'package:beltofdestiny/game_config.dart';
@@ -28,6 +29,14 @@ class BeltOfDestiny extends FlameGame
   double get width => size.x;
   double get height => size.y;
 
+  static final textRenderer = TextPaint(
+    style: const TextStyle(
+      color: Colors.white,
+      fontFamily: 'ArcadeYA',
+      fontSize: 34,
+    ),
+  );
+
   ControlArm _controlArm = ControlArm();
 
   Vector2 _garbageStartingPosition = Vector2(gameWidth / 2, gameHeight);
@@ -45,18 +54,36 @@ class BeltOfDestiny extends FlameGame
 
     // Incinerator
     world.add(
-      Machine()..position = Vector2((width / 2) - machineWidth - 50, 25),
+      Machine()
+        ..position = Vector2((width / 2) - machineWidth - 50, 25)
+        ..add(
+          TextComponent(
+            text: 'Incinerator',
+            textRenderer: textRenderer,
+          ),
+        ),
     );
 
     // Recycler
-    world.add(Machine()..position = Vector2(width / 2 + 50, 25));
-
-    // Garbage
     world.add(
-      Garbage()..position = _garbageStartingPosition,
+      Machine()
+        ..position = Vector2(width / 2 + 50, 25)
+        ..add(
+          TextComponent(
+            text: 'Recycler',
+            textRenderer: textRenderer,
+          ),
+        ),
     );
 
-    debugMode = true;
+    // Garbage
+    Future.delayed((1050 / 2.0).milliseconds, () {
+      world.add(
+        Garbage()..position = _garbageStartingPosition,
+      );
+    });
+
+    debugMode = false;
   }
 
   @override

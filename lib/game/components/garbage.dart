@@ -31,7 +31,7 @@ class Garbage extends RectangleComponent
     add(
       MoveEffect.to(
         initialMoveLocation,
-        EffectController(duration: .1),
+        EffectController(duration: .5),
       ),
     );
   }

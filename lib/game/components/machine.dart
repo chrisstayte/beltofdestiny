@@ -15,5 +15,13 @@ class Machine extends RectangleComponent with HasGameReference<BeltOfDestiny> {
   @override
   onLoad() async {
     super.onLoad();
+
+    // Center all text components
+    for (var child in children) {
+      if (child is TextComponent) {
+        child.anchor = Anchor.center;
+        child.position = size / 2;
+      }
+    }
   }
 }
