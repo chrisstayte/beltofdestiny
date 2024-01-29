@@ -1,38 +1,64 @@
+import 'dart:async';
+
+import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game_config.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
+import 'package:flame/palette.dart';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
-class ControlArm extends PositionComponent {
+class ControlArm extends RectangleComponent
+    with HasGameReference<BeltOfDestiny> {
   bool isSwitchedLeft = true;
+  double rotationAmount = 55;
 
-  double get _rotationRadians => rotationAngle * math.pi / 180;
+  ControlArm()
+      : super(
+          anchor: Anchor.topCenter,
+          size: Vector2(armWidth, armLength),
+          paint: BasicPalette.red.paint(),
+        );
+
+  @override
+  FutureOr<void> onLoad() async {
+    super.onLoad();
+
+    position = Vector2(game.width / 2, game.height / 5);
+
+    add(
+      CircleComponent(
+        radius: 20,
+        position: Vector2(size.x / 2, 0),
+        anchor: Anchor.center,
+        paint: BasicPalette.white.paint(),
+      ),
+    );
+
+    _setRotation();
+  }
+
+  double _degreesToRadians(double degrees) => degrees * math.pi / 180;
 
   void toggleDirection() {
     isSwitchedLeft = !isSwitchedLeft;
+    _rotateWithEffect();
   }
 
-  @override
-  void render(Canvas canvas) {
-    // super.render(canvas);
-    final paint = Paint()..color = Colors.red; // Paint for the arm
-    final rect = Rect.fromLTWH(
-        0, 0, armWidth, armLength); // Rectangle representing the arm
+  void _setRotation() {
+    angle = isSwitchedLeft
+        ? _degreesToRadians(rotationAmount)
+        : _degreesToRadians(-rotationAmount);
+  }
 
-    canvas.save(); // Save the current canvas state
-
-    // Translate the canvas to the pivot point
-    canvas.translate(isSwitchedLeft ? rect.left : rect.right, rect.top);
-
-    // Rotate the canvas around the pivot point
-    canvas.rotate(isSwitchedLeft ? -_rotationRadians : _rotationRadians);
-
-    // Translate back by half the arm's width to center the pivot on the edge
-    canvas.translate(-armWidth / 2, 0);
-
-    // Draw the rectangle (arm) on the transformed canvas
-    canvas.drawRect(rect, paint);
-
-    canvas.restore(); // Restore the canvas to the saved state
+  void _rotateWithEffect() {
+    add(
+      RotateEffect.to(
+        isSwitchedLeft
+            ? _degreesToRadians(rotationAmount)
+            : _degreesToRadians(-rotationAmount),
+        EffectController(duration: 0.15),
+      ),
+    );
   }
 }

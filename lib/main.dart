@@ -39,7 +39,8 @@ class MyApp extends StatelessWidget {
         final palette = context.read<Palette>();
 
         return MaterialApp.router(
-          title: 'Flutter Demo',
+          title: 'Belt of Destiny',
+
           theme: flutterNesTheme().copyWith(
               scaffoldBackgroundColor: palette.backgroundMain,
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

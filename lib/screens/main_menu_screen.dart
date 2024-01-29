@@ -34,7 +34,15 @@ class MainMenuScreen extends StatelessWidget {
                         'Belt\nOf\nDestiny',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 40, color: Colors.white),
-                      ),
+                      )
+                          .animate(
+                            autoPlay: true,
+                            onComplete: (controller) => controller.repeat(),
+                          )
+                          .shimmer(
+                            color: Colors.yellow.shade800,
+                            duration: 1.5.seconds,
+                          ),
                     ),
                   ),
                 ),
@@ -49,8 +57,8 @@ class MainMenuScreen extends StatelessWidget {
                           onPressed: () {
                             context.go('/game');
                           },
-                          child: Center(
-                            child: const Text('Start Game'),
+                          child: const Center(
+                            child: Text('Start Game'),
                           ),
                         ),
                         const Gap(10),
@@ -83,18 +91,24 @@ class MainMenuScreen extends StatelessWidget {
                             onPressed: () {
                               // Navigator.of(context).pushNamed('/game');
                             },
-                            child: Center(child: const Text('Leaderboards')),
+                            child: Center(
+                              child: const Text('Leaderboards'),
+                            ),
                           ),
                         ]
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
-                      child: NesRunningText(
-                        text: 'Save the world',
-                      ).animate().shimmer(
-                            duration: const Duration(seconds: 2),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20.0),
+                      child: Expanded(
+                        child: NesRunningText(
+                          text: 'Save the world',
+                          textStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
                           ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
