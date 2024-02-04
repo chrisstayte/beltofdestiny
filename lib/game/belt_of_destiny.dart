@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/services.dart';
@@ -25,44 +26,68 @@ class BeltOfDestiny extends FlameGame
           ),
         );
 
+  final ValueNotifier<int> score = ValueNotifier<int>(0);
+  final ValueNotifier<double> temperature = ValueNotifier<double>(lowestTemp);
+
   double get width => size.x;
   double get height => size.y;
 
-  ControlArm _controlArm = ControlArm();
+  ControlArm controlArm = ControlArm();
 
-  Vector2 _garbageStartingPosition = Vector2(gameWidth / 2, gameHeight);
+  final Vector2 _garbageStartingPosition = Vector2(gameWidth / 2, gameHeight);
 
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
+    children.register<Machine>();
 
     camera.viewfinder.anchor = Anchor.topLeft;
 
     world.add(PlayArea());
 
     // Control Arm
-    world.add(_controlArm);
+    world.add(controlArm);
 
     // Incinerator
     world.add(
-      Machine()..position = Vector2((width / 2) - machineWidth - 50, 25),
+      Machine(key: ComponentKey.named('Incinerator'), isIncinerator: true)
+        ..position = Vector2((width / 2) - machineWidth - 50, 25),
     );
 
     // Recycler
-    world.add(Machine()..position = Vector2(width / 2 + 50, 25));
+    world.add(Machine(key: ComponentKey.named('Recycler'), isIncinerator: false)
+      ..position = Vector2(width / 2 + 50, 25));
 
     // Garbage
-    world.add(
-      Garbage()..position = _garbageStartingPosition,
+    // world.add(
+    //   Garbage()..position = _garbageStartingPosition,
+    // );
+
+    add(
+      TimerComponent(
+        period: .8,
+        repeat: true,
+        onTick: () {
+          // random number between 1 and 10
+
+          Random random = Random();
+          int randomNumber = random.nextInt(100) + 1;
+
+          world.add(
+            Garbage(canBeRecycled: randomNumber.isEven)
+              ..position = _garbageStartingPosition,
+          );
+        },
+      ),
     );
 
-    debugMode = true;
+    debugMode = false;
   }
 
   @override
   void onTap() {
     super.onTap();
-    _controlArm.toggleDirection();
+    controlArm.toggleDirection();
   }
 
   @override
@@ -70,7 +95,7 @@ class BeltOfDestiny extends FlameGame
       RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     super.onKeyEvent(event, keysPressed);
     if (event.isKeyPressed(LogicalKeyboardKey.space)) {
-      _controlArm.toggleDirection();
+      controlArm.toggleDirection();
     }
     return KeyEventResult.handled;
   }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/components/components.dart';
@@ -11,29 +12,52 @@ import 'package:flutter/material.dart';
 
 class Garbage extends RectangleComponent
     with HasGameReference<BeltOfDestiny>, CollisionCallbacks {
-  Garbage()
+  Garbage({this.canBeRecycled = false})
       : super(
           size: Vector2(50, 50),
-          paint: BasicPalette.green.paint(),
-          anchor: Anchor.topCenter,
+          paint: canBeRecycled
+              ? BasicPalette.green.paint()
+              : BasicPalette.brown.paint(),
+          anchor: Anchor.center,
           children: [
             RectangleHitbox(),
           ],
         );
 
-  static final Vector2 initialMoveLocation =
-      Vector2(gameWidth / 2, gameHeight / 5 + armLength);
+  bool canBeRecycled;
+  static final Vector2 initialMoveLocation = Vector2(gameWidth / 2, 0);
+  MoveEffect? initialMoveEffect;
+  bool hitControlArm = false;
 
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
 
-    add(
-      MoveEffect.to(
-        initialMoveLocation,
-        EffectController(duration: .1),
+    initialMoveEffect = MoveEffect.to(
+      initialMoveLocation,
+      EffectController(
+        duration: calculateDurationFromDistance(initialMoveLocation),
       ),
     );
+
+    add(initialMoveEffect!);
+  }
+
+  void _moveToMachine(Vector2 machinePosition) {
+    add(
+      MoveEffect.to(
+        machinePosition,
+        EffectController(
+          duration: calculateDurationFromDistance(machinePosition),
+        ),
+      ),
+    );
+  }
+
+  double calculateDurationFromDistance(Vector2 to) {
+    final distance = position.distanceTo(to);
+    final duration = distance / baseSpeedPixelPerSecond;
+    return duration;
   }
 
   @override
@@ -41,7 +65,24 @@ class Garbage extends RectangleComponent
       Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollisionStart(intersectionPoints, other);
     if (other is ControlArm) {
-      debugPrint('hit control arm');
+      if (hitControlArm) {
+        return;
+      }
+
+      hitControlArm = true;
+      if (initialMoveEffect != null) {
+        remove(initialMoveEffect!);
+        initialMoveEffect = null;
+      }
+      if (game.controlArm.isSwitchedLeft) {
+        final machine = game.findByKeyName<RectangleComponent>('Recycler');
+        _moveToMachine(machine!.position + machine.size / 2);
+      } else {
+        final machine = game.findByKeyName<RectangleComponent>('Incinerator');
+        _moveToMachine(machine!.position + machine.size / 2);
+      }
+    } else if (other is Machine) {
+      add(RemoveEffect(delay: 0.2));
     } else {
       debugPrint('hit something else');
     }

@@ -1,17 +1,21 @@
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/widgets/temperature_bar.dart';
+import 'package:beltofdestiny/game_config.dart';
 import 'package:beltofdestiny/pallete.dart';
 import 'package:beltofdestiny/screens/widgets/pause_modal.dart';
 import 'package:beltofdestiny/screens/widgets/settings_modal.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gap/gap.dart';
 import 'package:nes_ui/nes_ui.dart';
 import 'package:provider/provider.dart';
 
 class GameScreen extends StatelessWidget {
-  const GameScreen({super.key});
+  GameScreen({super.key});
+
+  late final BeltOfDestiny game = BeltOfDestiny();
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +37,15 @@ class GameScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Expanded(
-                      child: Text(
-                        'SCORE: 42069',
-                        style: TextStyle(color: Colors.white),
+                    Expanded(
+                      child: ValueListenableBuilder(
+                        valueListenable: game.score,
+                        builder: (context, score, child) {
+                          return Text(
+                            'SCORE: ${game.score.value}',
+                            style: const TextStyle(color: Colors.white),
+                          );
+                        },
                       ),
                     ),
                     IconButton(
@@ -56,17 +65,22 @@ class GameScreen extends StatelessWidget {
             Expanded(
               child: Stack(
                 children: [
-                  GameWidget.controlled(
-                    gameFactory: BeltOfDestiny.new,
+                  GameWidget(
+                    game: game,
                     backgroundBuilder: (context) => Container(
                       color: palette.backgroundMain,
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     bottom: 10,
                     right: 10,
-                    child: TemperatureBar(
-                      percentFilled: 0.5,
+                    child: ValueListenableBuilder(
+                      valueListenable: game.temperature,
+                      builder: (context, temperature, child) {
+                        return TemperatureBar(
+                          temperature: temperature,
+                        );
+                      },
                     ),
                   ),
                 ],

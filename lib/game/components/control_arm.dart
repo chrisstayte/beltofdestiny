@@ -11,14 +11,14 @@ import 'package:flutter/material.dart';
 
 class ControlArm extends RectangleComponent
     with HasGameReference<BeltOfDestiny> {
-  bool isSwitchedLeft = true;
-  final double _rotationAmount = 55;
+  bool isSwitchedLeft = false;
 
   ControlArm()
       : super(
           anchor: Anchor.topCenter,
           size: Vector2(armWidth, armLength),
           paint: BasicPalette.red.paint(),
+          priority: 2,
           children: [
             RectangleHitbox(
               isSolid: true,
@@ -58,16 +58,16 @@ class ControlArm extends RectangleComponent
 
   void _setRotation() {
     angle = isSwitchedLeft
-        ? _degreesToRadians(_rotationAmount)
-        : _degreesToRadians(-_rotationAmount);
+        ? _degreesToRadians(rotationAngle)
+        : _degreesToRadians(-rotationAngle);
   }
 
   void _rotateWithEffect() {
     add(
       RotateEffect.to(
         isSwitchedLeft
-            ? _degreesToRadians(_rotationAmount)
-            : _degreesToRadians(-_rotationAmount),
+            ? _degreesToRadians(rotationAngle)
+            : _degreesToRadians(-rotationAngle),
         EffectController(duration: 0.15),
       ),
     );

@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Flame.device.fullScreen();
+  await Flame.device.setPortraitUpOnly();
 
   usePathUrlStrategy();
 
