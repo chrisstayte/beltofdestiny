@@ -20,7 +20,7 @@ dependencies:
   logger: ^2.0.2+1
   gap: ^3.0.1
   google_fonts: ^6.1.0
-  nes_ui: ^0.13.0
+  nes_ui: ^0.14.0
   provider: ^6.1.1
   flutter_animate: ^4.4.0
 
@@ -28,11 +28,18 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
   flutter_launcher_icons: ^0.13.1
 
 flutter:
   uses-material-design: true
+
+fonts:
+  - family: 'ArcadeYA'
+    fonts:
+      - asset: 'assets/fonts/arcade_ya/ARCADE_I.TTF'
+        style: italic
+      - asset: 'assets/fonts/arcade_ya/ARCADE_N.TTF'
 
 flutter_launcher_icons:
   android: true

@@ -23,6 +23,7 @@ class ControlArm extends RectangleComponent
             RectangleHitbox(
               isSolid: true,
               anchor: Anchor.topCenter,
+              collisionType: CollisionType.passive,
               size: Vector2(
                 armLength * 2,
                 armLength,
