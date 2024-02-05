@@ -60,7 +60,9 @@ class _GameScreenState extends State<GameScreen> {
   void _showSettingsModal() {
     showDialog(
       context: context,
-      builder: (context) => PauseModal(),
+      builder: (context) => PauseModal(
+        onCloseButtonPressed: () => game.paused = false,
+      ),
     );
   }
 
@@ -102,7 +104,9 @@ class _GameScreenState extends State<GameScreen> {
                         game.paused = true;
                         await showDialog(
                           context: context,
-                          builder: (context) => PauseModal(),
+                          builder: (context) => PauseModal(
+                            onCloseButtonPressed: () => game.paused = false,
+                          ),
                         );
                       },
                     ),
