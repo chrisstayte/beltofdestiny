@@ -1,16 +1,13 @@
 import 'dart:async';
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 
 import 'components/components.dart';
 import 'package:beltofdestiny/game_config.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
-import 'package:flame/palette.dart';
 import 'package:flutter/material.dart';
 
 class BeltOfDestiny extends FlameGame
@@ -25,7 +22,9 @@ class BeltOfDestiny extends FlameGame
             width: gameWidth,
             height: gameHeight,
           ),
-        );
+        ) {
+    pauseWhenBackgrounded = false;
+  }
 
   final ValueNotifier<int> score = ValueNotifier<int>(0);
   final ValueNotifier<double> temperature = ValueNotifier<double>(lowestTemp);
@@ -69,8 +68,6 @@ class BeltOfDestiny extends FlameGame
         period: .8,
         repeat: true,
         onTick: () {
-          // random number between 1 and 10
-
           Random random = Random();
           int randomNumber = random.nextInt(100) + 1;
 
@@ -82,7 +79,7 @@ class BeltOfDestiny extends FlameGame
       ),
     );
 
-    debugMode = false;
+    debugMode = true;
   }
 
   @override

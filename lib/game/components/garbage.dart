@@ -64,6 +64,7 @@ class Garbage extends RectangleComponent
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollisionStart(intersectionPoints, other);
+
     if (other is ControlArm) {
       if (hitControlArm) {
         return;

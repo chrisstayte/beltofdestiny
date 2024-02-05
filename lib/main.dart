@@ -1,4 +1,5 @@
 import 'package:beltofdestiny/pallete.dart';
+import 'package:beltofdestiny/providers/app_lifecycle.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
 import 'package:beltofdestiny/router.dart';
 import 'package:flame/flame.dart';
@@ -31,28 +32,30 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        Provider(create: (context) => Palette()),
-        Provider(create: (context) => SettingsProvider()),
-      ],
-      child: Builder(builder: (context) {
-        final palette = context.read<Palette>();
+    return AppLifecycleObserver(
+      child: MultiProvider(
+        providers: [
+          Provider(create: (context) => Palette()),
+          Provider(create: (context) => SettingsProvider()),
+        ],
+        child: Builder(builder: (context) {
+          final palette = context.read<Palette>();
 
-        return MaterialApp.router(
-          title: 'Belt of Destiny',
+          return MaterialApp.router(
+            title: 'Belt of Destiny',
 
-          theme: flutterNesTheme().copyWith(
-              scaffoldBackgroundColor: palette.backgroundMain,
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              textTheme: GoogleFonts.pressStart2pTextTheme().apply(),
-              extensions: flutterNesTheme().extensions.values),
-          routerConfig: router,
-          // routeInformationParser: router.routeInformationParser,
-          // routerDelegate: router.routerDelegate,
-          // routeInformationProvider: router.routeInformationProvider,
-        );
-      }),
+            theme: flutterNesTheme().copyWith(
+                scaffoldBackgroundColor: palette.backgroundMain,
+                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                textTheme: GoogleFonts.pressStart2pTextTheme().apply(),
+                extensions: flutterNesTheme().extensions.values),
+            routerConfig: router,
+            // routeInformationParser: router.routeInformationParser,
+            // routerDelegate: router.routerDelegate,
+            // routeInformationProvider: router.routeInformationProvider,
+          );
+        }),
+      ),
     );
   }
 }

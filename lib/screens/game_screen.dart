@@ -2,6 +2,7 @@ import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/widgets/temperature_bar.dart';
 import 'package:beltofdestiny/game_config.dart';
 import 'package:beltofdestiny/pallete.dart';
+import 'package:beltofdestiny/providers/app_lifecycle.dart';
 import 'package:beltofdestiny/screens/widgets/pause_modal.dart';
 import 'package:beltofdestiny/screens/widgets/settings_modal.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
@@ -12,10 +13,56 @@ import 'package:gap/gap.dart';
 import 'package:nes_ui/nes_ui.dart';
 import 'package:provider/provider.dart';
 
-class GameScreen extends StatelessWidget {
+class GameScreen extends StatefulWidget {
   GameScreen({super.key});
 
+  @override
+  State<GameScreen> createState() => _GameScreenState();
+}
+
+class _GameScreenState extends State<GameScreen> {
   late final BeltOfDestiny game = BeltOfDestiny();
+
+  ValueNotifier<AppLifecycleState>? _lifecycleNotifier;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _lifecycleNotifier =
+        Provider.of<AppLifecycleStateNotifier>(context, listen: false);
+
+    _lifecycleNotifier!.addListener(_handleAppLifecycle);
+  }
+
+  @override
+  void dispose() {
+    _lifecycleNotifier!.removeListener(_handleAppLifecycle);
+    super.dispose();
+  }
+
+  void _handleAppLifecycle() {
+    switch (_lifecycleNotifier!.value) {
+      case AppLifecycleState.paused:
+      case AppLifecycleState.detached:
+      case AppLifecycleState.hidden:
+        if (game.paused) {
+          return;
+        }
+        game.paused = true;
+        _showSettingsModal();
+      case AppLifecycleState.resumed:
+      case AppLifecycleState.inactive:
+        break;
+    }
+  }
+
+  void _showSettingsModal() {
+    showDialog(
+      context: context,
+      builder: (context) => PauseModal(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +98,9 @@ class GameScreen extends StatelessWidget {
                     IconButton(
                       color: Colors.white,
                       icon: const Icon(Icons.pause),
-                      onPressed: () {
-                        showDialog(
+                      onPressed: () async {
+                        game.paused = true;
+                        await showDialog(
                           context: context,
                           builder: (context) => PauseModal(),
                         );
