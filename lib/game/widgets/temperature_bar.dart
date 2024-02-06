@@ -1,4 +1,4 @@
-import 'package:beltofdestiny/game_config.dart';
+import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gap/gap.dart';

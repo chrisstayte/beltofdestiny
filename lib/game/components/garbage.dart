@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/components/components.dart';
-import 'package:beltofdestiny/game_config.dart';
+import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';

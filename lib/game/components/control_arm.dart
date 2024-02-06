@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
-import 'package:beltofdestiny/game_config.dart';
+import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
@@ -12,12 +12,14 @@ import 'package:flutter/material.dart';
 class ControlArm extends RectangleComponent
     with HasGameReference<BeltOfDestiny> {
   bool isSwitchedLeft = false;
+  bool isSeized = false;
+  Timer? countdown;
 
   ControlArm()
       : super(
           anchor: Anchor.topCenter,
           size: Vector2(armWidth, armLength),
-          paint: BasicPalette.red.paint(),
+          paint: BasicPalette.green.paint(),
           priority: 2,
           children: [
             RectangleHitbox(
@@ -50,9 +52,40 @@ class ControlArm extends RectangleComponent
     _setRotation();
   }
 
+  @override
+  void update(double dt) {
+    super.update(dt);
+    countdown?.update(dt);
+
+    if (countdown?.finished ?? false) {
+      countdown = null;
+    }
+  }
+
   double _degreesToRadians(double degrees) => degrees * math.pi / 180;
 
+  ///
+  /// tell arm to stop accepting input and direct all items to the incinerator
+  /// this is a timed event
+  ///
+  void seizeArm() {
+    if (isSeized) return;
+    isSeized = true;
+    isSwitchedLeft = false;
+    _rotateWithEffect();
+    paint = BasicPalette.red.paint();
+    countdown = Timer(
+      seizeArmDuration,
+      onTick: () {
+        isSeized = false;
+        paint = BasicPalette.green.paint();
+      },
+    );
+  }
+
+  ///
   void toggleDirection() {
+    if (isSeized) return;
     isSwitchedLeft = !isSwitchedLeft;
     _rotateWithEffect();
   }

@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/components/garbage.dart';
-import 'package:beltofdestiny/game_config.dart';
+import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
@@ -39,8 +39,17 @@ class Machine extends RectangleComponent
     super.onCollisionStart(intersectionPoints, other);
 
     if (other is Garbage && !isIncinerator) {
-      game.score.value += 200;
-      if (game.temperature.value > lowestTemp) game.temperature.value -= 0.1;
+      game.score.value += 100;
+
+      // if the piece of garbage is not recyclable, size arm
+      if (!other.canBeRecycled) {
+        game.controlArm.seizeArm();
+        return;
+      }
+
+      if (!game.controlArm.isSeized) {
+        if (game.temperature.value > lowestTemp) game.temperature.value -= 0.15;
+      }
     } else {
       if (game.temperature.value < highestTemp) game.temperature.value += 0.1;
     }

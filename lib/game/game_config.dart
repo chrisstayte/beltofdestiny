@@ -10,9 +10,10 @@ const machineHeight = gameHeight / 10.0;
 const double armWidth = 15;
 const double armLength = 250;
 const double rotationAngle = 40;
+const double seizeArmDuration = 3;
 
 // Garbage
-const double baseSpeedPixelPerSecond = 300;
+const double baseSpeedPixelPerSecond = 320;
 
 // Temperature
 const double lowestTemp = 54.7;

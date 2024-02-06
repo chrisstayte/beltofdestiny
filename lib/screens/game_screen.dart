@@ -1,6 +1,6 @@
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/widgets/temperature_bar.dart';
-import 'package:beltofdestiny/game_config.dart';
+import 'package:beltofdestiny/game/game_config.dart';
 import 'package:beltofdestiny/pallete.dart';
 import 'package:beltofdestiny/providers/app_lifecycle.dart';
 import 'package:beltofdestiny/screens/widgets/pause_modal.dart';
@@ -122,18 +122,25 @@ class _GameScreenState extends State<GameScreen> {
                     backgroundBuilder: (context) => Container(
                       color: palette.backgroundMain,
                     ),
-                  ),
-                  Positioned(
-                    bottom: 10,
-                    right: 10,
-                    child: ValueListenableBuilder(
-                      valueListenable: game.temperature,
-                      builder: (context, temperature, child) {
-                        return TemperatureBar(
-                          temperature: temperature,
-                        );
-                      },
-                    ),
+                    overlayBuilderMap: {
+                      'temperatureBar': (context, BeltOfDestiny game){
+
+                        final position = Offset(game)
+                         return Positioned(
+                            bottom:,
+                            right: 10,
+                            child: ValueListenableBuilder(
+                              valueListenable: game.temperature,
+                              builder: (context, temperature, child) {
+                                return TemperatureBar(
+                                  temperature: temperature,
+                                );
+                              },
+                            ),
+                          ),
+                      }
+                    },
+                    initialActiveOverlays: ['temperatureBar'],
                   ),
                 ],
               ),

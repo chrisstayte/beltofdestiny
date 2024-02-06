@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:flutter/services.dart';
 
 import 'components/components.dart';
-import 'package:beltofdestiny/game_config.dart';
+import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
@@ -34,6 +34,8 @@ class BeltOfDestiny extends FlameGame
 
   ControlArm controlArm = ControlArm();
 
+  late TimerComponent _garbageTimer;
+
   final Vector2 _garbageStartingPosition = Vector2(gameWidth / 2, gameHeight);
 
   @override
@@ -58,28 +60,23 @@ class BeltOfDestiny extends FlameGame
     world.add(Machine(key: ComponentKey.named('Recycler'), isIncinerator: false)
       ..position = Vector2(width / 2 + 50, 25));
 
-    // Garbage
-    // world.add(
-    //   Garbage()..position = _garbageStartingPosition,
-    // );
+    _garbageTimer = TimerComponent(
+      period: .9,
+      repeat: true,
+      onTick: () {
+        Random random = Random();
+        int randomNumber = random.nextInt(100) + 1;
 
-    add(
-      TimerComponent(
-        period: .8,
-        repeat: true,
-        onTick: () {
-          Random random = Random();
-          int randomNumber = random.nextInt(100) + 1;
-
-          world.add(
-            Garbage(canBeRecycled: randomNumber.isEven)
-              ..position = _garbageStartingPosition,
-          );
-        },
-      ),
+        world.add(
+          Garbage(canBeRecycled: randomNumber.isEven)
+            ..position = _garbageStartingPosition,
+        );
+      },
     );
 
-    debugMode = true;
+    add(_garbageTimer);
+
+    debugMode = false;
   }
 
   @override
