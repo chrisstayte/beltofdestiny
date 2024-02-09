@@ -123,22 +123,27 @@ class _GameScreenState extends State<GameScreen> {
                       color: palette.backgroundMain,
                     ),
                     overlayBuilderMap: {
-                      'temperatureBar': (context, BeltOfDestiny game){
-
-                        final position = Offset(game)
-                         return Positioned(
-                            bottom:,
-                            right: 10,
-                            child: ValueListenableBuilder(
-                              valueListenable: game.temperature,
-                              builder: (context, temperature, child) {
-                                return TemperatureBar(
-                                  temperature: temperature,
-                                );
-                              },
+                      'temperatureBar': (context, BeltOfDestiny game) {
+                        return Center(
+                          child: AspectRatio(
+                            aspectRatio: 9 / 16,
+                            child: Align(
+                              alignment: Alignment.bottomRight,
+                              child: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: ValueListenableBuilder(
+                                  valueListenable: game.temperature,
+                                  builder: (context, temperature, child) {
+                                    return TemperatureBar(
+                                      temperature: temperature,
+                                    );
+                                  },
+                                ),
+                              ),
                             ),
                           ),
-                      }
+                        );
+                      },
                     },
                     initialActiveOverlays: ['temperatureBar'],
                   ),
