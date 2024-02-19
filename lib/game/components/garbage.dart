@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/components/components.dart';
+import 'package:beltofdestiny/game/components/recyclable_belt.dart';
 import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -25,33 +26,31 @@ class Garbage extends RectangleComponent
         );
 
   bool canBeRecycled;
-  static final Vector2 initialMoveLocation = Vector2(gameWidth / 2, 0);
-  MoveEffect? initialMoveEffect;
   bool hitControlArm = false;
+  bool shouldHeadTowardsRecycler = false;
 
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
 
-    initialMoveEffect = MoveEffect.to(
-      initialMoveLocation,
-      EffectController(
-        duration: calculateDurationFromDistance(initialMoveLocation),
-      ),
-    );
-
-    add(initialMoveEffect!);
+    position = Vector2(game.mainBelt.position.x, game.mainBelt.size.y);
   }
 
-  void _moveToMachine(Vector2 machinePosition) {
-    add(
-      MoveEffect.to(
-        machinePosition,
-        EffectController(
-          duration: calculateDurationFromDistance(machinePosition),
-        ),
-      ),
-    );
+  @override
+  void update(double dt) {
+    super.update(dt);
+
+    double speed = baseSpeedPixelPerSecond + ((game.score.value / 100) * 10);
+
+    if (shouldHeadTowardsRecycler) {
+      position += Vector2(0, -speed * dt);
+      return;
+    }
+    if (hitControlArm) {
+      position += Vector2(speed * dt, 0);
+      return;
+    }
+    position += Vector2(0, -speed * dt);
   }
 
   double calculateDurationFromDistance(Vector2 to) {
@@ -66,22 +65,22 @@ class Garbage extends RectangleComponent
     super.onCollisionStart(intersectionPoints, other);
 
     if (other is ControlArm) {
-      if (hitControlArm) {
+      if (hitControlArm || game.controlArm.isSeized) {
         return;
       }
 
       hitControlArm = true;
-      if (initialMoveEffect != null) {
-        remove(initialMoveEffect!);
-        initialMoveEffect = null;
-      }
-      if (game.controlArm.isSwitchedLeft) {
-        final machine = game.findByKeyName<RectangleComponent>('Recycler');
-        _moveToMachine(machine!.position + machine.size / 2);
-      } else {
+
+      if (game.controlArm.armIsStraightDown) {
         final machine = game.findByKeyName<RectangleComponent>('Incinerator');
-        _moveToMachine(machine!.position + machine.size / 2);
+      } else {
+        final machine = game.findByKeyName<RectangleComponent>('Recycler');
       }
+    } else if (other is RecyclableBelt) {
+      if (shouldHeadTowardsRecycler) {
+        return;
+      }
+      shouldHeadTowardsRecycler = true;
     } else if (other is Machine) {
       add(RemoveEffect(delay: 0.2));
     } else {

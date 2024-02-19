@@ -1,7 +1,9 @@
+import 'package:beltofdestiny/firebase_options.dart';
 import 'package:beltofdestiny/pallete.dart';
 import 'package:beltofdestiny/providers/app_lifecycle.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
 import 'package:beltofdestiny/router.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flame/flame.dart';
 
 import 'package:logging/logging.dart';
@@ -17,6 +19,10 @@ void main() async {
   await Flame.device.setPortraitUpOnly();
 
   usePathUrlStrategy();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   Logger.root.level = Level.ALL;
   Logger.root.onRecord.listen((record) {

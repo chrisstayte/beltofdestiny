@@ -7,11 +7,10 @@ import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/palette.dart';
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
 
 class ControlArm extends RectangleComponent
     with HasGameReference<BeltOfDestiny> {
-  bool isSwitchedLeft = false;
+  bool armIsStraightDown = true;
   bool isSeized = false;
   Timer? countdown;
 
@@ -24,12 +23,12 @@ class ControlArm extends RectangleComponent
           children: [
             RectangleHitbox(
               isSolid: true,
-              anchor: Anchor.topCenter,
+
               collisionType: CollisionType.passive,
-              size: Vector2(
-                armLength * 2,
-                armLength,
-              ),
+              // size: Vector2(
+              //   armLength * 2,
+              //   armLength,
+              // ),
             ),
           ],
         );
@@ -38,7 +37,9 @@ class ControlArm extends RectangleComponent
   FutureOr<void> onLoad() async {
     super.onLoad();
 
-    position = Vector2(game.width / 2, game.height / 5);
+    // position = Vector2(game.width / 2, game.height / 5);
+    position =
+        Vector2(game.mainBelt.position.x + (beltWidth / 2), game.height / 3.5);
 
     add(
       CircleComponent(
@@ -48,8 +49,6 @@ class ControlArm extends RectangleComponent
         paint: BasicPalette.white.paint(),
       ),
     );
-
-    _setRotation();
   }
 
   @override
@@ -71,7 +70,7 @@ class ControlArm extends RectangleComponent
   void seizeArm() {
     if (isSeized) return;
     isSeized = true;
-    isSwitchedLeft = false;
+    armIsStraightDown = true;
     _rotateWithEffect();
     paint = BasicPalette.red.paint();
     countdown = Timer(
@@ -86,22 +85,16 @@ class ControlArm extends RectangleComponent
   ///
   void toggleDirection() {
     if (isSeized) return;
-    isSwitchedLeft = !isSwitchedLeft;
+    armIsStraightDown = !armIsStraightDown;
     _rotateWithEffect();
-  }
-
-  void _setRotation() {
-    angle = isSwitchedLeft
-        ? _degreesToRadians(rotationAngle)
-        : _degreesToRadians(-rotationAngle);
   }
 
   void _rotateWithEffect() {
     add(
       RotateEffect.to(
-        isSwitchedLeft
-            ? _degreesToRadians(rotationAngle)
-            : _degreesToRadians(-rotationAngle),
+        armIsStraightDown
+            ? _degreesToRadians(0)
+            : _degreesToRadians(rotationAngle),
         EffectController(duration: 0.15),
       ),
     );

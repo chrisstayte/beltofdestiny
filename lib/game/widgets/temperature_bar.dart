@@ -85,7 +85,7 @@ class TemperatureBar extends StatelessWidget {
                             lowestTemp,
                             highestTemp,
                           )),
-                  width: 6,
+                  width: 7,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(0),
                     color: Colors.black,

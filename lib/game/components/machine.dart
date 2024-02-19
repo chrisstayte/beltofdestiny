@@ -39,13 +39,13 @@ class Machine extends RectangleComponent
     super.onCollisionStart(intersectionPoints, other);
 
     if (other is Garbage && !isIncinerator) {
-      game.score.value += 100;
-
       // if the piece of garbage is not recyclable, size arm
       if (!other.canBeRecycled) {
         game.controlArm.seizeArm();
         return;
       }
+
+      game.score.value += 100;
 
       if (!game.controlArm.isSeized) {
         if (game.temperature.value > lowestTemp) game.temperature.value -= 0.15;

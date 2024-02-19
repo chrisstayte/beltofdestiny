@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:beltofdestiny/game/components/recyclable_belt.dart';
 import 'package:flutter/services.dart';
 
 import 'components/components.dart';
@@ -34,9 +35,16 @@ class BeltOfDestiny extends FlameGame
 
   ControlArm controlArm = ControlArm();
 
-  late TimerComponent _garbageTimer;
+  TimerComponent? _garbageTimer;
 
-  final Vector2 _garbageStartingPosition = Vector2(gameWidth / 2, gameHeight);
+  final Machine incinerator =
+      Machine(key: ComponentKey.named('Incinerator'), isIncinerator: true)
+        ..position = Vector2((gameWidth / 2) - machineWidth - 50, 25);
+
+  final Machine recycler =
+      Machine(key: ComponentKey.named('Recycler'), isIncinerator: false);
+
+  final MainBelt mainBelt = MainBelt();
 
   @override
   FutureOr<void> onLoad() async {
@@ -45,38 +53,58 @@ class BeltOfDestiny extends FlameGame
 
     camera.viewfinder.anchor = Anchor.topLeft;
 
+    // Play Area
     world.add(PlayArea());
+
+    // Incinerator
+    world.add(incinerator);
+
+    // Recycler
+    world.add(recycler..position = Vector2(width / 2 + 50, 25));
+
+    // Main Belt
+    world.add(
+      mainBelt..position = incinerator.center,
+    );
+
+    // Recyclable Belt
+    world.add(
+      RecyclableBelt()..position = recycler.center,
+    );
 
     // Control Arm
     world.add(controlArm);
 
-    // Incinerator
-    world.add(
-      Machine(key: ComponentKey.named('Incinerator'), isIncinerator: true)
-        ..position = Vector2((width / 2) - machineWidth - 50, 25),
-    );
+    startGarbageTimer(1.2);
 
-    // Recycler
-    world.add(Machine(key: ComponentKey.named('Recycler'), isIncinerator: false)
-      ..position = Vector2(width / 2 + 50, 25));
+    score.addListener(() {
+      double timerSeconds = (1.2 - ((score.value / 100) * .05))..clamp(.5, 1.2);
+
+      debugPrint('Updating Timer Seconds: ${timerSeconds}');
+
+      startGarbageTimer(timerSeconds);
+    });
+
+    debugMode = false;
+  }
+
+  void startGarbageTimer(double periodInSeconds) {
+    if (_garbageTimer != null) {
+      remove(_garbageTimer!);
+    }
 
     _garbageTimer = TimerComponent(
-      period: .9,
+      period: periodInSeconds,
       repeat: true,
       onTick: () {
         Random random = Random();
         int randomNumber = random.nextInt(100) + 1;
 
-        world.add(
-          Garbage(canBeRecycled: randomNumber.isEven)
-            ..position = _garbageStartingPosition,
-        );
+        world.add(Garbage(canBeRecycled: randomNumber.isEven));
       },
     );
 
-    add(_garbageTimer);
-
-    debugMode = false;
+    add(_garbageTimer!);
   }
 
   @override
@@ -87,9 +115,11 @@ class BeltOfDestiny extends FlameGame
 
   @override
   KeyEventResult onKeyEvent(
-      RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+      KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    debugPrint('on key event ${event.logicalKey.toString()}');
     super.onKeyEvent(event, keysPressed);
-    if (event.isKeyPressed(LogicalKeyboardKey.space)) {
+
+    if (event.logicalKey == LogicalKeyboardKey.space && event is KeyDownEvent) {
       controlArm.toggleDirection();
     }
     return KeyEventResult.handled;
