@@ -67,6 +67,14 @@ class BeltOfDestiny extends FlameGame
       mainBelt..position = incinerator.center,
     );
 
+    world.add(
+      NewGarbageGate()
+        ..position = Vector2(
+          mainBelt.position.x - beltWidth / 2,
+          mainBelt.height * .7,
+        ),
+    );
+
     // Recyclable Belt
     world.add(
       RecyclableBelt()..position = recycler.center,
@@ -75,36 +83,16 @@ class BeltOfDestiny extends FlameGame
     // Control Arm
     world.add(controlArm);
 
-    startGarbageTimer(1.2);
+    addNewGarbage();
 
-    score.addListener(() {
-      double timerSeconds = (1.2 - ((score.value / 100) * .05))..clamp(.5, 1.2);
-
-      debugPrint('Updating Timer Seconds: ${timerSeconds}');
-
-      startGarbageTimer(timerSeconds);
-    });
-
-    debugMode = false;
+    debugMode = true;
   }
 
-  void startGarbageTimer(double periodInSeconds) {
-    if (_garbageTimer != null) {
-      remove(_garbageTimer!);
-    }
+  void addNewGarbage() {
+    Random random = Random();
+    int randomNumber = random.nextInt(100) + 1;
 
-    _garbageTimer = TimerComponent(
-      period: periodInSeconds,
-      repeat: true,
-      onTick: () {
-        Random random = Random();
-        int randomNumber = random.nextInt(100) + 1;
-
-        world.add(Garbage(canBeRecycled: randomNumber.isEven));
-      },
-    );
-
-    add(_garbageTimer!);
+    world.add(Garbage(canBeRecycled: randomNumber.isEven));
   }
 
   @override

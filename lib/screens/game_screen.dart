@@ -7,6 +7,7 @@ import 'package:beltofdestiny/screens/widgets/pause_modal.dart';
 import 'package:beltofdestiny/screens/widgets/settings_modal.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
 import 'package:flame/game.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gap/gap.dart';
@@ -90,9 +91,16 @@ class _GameScreenState extends State<GameScreen> {
                       child: ValueListenableBuilder(
                         valueListenable: game.score,
                         builder: (context, score, child) {
-                          return Text(
-                            'SCORE: ${game.score.value}',
-                            style: const TextStyle(color: Colors.white),
+                          return GestureDetector(
+                            onTap: () {
+                              if (kDebugMode) {
+                                game.score.value += 100;
+                              }
+                            },
+                            child: Text(
+                              'SCORE: ${game.score.value}',
+                              style: const TextStyle(color: Colors.white),
+                            ),
                           );
                         },
                       ),

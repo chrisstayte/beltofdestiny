@@ -16,7 +16,10 @@ class Machine extends RectangleComponent
           paint: Paint()..color = Colors.blue,
           size: Vector2(machineWidth, machineHeight),
           children: [
-            RectangleHitbox(),
+            RectangleHitbox(
+              size: Vector2(machineWidth / 2, machineHeight / 2),
+              position: Vector2(machineWidth / 4, machineHeight / 4),
+            ),
           ],
         );
 
@@ -26,11 +29,7 @@ class Machine extends RectangleComponent
   FutureOr<void> onLoad() async {
     super.onLoad();
 
-    if (isIncinerator) {
-      paint.color = Colors.red;
-    } else {
-      paint.color = Colors.orange;
-    }
+    paint.color = isIncinerator ? Colors.red : Colors.orange;
   }
 
   @override

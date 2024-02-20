@@ -82,7 +82,7 @@ class Garbage extends RectangleComponent
       }
       shouldHeadTowardsRecycler = true;
     } else if (other is Machine) {
-      add(RemoveEffect(delay: 0.2));
+      removeFromParent();
     } else {
       debugPrint('hit something else');
     }
