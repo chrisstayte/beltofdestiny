@@ -12,7 +12,9 @@ class ControlArm extends RectangleComponent
     with HasGameReference<BeltOfDestiny> {
   bool armIsStraightDown = true;
   bool isSeized = false;
+  bool isMoving = false;
   Timer? countdown;
+  RotateEffect? _currentRotateEffect;
 
   ControlArm()
       : super(
@@ -82,7 +84,6 @@ class ControlArm extends RectangleComponent
     );
   }
 
-  ///
   void toggleDirection() {
     if (isSeized) return;
     armIsStraightDown = !armIsStraightDown;
@@ -90,13 +91,20 @@ class ControlArm extends RectangleComponent
   }
 
   void _rotateWithEffect() {
-    add(
-      RotateEffect.to(
+    isMoving = true;
+    if (_currentRotateEffect != null) {
+      remove(_currentRotateEffect!);
+      _currentRotateEffect = null;
+    }
+
+    _currentRotateEffect = RotateEffect.to(
         armIsStraightDown
             ? _degreesToRadians(0)
             : _degreesToRadians(rotationAngle),
-        EffectController(duration: 0.15),
-      ),
-    );
+        EffectController(duration: 0.15), onComplete: () {
+      _currentRotateEffect = null;
+      isMoving = false;
+    });
+    add(_currentRotateEffect!);
   }
 }

@@ -14,6 +14,10 @@ const double seizeArmDuration = 3;
 
 // Garbage
 const double baseSpeedPixelPerSecond = 320;
+const double speedIncreasePer100Points = 10;
+const double maxSpeedMultiplier = 2;
+const double garbageWidth = beltWidth * .5;
+const double garbageHeight = beltWidth * .5;
 
 // Temperature
 const double lowestTemp = 54.7;

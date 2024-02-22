@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:beltofdestiny/game/components/recyclable_belt.dart';
+import 'package:beltofdestiny/game/components/recyclable_garbage_gate.dart';
 import 'package:flutter/services.dart';
 
 import 'components/components.dart';
@@ -53,7 +53,7 @@ class BeltOfDestiny extends FlameGame
 
     camera.viewfinder.anchor = Anchor.topLeft;
 
-    // Play Area
+    // Play area
     world.add(PlayArea());
 
     // Incinerator
@@ -62,11 +62,12 @@ class BeltOfDestiny extends FlameGame
     // Recycler
     world.add(recycler..position = Vector2(width / 2 + 50, 25));
 
-    // Main Belt
+    // Main belt
     world.add(
       mainBelt..position = incinerator.center,
     );
 
+    // Invisible gate that spawns new garbage
     world.add(
       NewGarbageGate()
         ..position = Vector2(
@@ -75,15 +76,21 @@ class BeltOfDestiny extends FlameGame
         ),
     );
 
-    // Recyclable Belt
+    // Recyclable garbage gate
     world.add(
-      RecyclableBelt()..position = recycler.center,
+      RecyclableGarbageGate()
+        ..position = recycler.center + Vector2(garbageWidth / 2, 0),
     );
 
-    // Control Arm
+    // Control arm
     world.add(controlArm);
 
+    // Add the first garbage to the game
     addNewGarbage();
+
+    score.addListener(() {
+      mainBelt.updateAnimationSpeed();
+    });
 
     debugMode = true;
   }

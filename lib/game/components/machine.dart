@@ -17,8 +17,8 @@ class Machine extends RectangleComponent
           size: Vector2(machineWidth, machineHeight),
           children: [
             RectangleHitbox(
-              size: Vector2(machineWidth / 2, machineHeight / 2),
-              position: Vector2(machineWidth / 4, machineHeight / 4),
+              size: Vector2(machineWidth, 2),
+              position: Vector2(0, machineHeight * .05),
             ),
           ],
         );

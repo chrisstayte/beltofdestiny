@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:beltofdestiny/extensions.dart';
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/components/components.dart';
-import 'package:beltofdestiny/game/components/recyclable_belt.dart';
+import 'package:beltofdestiny/game/components/recyclable_garbage_gate.dart';
 import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -15,32 +16,40 @@ class Garbage extends RectangleComponent
     with HasGameReference<BeltOfDestiny>, CollisionCallbacks {
   Garbage({this.canBeRecycled = false})
       : super(
-          size: Vector2(50, 50),
+          size: Vector2(beltWidth * .5, beltWidth * .5),
           paint: canBeRecycled
               ? BasicPalette.green.paint()
               : BasicPalette.brown.paint(),
           anchor: Anchor.center,
-          children: [
-            RectangleHitbox(),
-          ],
         );
 
   bool canBeRecycled;
   bool hitControlArm = false;
   bool shouldHeadTowardsRecycler = false;
 
+  // final CircleHitbox _centerHitbox = CircleHitbox(
+  //   radius: 1,
+  //   isSolid: true,
+  //   anchor: Anchor.center,
+  //   position: Vector2(garbageWidth / 2, garbageHeight / 2),
+  // );
+
+  final RectangleHitbox _edgeHitbox = RectangleHitbox();
+
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
 
     position = Vector2(game.mainBelt.position.x, game.mainBelt.size.y);
+
+    add(_edgeHitbox);
   }
 
   @override
   void update(double dt) {
     super.update(dt);
 
-    double speed = baseSpeedPixelPerSecond + ((game.score.value / 100) * 10);
+    final speed = game.score.value.getSpeedIncreasePer100Points();
 
     if (shouldHeadTowardsRecycler) {
       position += Vector2(0, -speed * dt);
@@ -65,7 +74,9 @@ class Garbage extends RectangleComponent
     super.onCollisionStart(intersectionPoints, other);
 
     if (other is ControlArm) {
-      if (hitControlArm || game.controlArm.isSeized) {
+      if (hitControlArm ||
+          game.controlArm.isSeized ||
+          game.controlArm.isMoving) {
         return;
       }
 
@@ -76,7 +87,7 @@ class Garbage extends RectangleComponent
       } else {
         final machine = game.findByKeyName<RectangleComponent>('Recycler');
       }
-    } else if (other is RecyclableBelt) {
+    } else if (other is RecyclableGarbageGate) {
       if (shouldHeadTowardsRecycler) {
         return;
       }

@@ -112,6 +112,7 @@ class _GameScreenState extends State<GameScreen> {
                         game.paused = true;
                         await showDialog(
                           context: context,
+                          barrierDismissible: false,
                           builder: (context) => PauseModal(
                             onCloseButtonPressed: () => game.paused = false,
                           ),
