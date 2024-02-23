@@ -13,9 +13,9 @@ const double rotationAngle = 60;
 const double seizeArmDuration = 3;
 
 // Garbage
-const double baseSpeedPixelPerSecond = 320;
+const double baseSpeed = 320;
 const double speedIncreasePer100Points = 10;
-const double maxSpeedMultiplier = 2;
+const double maxSpeedIncreaseMultiplier = 2;
 const double garbageWidth = beltWidth * .5;
 const double garbageHeight = beltWidth * .5;
 

@@ -49,7 +49,11 @@ class Garbage extends RectangleComponent
   void update(double dt) {
     super.update(dt);
 
-    final speed = game.score.value.getSpeedIncreasePer100Points();
+    final speed = game.score.value.getSpeedIncreasePer100Points(
+      speedIncreasePer100Points,
+      baseSpeed,
+      maxSpeedIncreaseMultiplier,
+    );
 
     if (shouldHeadTowardsRecycler) {
       position += Vector2(0, -speed * dt);
@@ -64,7 +68,7 @@ class Garbage extends RectangleComponent
 
   double calculateDurationFromDistance(Vector2 to) {
     final distance = position.distanceTo(to);
-    final duration = distance / baseSpeedPixelPerSecond;
+    final duration = distance / baseSpeed;
     return duration;
   }
 
