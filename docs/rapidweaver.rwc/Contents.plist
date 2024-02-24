@@ -13,6 +13,92 @@
 				<string>8.1</string>
 				<key>PublishingManifests</key>
 				<dict>
+					<key>page0 - file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
+					<dict>
+						<key>CreationDate</key>
+						<date>2024-02-24T23:06:15Z</date>
+						<key>DigestAlgorithm</key>
+						<string>MD5</string>
+						<key>PageDigests</key>
+						<dict>
+							<key>files/bs-fonts/bootstrap-icons.woff</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								UhlihN4fy1sE
+								TwAadUgtug==
+								</data>
+								<key>Size</key>
+								<integer>164352</integer>
+							</dict>
+							<key>files/bs-fonts/bootstrap-icons.woff2</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								f0d2M93RL4Qo
+								RlTyouibig==
+								</data>
+								<key>Size</key>
+								<integer>121296</integer>
+							</dict>
+							<key>files/foundry-cc-edit-mode-icon.png</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								NsaK1kaVjAFZ
+								R6qmyy6QKg==
+								</data>
+								<key>Size</key>
+								<integer>74241</integer>
+							</dict>
+							<key>files/stacks.css</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								wANifJ2yGeIS
+								vLjVRAp1mw==
+								</data>
+								<key>Size</key>
+								<integer>1296</integer>
+							</dict>
+							<key>files/stacks_page_page0.css</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								3J0c/7xtawGu
+								JTnD+BNw4g==
+								</data>
+								<key>Size</key>
+								<integer>112200</integer>
+							</dict>
+							<key>files/stacks_page_page0.js</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								egHlEp2+X1RE
+								Sync0d9snA==
+								</data>
+								<key>Size</key>
+								<integer>962</integer>
+							</dict>
+							<key>index.html</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								H0QybVh84l6U
+								IMxnATtGGg==
+								</data>
+								<key>Size</key>
+								<integer>4778</integer>
+							</dict>
+						</dict>
+						<key>PageID</key>
+						<string>page0</string>
+						<key>SiteRoot</key>
+						<string></string>
+						<key>Version</key>
+						<integer>3</integer>
+					</dict>
 					<key>page0 - file:///Users/chrisstayte/SourceControl/beltofdestiny/front_page/</key>
 					<dict>
 						<key>CreationDate</key>
@@ -99,6 +185,42 @@
 						<key>Version</key>
 						<integer>3</integer>
 					</dict>
+					<key>rw:document:extrafiles - file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
+					<dict>
+						<key>CreationDate</key>
+						<date>2024-02-24T23:05:47Z</date>
+						<key>DigestAlgorithm</key>
+						<string>MD5</string>
+						<key>PageDigests</key>
+						<dict>
+							<key>rw_common/version.txt</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								ASmiIv4QyYlt
+								sZHFN2lGmQ==
+								</data>
+								<key>Size</key>
+								<integer>5</integer>
+							</dict>
+							<key>sitemap.xml</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								Qu1n0cd+e3le
+								g8/pCoQhzQ==
+								</data>
+								<key>Size</key>
+								<integer>207</integer>
+							</dict>
+						</dict>
+						<key>PageID</key>
+						<string>rw:document:extrafiles</string>
+						<key>SiteRoot</key>
+						<string></string>
+						<key>Version</key>
+						<integer>3</integer>
+					</dict>
 					<key>rw:document:extrafiles - file:///Users/chrisstayte/SourceControl/beltofdestiny/front_page/</key>
 					<dict>
 						<key>CreationDate</key>
@@ -132,6 +254,52 @@
 						<string>rw:document:extrafiles</string>
 						<key>SiteRoot</key>
 						<string></string>
+						<key>Version</key>
+						<integer>3</integer>
+					</dict>
+					<key>rw:document:resources - file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
+					<dict>
+						<key>CreationDate</key>
+						<date>2024-02-24T23:05:47Z</date>
+						<key>DigestAlgorithm</key>
+						<string>MD5</string>
+						<key>PageDigests</key>
+						<dict>
+							<key>arcade_ya/ARCADE_I.woff2</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								DF3wwuVoYxT+
+								FdoyPYUREg==
+								</data>
+								<key>Size</key>
+								<integer>4296</integer>
+							</dict>
+							<key>arcade_ya/ARCADE_N.woff2</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								56W5AnFWdvQU
+								MeCy7Q89Vg==
+								</data>
+								<key>Size</key>
+								<integer>5632</integer>
+							</dict>
+							<key>arcade_ya/ARCADE_R.woff2</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								2zHz1UpErEhw
+								F1KXpycBKw==
+								</data>
+								<key>Size</key>
+								<integer>6928</integer>
+							</dict>
+						</dict>
+						<key>PageID</key>
+						<string>rw:document:resources</string>
+						<key>SiteRoot</key>
+						<string>resources</string>
 						<key>Version</key>
 						<integer>3</integer>
 					</dict>
@@ -191,6 +359,52 @@
 						<key>Version</key>
 						<integer>3</integer>
 					</dict>
+					<key>rw:plugin:stacks - file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
+					<dict>
+						<key>CreationDate</key>
+						<date>2024-02-24T23:05:47Z</date>
+						<key>DigestAlgorithm</key>
+						<string>MD5</string>
+						<key>PageDigests</key>
+						<dict>
+							<key>bootstrap.bundle.min.js</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								pEesjW6y12Fn
+								1m+3KUlGgg==
+								</data>
+								<key>Size</key>
+								<integer>80619</integer>
+							</dict>
+							<key>bootstrap.min.css</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								Oa0McuS7uMqI
+								g6sWfgXQYw==
+								</data>
+								<key>Size</key>
+								<integer>232809</integer>
+							</dict>
+							<key>stacks.css</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								wANifJ2yGeIS
+								vLjVRAp1mw==
+								</data>
+								<key>Size</key>
+								<integer>1296</integer>
+							</dict>
+						</dict>
+						<key>PageID</key>
+						<string>rw:plugin:stacks</string>
+						<key>SiteRoot</key>
+						<string>rw_common/plugins/stacks</string>
+						<key>Version</key>
+						<integer>3</integer>
+					</dict>
 					<key>rw:plugin:stacks - file:///Users/chrisstayte/SourceControl/beltofdestiny/front_page/</key>
 					<dict>
 						<key>CreationDate</key>
@@ -247,6 +461,42 @@
 						<key>Version</key>
 						<integer>3</integer>
 					</dict>
+					<key>rw:theme:FDY - file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
+					<dict>
+						<key>CreationDate</key>
+						<date>2024-02-24T23:05:47Z</date>
+						<key>DigestAlgorithm</key>
+						<string>MD5</string>
+						<key>PageDigests</key>
+						<dict>
+							<key>consolidated.css</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								NCfPoZc5oRNm
+								Fz1fvgsJgw==
+								</data>
+								<key>Size</key>
+								<integer>89</integer>
+							</dict>
+							<key>javascript.js</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								eBox/AF5fYfC
+								oBWTADqceQ==
+								</data>
+								<key>Size</key>
+								<integer>296</integer>
+							</dict>
+						</dict>
+						<key>PageID</key>
+						<string>rw:theme:FDY</string>
+						<key>SiteRoot</key>
+						<string>rw_common/themes/FDY</string>
+						<key>Version</key>
+						<integer>3</integer>
+					</dict>
 					<key>rw:theme:FDY - file:///Users/chrisstayte/SourceControl/beltofdestiny/front_page/</key>
 					<dict>
 						<key>CreationDate</key>
@@ -286,47 +536,36 @@
 				</dict>
 				<key>RWFileReferences</key>
 				<dict>
-					<key>5F474926-C04D-439C-9F29-567F72640D75</key>
+					<key>67F03B3E-9AD0-4D53-9B1F-26A938F672C3</key>
 					<dict>
 						<key>fileName</key>
-						<string>Readme.TXT</string>
+						<string>ARCADE_R.woff2</string>
 						<key>identifier</key>
-						<string>5F474926-C04D-439C-9F29-567F72640D75</string>
+						<string>67F03B3E-9AD0-4D53-9B1F-26A938F672C3</string>
 						<key>lastResolvablePath</key>
-						<string>/Users/chrisstayte/Library/Containers/com.realmacsoftware.rapidweaver8/Data/tmp/com.realmacsoftware.rapidweaver8-99201/SVwWRU/Readme.TXT</string>
+						<string>/Users/chrisstayte/Library/Containers/com.realmacsoftware.rapidweaver8/Data/tmp/com.realmacsoftware.rapidweaver8-99201/NF8Dlh/ARCADE_R.woff2</string>
 						<key>storedInsideDocument</key>
 						<true/>
 					</dict>
-					<key>97C274C7-AF1F-4502-94E7-91906DBF4E43</key>
+					<key>77A58984-9E78-4DCB-8E07-5196BE982523</key>
 					<dict>
 						<key>fileName</key>
-						<string>ARCADE_R.TTF</string>
+						<string>ARCADE_N.woff2</string>
 						<key>identifier</key>
-						<string>97C274C7-AF1F-4502-94E7-91906DBF4E43</string>
+						<string>77A58984-9E78-4DCB-8E07-5196BE982523</string>
 						<key>lastResolvablePath</key>
-						<string>/Users/chrisstayte/Library/Containers/com.realmacsoftware.rapidweaver8/Data/tmp/com.realmacsoftware.rapidweaver8-99201/LA4sxT/ARCADE_R.TTF</string>
+						<string>/Users/chrisstayte/Library/Containers/com.realmacsoftware.rapidweaver8/Data/tmp/com.realmacsoftware.rapidweaver8-99201/72IQpF/ARCADE_N.woff2</string>
 						<key>storedInsideDocument</key>
 						<true/>
 					</dict>
-					<key>E190D90F-8F16-4BAA-B530-EC046A7176BC</key>
+					<key>79052736-511E-4131-8843-7337F3C8F66C</key>
 					<dict>
 						<key>fileName</key>
-						<string>ARCADE_I.TTF</string>
+						<string>ARCADE_I.woff2</string>
 						<key>identifier</key>
-						<string>E190D90F-8F16-4BAA-B530-EC046A7176BC</string>
+						<string>79052736-511E-4131-8843-7337F3C8F66C</string>
 						<key>lastResolvablePath</key>
-						<string>/Users/chrisstayte/Library/Containers/com.realmacsoftware.rapidweaver8/Data/tmp/com.realmacsoftware.rapidweaver8-99201/aPIxrk/ARCADE_I.TTF</string>
-						<key>storedInsideDocument</key>
-						<true/>
-					</dict>
-					<key>EB420BBF-B93A-4843-840C-F89D22190B8B</key>
-					<dict>
-						<key>fileName</key>
-						<string>ARCADE_N.TTF</string>
-						<key>identifier</key>
-						<string>EB420BBF-B93A-4843-840C-F89D22190B8B</string>
-						<key>lastResolvablePath</key>
-						<string>/Users/chrisstayte/Library/Containers/com.realmacsoftware.rapidweaver8/Data/tmp/com.realmacsoftware.rapidweaver8-99201/ZGBrKI/ARCADE_N.TTF</string>
+						<string>/Users/chrisstayte/Library/Containers/com.realmacsoftware.rapidweaver8/Data/tmp/com.realmacsoftware.rapidweaver8-99201/nDjfLP/ARCADE_I.woff2</string>
 						<key>storedInsideDocument</key>
 						<true/>
 					</dict>
@@ -335,86 +574,62 @@
 				<data>
 				YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hp
 				dmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRB
-				cmNoaXZlctEICVRyb290gAGvEDQLDBUWICEiJiwtLjE4
-				P1JTVFVZXGJIZGhpbXh5ent+hIWGkZKTlJednp+qq6yt
-				sLa3uLy/VSRudWxs0w0ODxASFFdOUy5rZXlzWk5TLm9i
-				amVjdHNWJGNsYXNzoRGAAqETgAOAM1Rub2Rl1RcYGRoP
-				GxwdHh9UTmFtZVVpdGVtc1ppZGVudGlmaWVyWGNoaWxk
-				cmVugAWAMoAEgAaAMV8QJEM4RTkyQjUzLUUzMDctNDky
-				OC1BOEYxLTBBMTc5N0UzNjU3RV8QD1VudGl0bGVkIEZv
-				bGRlctIODyMloSSAB4AL1RcYGRoPJygpKh+ACYAMgAiA
-				CoAxXxAkQkE4NjI3MUYtMDVFMy00RTZELTk0NUMtREU5
-				QUI1NzMxODE2WWFyY2FkZV95YdIODy8loIAL0jIzNDVa
-				JGNsYXNzbmFtZVgkY2xhc3Nlc15OU011dGFibGVBcnJh
-				eaM0NjdXTlNBcnJheVhOU09iamVjdNIODzklpDo7PD2A
-				DYAZgCGAKYAL2kBBD0JDRBdFRkdISUpLS01OT1BRXlJl
-				bW90ZVJlc291cmNlW09yaWdpbmFsVVJMXFB1Ymxpc2hl
-				ZFVSTF1QdWJsaXNoZWREYXRlXxAPQ2hhbmdlZFN0YXR1
-				c2VzWklkZW50aWZpZXJZVGltZVN0YW1wWUZpbGVUb2tl
-				bgiAF4AYgACAAIATgA+ADoARgBBfECQzMTg5MDgxRC1E
-				NUFBLTQwRDAtQUYyMy1FMDI2MDEzNzIyMjNcQVJDQURF
-				X04uVFRGXxAkRUI0MjBCQkYtQjkzQS00ODQzLTg0MEMt
-				Rjg5RDIyMTkwQjhC0lYPV1hXTlMudGltZSNBxcVLcbgf
-				84AS0jIzWltWTlNEYXRlolo30w0OD11fYaFegBShYIAV
-				gBZfEEFmaWxlOi8vL1VzZXJzL2Nocmlzc3RheXRlL1Nv
-				dXJjZUNvbnRyb2wvYmVsdG9mZGVzdGlueS9mcm9udF9w
-				YWdlLwjSMjNlZl8QE05TTXV0YWJsZURpY3Rpb25hcnmj
-				ZWc3XE5TRGljdGlvbmFyeV8QlC9Vc2Vycy9jaHJpc3N0
-				YXl0ZS9MaWJyYXJ5L0NvbnRhaW5lcnMvY29tLnJlYWxt
-				YWNzb2Z0d2FyZS5yYXBpZHdlYXZlcjgvRGF0YS90bXAv
-				Y29tLnJlYWxtYWNzb2Z0d2FyZS5yYXBpZHdlYXZlcjgt
-				OTkyMDEvQmg2OVl4L2FyY2FkZV95YS9BUkNBREVfTi5U
-				VEbSMjNqa15SV1NpdGVSZXNvdXJjZaJsN15SV1NpdGVS
-				ZXNvdXJjZdpAQQ9CQ0QXRUZHSG9KS0tzdHV2dwiAIIAY
-				gACAAIAegBuAGoAdgBxfECREMEMzMkYwQi03Qjg5LTQ4
-				RDItOTc4Qi0yNEM1MkIyREZGMzhcQVJDQURFX0kuVFRG
-				XxAkRTE5MEQ5MEYtOEYxNi00QkFBLUI1MzAtRUMwNDZB
-				NzE3NkJD0lYPfFgjQcXFS3G4IB2AEtMNDg9/gWGhgIAf
-				oWCAFYAWXxBBZmlsZTovLy9Vc2Vycy9jaHJpc3N0YXl0
-				ZS9Tb3VyY2VDb250cm9sL2JlbHRvZmRlc3RpbnkvZnJv
-				bnRfcGFnZS9fEJQvVXNlcnMvY2hyaXNzdGF5dGUvTGli
-				cmFyeS9Db250YWluZXJzL2NvbS5yZWFsbWFjc29mdHdh
-				cmUucmFwaWR3ZWF2ZXI4L0RhdGEvdG1wL2NvbS5yZWFs
-				bWFjc29mdHdhcmUucmFwaWR3ZWF2ZXI4LTk5MjAxL0Jo
-				NjlZeC9hcmNhZGVfeWEvQVJDQURFX0kuVFRG2kBBD0JD
-				RBdFRkdIiEpLS4yNjo+QCIAogBiAAIAAgCaAI4AigCWA
-				JF8QJDFENjcxNTkwLTdERkYtNDZERC05RTI4LUQ5MUE1
-				OUI3QUU1M1xBUkNBREVfUi5UVEZfECQ5N0MyNzRDNy1B
-				RjFGLTQ1MDItOTRFNy05MTkwNkRCRjRFNDPSVg+VWCNB
-				xcVLcbggNoAS0w0OD5iaYaGZgCehYIAVgBZfEEFmaWxl
+				cmNoaXZlctEICVRyb290gAGvECwLDBUWICEiJiwtLjE4
+				PlFSU1RYW2FHY2dobHd4eXp9g4SFkJGSk5acnZ6ipVUk
+				bnVsbNMNDg8QEhRXTlMua2V5c1pOUy5vYmplY3RzViRj
+				bGFzc6ERgAKhE4ADgCtUbm9kZdUXGBkaDxscHR4fVE5h
+				bWVVaXRlbXNaaWRlbnRpZmllclhjaGlsZHJlboAFgCqA
+				BIAGgClfECRDOEU5MkI1My1FMzA3LTQ5MjgtQThGMS0w
+				QTE3OTdFMzY1N0VfEA9VbnRpdGxlZCBGb2xkZXLSDg8j
+				JaEkgAeAC9UXGBkaDycoKSofgAmADIAIgAqAKV8QJEJB
+				ODYyNzFGLTA1RTMtNEU2RC05NDVDLURFOUFCNTczMTgx
+				NllhcmNhZGVfeWHSDg8vJaCAC9IyMzQ1WiRjbGFzc25h
+				bWVYJGNsYXNzZXNeTlNNdXRhYmxlQXJyYXmjNDY3V05T
+				QXJyYXlYTlNPYmplY3TSDg85JaM6OzyADYAZgCGAC9o/
+				QA9BQkMXREVGR0hJSkpMTU5PUF5SZW1vdGVSZXNvdXJj
+				ZVtPcmlnaW5hbFVSTFxQdWJsaXNoZWRVUkxdUHVibGlz
+				aGVkRGF0ZV8QD0NoYW5nZWRTdGF0dXNlc1pJZGVudGlm
+				aWVyWVRpbWVTdGFtcFlGaWxlVG9rZW4IgBeAGIAAgACA
+				E4APgA6AEYAQXxAkNkJCOEZGMDktOTFDNi00QkJELThD
+				MDAtQTYzOUJDMzAxRjk0XkFSQ0FERV9JLndvZmYyXxAk
+				NzkwNTI3MzYtNTExRS00MTMxLTg4NDMtNzMzN0YzQzhG
+				NjZD0lUPVldXTlMudGltZSNBxcVW89JHb4AS0jIzWVpW
+				TlNEYXRlolk30w0OD1xeYKFdgBShX4AVgBZfEDtmaWxl
 				Oi8vL1VzZXJzL2Nocmlzc3RheXRlL1NvdXJjZUNvbnRy
-				b2wvYmVsdG9mZGVzdGlueS9mcm9udF9wYWdlL18QlC9V
-				c2Vycy9jaHJpc3N0YXl0ZS9MaWJyYXJ5L0NvbnRhaW5l
-				cnMvY29tLnJlYWxtYWNzb2Z0d2FyZS5yYXBpZHdlYXZl
-				cjgvRGF0YS90bXAvY29tLnJlYWxtYWNzb2Z0d2FyZS5y
-				YXBpZHdlYXZlcjgtOTkyMDEvQmg2OVl4L2FyY2FkZV95
-				YS9BUkNBREVfUi5UVEbaQEEPQkNEF0VGR0ihSktLpaan
-				qKkIgDCAGIAAgACALoArgCqALYAsXxAkRTE2OTEyODEt
-				NjA2Qi00RTZDLUI4MkQtQURERjBCNDhGODAyWlJlYWRt
-				ZS5UWFRfECQ1RjQ3NDkyNi1DMDRELTQzOUMtOUYyOS01
-				NjdGNzI2NDBENzXSVg+uWCNBxcVLcbggR4AS0w0OD7Gz
-				YaGygC+hYIAVgBZfEEFmaWxlOi8vL1VzZXJzL2Nocmlz
-				c3RheXRlL1NvdXJjZUNvbnRyb2wvYmVsdG9mZGVzdGlu
-				eS9mcm9udF9wYWdlL18Qki9Vc2Vycy9jaHJpc3N0YXl0
-				ZS9MaWJyYXJ5L0NvbnRhaW5lcnMvY29tLnJlYWxtYWNz
-				b2Z0d2FyZS5yYXBpZHdlYXZlcjgvRGF0YS90bXAvY29t
-				LnJlYWxtYWNzb2Z0d2FyZS5yYXBpZHdlYXZlcjgtOTky
-				MDEvQmg2OVl4L2FyY2FkZV95YS9SZWFkbWUuVFhU0jIz
-				ubpcUldTaXRlRm9sZGVyors3XFJXU2l0ZUZvbGRlctIO
-				D70loIAL0jIzZ8CiZzcACAARABoAJAApADIANwBJAEwA
-				UQBTAIoAkACXAJ8AqgCxALMAtQC3ALkAuwDAAMsA0ADW
-				AOEA6gDsAO4A8ADyAPQBGwEtATIBNAE2ATgBQwFFAUcB
-				SQFLAU0BdAF+AYMBhAGGAYsBlgGfAa4BsgG6AcMByAHN
-				Ac8B0QHTAdUB1wHsAfsCBwIUAiICNAI/AkkCUwJUAlYC
-				WAJaAlwCXgJgAmICZAJmAo0CmgLBAsYCzgLXAtkC3gLl
-				AugC7wLxAvMC9QL3AvkDPQM+A0MDWQNdA2oEAQQGBBUE
-				GAQnBDwEPQQ/BEEEQwRFBEcESQRLBE0ETwR2BIMEqgSv
-				BLgEugTBBMMExQTHBMkEywUPBaYFuwW8Bb4FwAXCBcQF
-				xgXIBcoFzAXOBfUGAgYpBi4GNwY5BkAGQgZEBkYGSAZK
-				Bo4HJQc6BzsHPQc/B0EHQwdFB0cHSQdLB00HdAd/B6YH
-				qwe0B7YHvQe/B8EHwwfFB8cICwigCKUIsgi1CMIIxwjI
-				CMoIzwAAAAAAAAIBAAAAAAAAAMEAAAAAAAAAAAAAAAAA
-				AAjS
+				b2wvYmVsdG9mZGVzdGlueS9kb2NzLwjSMjNkZV8QE05T
+				TXV0YWJsZURpY3Rpb25hcnmjZGY3XE5TRGljdGlvbmFy
+				eV8QKy9Vc2Vycy9jaHJpc3N0YXl0ZS9Eb3dubG9hZHMv
+				QVJDQURFX0kud29mZjLSMjNpal5SV1NpdGVSZXNvdXJj
+				ZaJrN15SV1NpdGVSZXNvdXJjZdo/QA9BQkMXREVGR25J
+				Skpyc3R1dgiAIIAYgACAAIAegBuAGoAdgBxfECQ2NTgx
+				RTE0Ri1BMTZBLTRGOEItQkUyRi04QzdCNjBCRjI5NUZe
+				QVJDQURFX04ud29mZjJfECQ3N0E1ODk4NC05RTc4LTRE
+				Q0ItOEUwNy01MTk2QkU5ODI1MjPSVQ97VyNBxcVW89JH
+				mYAS0w0OD36AYKF/gB+hX4AVgBZfEDtmaWxlOi8vL1Vz
+				ZXJzL2Nocmlzc3RheXRlL1NvdXJjZUNvbnRyb2wvYmVs
+				dG9mZGVzdGlueS9kb2NzL18QKy9Vc2Vycy9jaHJpc3N0
+				YXl0ZS9Eb3dubG9hZHMvQVJDQURFX04ud29mZjLaP0AP
+				QUJDF0RFRkeHSUpKi4yNjo8IgCiAGIAAgACAJoAjgCKA
+				JYAkXxAkQkY5NDY4ODctQTFCRS00MTIxLUIwQTgtOTVD
+				ODQxRjVDMDUxXkFSQ0FERV9SLndvZmYyXxAkNjdGMDNC
+				M0UtOUFEMC00RDUzLTlCMUYtMjZBOTM4RjY3MkMz0lUP
+				lFcjQcXFVvPSR7KAEtMNDg+XmWChmIAnoV+AFYAWXxA7
+				ZmlsZTovLy9Vc2Vycy9jaHJpc3N0YXl0ZS9Tb3VyY2VD
+				b250cm9sL2JlbHRvZmRlc3RpbnkvZG9jcy9fECsvVXNl
+				cnMvY2hyaXNzdGF5dGUvRG93bmxvYWRzL0FSQ0FERV9S
+				LndvZmYy0jIzn6BcUldTaXRlRm9sZGVyoqE3XFJXU2l0
+				ZUZvbGRlctIOD6MloIAL0jIzZqaiZjcACAARABoAJAAp
+				ADIANwBJAEwAUQBTAIIAiACPAJcAogCpAKsArQCvALEA
+				swC4AMMAyADOANkA4gDkAOYA6ADqAOwBEwElASoBLAEu
+				ATABOwE9AT8BQQFDAUUBbAF2AXsBfAF+AYMBjgGXAaYB
+				qgGyAbsBwAHEAcYByAHKAcwB4QHwAfwCCQIXAikCNAI+
+				AkgCSQJLAk0CTwJRAlMCVQJXAlkCWwKCApECuAK9AsUC
+				zgLQAtUC3ALfAuYC6ALqAuwC7gLwAy4DLwM0A0oDTgNb
+				A4kDjgOdA6ADrwPEA8UDxwPJA8sDzQPPA9ED0wPVA9cD
+				/gQNBDQEOQRCBEQESwRNBE8EUQRTBFUEkwTBBNYE1wTZ
+				BNsE3QTfBOEE4wTlBOcE6QUQBR8FRgVLBVQFVgVdBV8F
+				YQVjBWUFZwWlBdMF2AXlBegF9QX6BfsF/QYCAAAAAAAA
+				AgEAAAAAAAAApwAAAAAAAAAAAAAAAAAABgU=
 				</data>
 				<key>SiteAttributes</key>
 				<dict>
@@ -471,57 +686,56 @@
 							<false/>
 							<key>fileSystemPathBookmark</key>
 							<data>
-							Ym9va/QCAAAAAAQQMAAA
-							AGvbDo5gpEybfy8+Bwyy
-							LFk/YELzU6dWYvxxJtYw
-							Jbkj8AEAAAQAAAADAwAA
+							Ym9va+wCAAAAAAQQMAAA
+							AOvfAjc/6pIvNiBSDU6s
+							EA+Zlhqsjp5BLzOW8AgV
+							mYRm6AEAAAQAAAADAwAA
 							AAgAKAUAAAABAQAAVXNl
 							cnMAAAALAAAAAQEAAGNo
 							cmlzc3RheXRlAA0AAAAB
 							AQAAU291cmNlQ29udHJv
 							bAAAAA0AAAABAQAAYmVs
-							dG9mZGVzdGlueQAAAAoA
-							AAABAQAAZnJvbnRfcGFn
-							ZQAAFAAAAAEGAAAQAAAA
-							IAAAADQAAABMAAAAZAAA
-							AAgAAAAEAwAAuVwAAAAA
-							AAAIAAAABAMAAIKzAwAA
-							AAAACAAAAAQDAADsWBQA
-							AAAAAAgAAAAEAwAA+pdQ
-							BwAAAAAIAAAABAMAAOrB
-							oQcAAAAAFAAAAAEGAACU
-							AAAApAAAALQAAADEAAAA
-							1AAAAAgAAAAABAAAQcXF
-							SztddVAYAAAAAQIAAAIA
-							AAAAAAAADwAAAAAAAAAA
-							AAAAAAAAAAgAAAAEAwAA
-							AwAAAAAAAAAEAAAAAwMA
-							APUBAAAIAAAAAQkAAGZp
-							bGU6Ly8vDAAAAAEBAABN
-							YWNpbnRvc2ggSEQIAAAA
-							BAMAAAAgRYzQAQAACAAA
-							AAAEAABBxZZOyIAAACQA
-							AAABAQAAMDY0OTMxOEIt
-							MzM4QS00NjkwLTg5RDgt
-							MTgwNUQzREYwQkU2GAAA
-							AAECAACBAAAAAQAAAO8T
-							AAABAAAAAAAAAAAAAAAB
-							AAAAAQEAAC8AAAAAAAAA
-							AQUAAMwAAAD+////AQAA
-							AAAAAAAQAAAABBAAAHgA
-							AAAAAAAABRAAAOQAAAAA
-							AAAAEBAAABABAAAAAAAA
-							QBAAAAABAAAAAAAAAiAA
-							ANwBAAAAAAAABSAAAEwB
-							AAAAAAAAECAAAFwBAAAA
-							AAAAESAAAJABAAAAAAAA
-							EiAAAHABAAAAAAAAEyAA
-							AIABAAAAAAAAICAAALwB
-							AAAAAAAAMCAAAOgBAAAA
-							AAAAAcAAADABAAAAAAAA
-							EcAAACAAAAAAAAAAEsAA
-							AEABAAAAAAAAENAAAAQA
-							AAAAAAAA
+							dG9mZGVzdGlueQAAAAQA
+							AAABAQAAZG9jcxQAAAAB
+							BgAAEAAAACAAAAA0AAAA
+							TAAAAGQAAAAIAAAABAMA
+							ALlcAAAAAAAACAAAAAQD
+							AACCswMAAAAAAAgAAAAE
+							AwAA7FgUAAAAAAAIAAAA
+							BAMAAPqXUAcAAAAACAAA
+							AAQDAADqwaEHAAAAABQA
+							AAABBgAAjAAAAJwAAACs
+							AAAAvAAAAMwAAAAIAAAA
+							AAQAAEHFxUs7XXVQGAAA
+							AAECAAACAAAAAAAAAA8A
+							AAAAAAAAAAAAAAAAAAAI
+							AAAABAMAAAMAAAAAAAAA
+							BAAAAAMDAAD1AQAACAAA
+							AAEJAABmaWxlOi8vLwwA
+							AAABAQAATWFjaW50b3No
+							IEhECAAAAAQDAAAAIEWM
+							0AEAAAgAAAAABAAAQcWW
+							TsiAAAAkAAAAAQEAADA2
+							NDkzMThCLTMzOEEtNDY5
+							MC04OUQ4LTE4MDVEM0RG
+							MEJFNhgAAAABAgAAgQAA
+							AAEAAADvEwAAAQAAAAAA
+							AAAAAAAAAQAAAAEBAAAv
+							AAAAAAAAAAEFAADMAAAA
+							/v///wEAAAAAAAAAEAAA
+							AAQQAABwAAAAAAAAAAUQ
+							AADcAAAAAAAAABAQAAAI
+							AQAAAAAAAEAQAAD4AAAA
+							AAAAAAIgAADUAQAAAAAA
+							AAUgAABEAQAAAAAAABAg
+							AABUAQAAAAAAABEgAACI
+							AQAAAAAAABIgAABoAQAA
+							AAAAABMgAAB4AQAAAAAA
+							ACAgAAC0AQAAAAAAADAg
+							AADgAQAAAAAAAAHAAAAo
+							AQAAAAAAABHAAAAgAAAA
+							AAAAABLAAAA4AQAAAAAA
+							ABDQAAAEAAAAAAAAAA==
 							</data>
 							<key>hasPublishedContent</key>
 							<true/>
@@ -550,7 +764,7 @@
 					<key>PublishingSettingsConfigured</key>
 					<true/>
 					<key>RWBadge</key>
-					<string>{"delayMillis":1000,"hiddenOnDesktop":false,"openInNewWindow":true,"delayDistance":30,"text":"Made in RapidWeaver","enabled":false,"delayType":"time","url":"https:\/\/www.realmacsoftware.com","transition":"slide","imageAlt":"RapidWeaver Icon","hiddenOnMobile":false,"useDefaultImage":true,"position":"bottomLeft","colorScheme":"auto","hiddenOnTablet":false}</string>
+					<string>{"delayDistance":30,"delayMillis":1000,"hiddenOnMobile":false,"enabled":false,"delayType":"time","openInNewWindow":true,"transition":"slide","imageAlt":"RapidWeaver Icon","hiddenOnTablet":false,"position":"bottomLeft","hiddenOnDesktop":false,"colorScheme":"auto","useDefaultImage":true,"url":"https:\/\/www.realmacsoftware.com","text":"Made in RapidWeaver"}</string>
 					<key>RememberPrivacyMessageDismissed</key>
 					<false/>
 					<key>SelectedPublishingDestinationIndex</key>
@@ -594,8 +808,17 @@
 					YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25Z
 					JGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGG
 					oF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290
-					gAChC1UkbnVsbAgRGiQpMjdJTFFTVQAAAAAA
-					AAEBAAAAAAAAAAwAAAAAAAAAAAAAAAAAAABb
+					gAGlCwwRFx5VJG51bGzSDQ4PEFpkaWN0aW9u
+					YXJ5ViRjbGFzc4ACgATTEhMOFBUWV05TLmtl
+					eXNaTlMub2JqZWN0c6CggAPSGBkaG1okY2xh
+					c3NuYW1lWCRjbGFzc2VzXxATTlNNdXRhYmxl
+					RGljdGlvbmFyeaMaHB1cTlNEaWN0aW9uYXJ5
+					WE5TT2JqZWN00hgZHyBeV2ViSWNvblBhY2th
+					Z2WiIR1eV2ViSWNvblBhY2thZ2UACAARABoA
+					JAApADIANwBJAEwAUQBTAFkAXwBkAG8AdgB4
+					AHoAgQCJAJQAlQCWAJgAnQCoALEAxwDLANgA
+					4QDmAPUA+AAAAAAAAAIBAAAAAAAAACIAAAAA
+					AAAAAAAAAAAAAAEH
 					</data>
 					<key>minifyExtraFiles</key>
 					<true/>

@@ -13,8 +13,10 @@
 				<dict>
 					<key>default</key>
 					<true/>
-					<key>file:///Users/chrisstayte/SourceControl/beltofdestiny/front_page/</key>
+					<key>file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
 					<false/>
+					<key>file:///Users/chrisstayte/SourceControl/beltofdestiny/front_page/</key>
+					<true/>
 				</dict>
 				<key>ColourStyles</key>
 				<dict/>
