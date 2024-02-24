@@ -11,6 +11,9 @@ class RemoteConfigProvider {
       FirebaseRemoteConfig.instance;
 
   RemoteConfigProvider() {
+    if (kDebugMode) {
+      _remoteConfig = RemoteConfig();
+    }
     _initialize();
   }
 

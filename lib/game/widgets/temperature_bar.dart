@@ -1,5 +1,6 @@
 import 'package:beltofdestiny/game/game_config.dart';
 import 'package:beltofdestiny/models/remote_config.dart';
+import 'package:beltofdestiny/pallete.dart';
 import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -33,8 +34,8 @@ class TemperatureBar extends StatelessWidget {
       children: [
         Text(
           '${_temperature.toStringAsFixed(1)}°',
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: Palette.eggPlant,
             fontSize: 10,
           ),
         ),

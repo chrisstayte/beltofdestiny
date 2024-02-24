@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nes_ui/nes_ui.dart';
 
 final router = GoRouter(
-  initialLocation: '/',
+  initialLocation: kDebugMode ? '/game' : '/',
   routes: [
     GoRoute(
       path: '/',

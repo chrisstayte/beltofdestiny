@@ -13,6 +13,7 @@ class ControlArm extends RectangleComponent
   bool armIsStraightDown = true;
   bool isSeized = false;
   bool isMoving = false;
+  bool lockedOpen = false;
   Timer? countdown;
   RotateEffect? _currentRotateEffect;
 
@@ -82,6 +83,16 @@ class ControlArm extends RectangleComponent
         paint = BasicPalette.green.paint();
       },
     );
+  }
+
+  ///
+  /// lock the arm fully open after the game ends
+  ///
+  void lockArmOpen() {
+    lockedOpen = true;
+    armIsStraightDown = true;
+    isSeized = true;
+    _rotateWithEffect();
   }
 
   void toggleDirection() {

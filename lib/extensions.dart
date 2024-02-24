@@ -1,9 +1,16 @@
 import 'package:beltofdestiny/game/game_config.dart';
+import 'package:flutter/material.dart';
 
 extension IntExtension on int {
-  double getSpeedIncreasePer100Points(double speedIncreasePer100Points,
-      double baseSpeed, double maxSpeedIncreaseMultiplier) {
-    return baseSpeed + ((this / 100.0) * speedIncreasePer100Points)
-      ..clamp(baseSpeed, baseSpeed * maxSpeedIncreaseMultiplier);
+  double getSpeedIncreasePer100Points(
+      {required double speedIncreasePer100Points,
+      required double baseSpeed,
+      required double maxSpeedIncreaseMultiplier}) {
+    // Calculate speed
+    double speed = baseSpeed + ((this / 100.0) * speedIncreasePer100Points);
+    // Throttle speed
+    speed = speed.clamp(baseSpeed, baseSpeed * maxSpeedIncreaseMultiplier);
+    debugPrint('Speed: $speed');
+    return speed;
   }
 }

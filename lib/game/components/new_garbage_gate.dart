@@ -4,27 +4,17 @@ import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
-class NewGarbageGate extends PositionComponent
-    with CollisionCallbacks, HasGameReference<BeltOfDestiny> {
+class NewGarbageGate extends PositionComponent with CollisionCallbacks {
   NewGarbageGate()
       : super(
           anchor: Anchor.centerLeft,
           children: [
             RectangleHitbox(
-              size: Vector2(beltWidth, 1),
+              size: Vector2(beltWidth, 100),
               isSolid: true,
               collisionType: CollisionType.passive,
+              anchor: Anchor.bottomLeft,
             )
           ],
         );
-
-  @override
-  void onCollisionStart(
-      Set<Vector2> intersectionPoints, PositionComponent other) {
-    super.onCollisionStart(intersectionPoints, other);
-
-    if (other is Garbage) {
-      game.addNewGarbage();
-    }
-  }
 }

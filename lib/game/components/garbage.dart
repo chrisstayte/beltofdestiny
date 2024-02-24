@@ -50,9 +50,9 @@ class Garbage extends RectangleComponent
     super.update(dt);
 
     final speed = game.score.value.getSpeedIncreasePer100Points(
-      game.speedIncreasePer100Points,
-      game.baseSpeed,
-      game.maxSpeedIncreaseMultiplier,
+      speedIncreasePer100Points: game.speedIncreasePer100Points,
+      baseSpeed: game.baseSpeed,
+      maxSpeedIncreaseMultiplier: game.maxSpeedIncreaseMultiplier,
     );
 
     if (shouldHeadTowardsRecycler) {
@@ -79,12 +79,6 @@ class Garbage extends RectangleComponent
       }
 
       hitControlArm = true;
-
-      if (game.controlArm.armIsStraightDown) {
-        final machine = game.findByKeyName<RectangleComponent>('Incinerator');
-      } else {
-        final machine = game.findByKeyName<RectangleComponent>('Recycler');
-      }
     } else if (other is RecyclableGarbageGate) {
       if (shouldHeadTowardsRecycler) {
         return;
@@ -92,6 +86,10 @@ class Garbage extends RectangleComponent
       shouldHeadTowardsRecycler = true;
     } else if (other is Machine) {
       removeFromParent();
+    } else if (other is NewGarbageGate) {
+      // if (!game.gameOver) {
+      game.addNewGarbage();
+      // }
     } else {
       debugPrint('hit something else');
     }

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:beltofdestiny/game/components/recyclable_garbage_gate.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import 'components/components.dart';
@@ -23,6 +24,7 @@ class BeltOfDestiny extends FlameGame
     required this.speedIncreasePer100Points,
     required this.lowestTemp,
     required this.highestTemp,
+    required this.increaseTemperatureUnitCount,
   }) : super(
           camera: CameraComponent.withFixedResolution(
             width: gameWidth,
@@ -39,6 +41,9 @@ class BeltOfDestiny extends FlameGame
   final double speedIncreasePer100Points;
   final double lowestTemp;
   final double highestTemp;
+  final double increaseTemperatureUnitCount;
+
+  bool gameOver = false;
 
   final ValueNotifier<int> score = ValueNotifier<int>(0);
   late ValueNotifier<double> temperature;
@@ -47,8 +52,6 @@ class BeltOfDestiny extends FlameGame
   double get height => size.y;
 
   ControlArm controlArm = ControlArm();
-
-  TimerComponent? _garbageTimer;
 
   final Machine incinerator =
       Machine(key: ComponentKey.named('Incinerator'), isIncinerator: true)
@@ -101,8 +104,13 @@ class BeltOfDestiny extends FlameGame
     // Add the first garbage to the game
     addNewGarbage();
 
-    score.addListener(() {
-      mainBelt.updateAnimationSpeed();
+    // If temperature rises to max then game over
+    temperature.addListener(() {
+      if (temperature.value >= highestTemp) {
+        if (!gameOver) {
+          gameOver = true;
+        }
+      }
     });
 
     debugMode = true;
@@ -129,6 +137,17 @@ class BeltOfDestiny extends FlameGame
 
     if (event.logicalKey == LogicalKeyboardKey.space && event is KeyDownEvent) {
       controlArm.toggleDirection();
+    }
+
+    if (kDebugMode) {
+      if (event.logicalKey == LogicalKeyboardKey.keyO &&
+          event is KeyDownEvent) {
+        score.value += 100;
+      }
+      if (event.logicalKey == LogicalKeyboardKey.keyP &&
+          event is KeyDownEvent) {
+        score.value += 1000;
+      }
     }
     return KeyEventResult.handled;
   }

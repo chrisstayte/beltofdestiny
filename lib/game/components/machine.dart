@@ -17,7 +17,7 @@ class Machine extends RectangleComponent
           size: Vector2(machineWidth, machineHeight),
           children: [
             RectangleHitbox(
-              size: Vector2(machineWidth, 2),
+              size: Vector2(machineWidth, 60),
               position: Vector2(0, machineHeight * .05),
             ),
           ],
@@ -37,6 +37,9 @@ class Machine extends RectangleComponent
       Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollisionStart(intersectionPoints, other);
 
+    double increaseTemperatureUnit = (game.highestTemp - game.lowestTemp) /
+        game.increaseTemperatureUnitCount;
+
     if (other is Garbage && !isIncinerator) {
       // if the piece of garbage is not recyclable, size arm
       if (!other.canBeRecycled) {
@@ -44,15 +47,22 @@ class Machine extends RectangleComponent
         return;
       }
 
+      // if the game is over just skip more points
+      if (game.controlArm.lockedOpen) {
+        return;
+      }
+
       game.score.value += 100;
 
       if (!game.controlArm.isSeized) {
-        if (game.temperature.value > game.lowestTemp)
-          game.temperature.value -= 0.15;
+        if (game.temperature.value > game.lowestTemp) {
+          game.temperature.value -= increaseTemperatureUnit * 1.5;
+        }
       }
     } else {
-      if (game.temperature.value < game.highestTemp)
-        game.temperature.value += 0.1;
+      if (game.temperature.value < game.highestTemp) {
+        game.temperature.value += increaseTemperatureUnit;
+      }
     }
   }
 }

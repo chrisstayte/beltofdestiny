@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:beltofdestiny/pallete.dart';
 import 'package:flutter/material.dart';
 import 'package:nes_ui/nes_ui.dart';
 
@@ -29,6 +30,8 @@ class _WobblyButtonState extends State<WobblyButton>
 
   @override
   Widget build(BuildContext context) {
+    var currentButtonTheme = context.nesThemeExtension<NesButtonTheme>();
+
     return MouseRegion(
       onEnter: (event) {
         _controller.repeat();
@@ -38,12 +41,20 @@ class _WobblyButtonState extends State<WobblyButton>
       },
       child: RotationTransition(
         turns: _controller.drive(const _MySineTween(0.005)),
-        child: NesButton(
-          type: NesButtonType.primary,
-          onPressed: widget.onPressed,
-          child: DefaultTextStyle(
-            style: Theme.of(context).textTheme.bodyMedium ?? const TextStyle(),
-            child: widget.child,
+        child: Theme(
+          data: flutterNesTheme(
+            nesButtonTheme: currentButtonTheme.copyWith(
+              primary: Palette.fountainBlue,
+            ),
+          ),
+          child: NesButton(
+            type: NesButtonType.primary,
+            onPressed: widget.onPressed,
+            child: DefaultTextStyle(
+              style:
+                  Theme.of(context).textTheme.bodyMedium ?? const TextStyle(),
+              child: widget.child,
+            ),
           ),
         ),
       ),

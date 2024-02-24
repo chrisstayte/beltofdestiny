@@ -46,6 +46,7 @@ class _GameScreenState extends State<GameScreen> {
       speedIncreasePer100Points: remoteConfig.speedIncreasePer100Points,
       lowestTemp: remoteConfig.lowestTemp,
       highestTemp: remoteConfig.highestTemp,
+      increaseTemperatureUnitCount: remoteConfig.increaseTemperatureUnitCount,
     );
   }
 
@@ -85,7 +86,7 @@ class _GameScreenState extends State<GameScreen> {
     final palette = context.read<Palette>();
 
     return Scaffold(
-      backgroundColor: palette.backgroundMain,
+      backgroundColor: Palette.hampton,
       body: SafeArea(
         child: Column(
           children: [
@@ -142,7 +143,7 @@ class _GameScreenState extends State<GameScreen> {
                   GameWidget(
                     game: game,
                     backgroundBuilder: (context) => Container(
-                      color: palette.backgroundMain,
+                      color: Palette.hampton,
                     ),
                     overlayBuilderMap: {
                       'temperatureBar': (context, BeltOfDestiny game) {

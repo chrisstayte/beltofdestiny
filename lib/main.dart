@@ -67,14 +67,12 @@ class MyApp extends StatelessWidget {
           return MaterialApp.router(
             title: 'Belt of Destiny',
             theme: flutterNesTheme().copyWith(
-                scaffoldBackgroundColor: Palette.hampton,
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-                textTheme: GoogleFonts.pressStart2pTextTheme().apply(),
-                extensions: flutterNesTheme().extensions.values),
+              scaffoldBackgroundColor: Palette.hampton,
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              textTheme: GoogleFonts.pressStart2pTextTheme().apply(),
+              extensions: flutterNesTheme().extensions.values,
+            ),
             routerConfig: router,
-            // routeInformationParser: router.routeInformationParser,
-            // routerDelegate: router.routerDelegate,
-            // routeInformationProvider: router.routeInformationProvider,
           );
         }),
       ),
