@@ -64,3 +64,7 @@ The remote config was added as a way for the game to adjust gameplay feel and me
 - **lowestTemp**: the initial temperature will also be the lowest value. Consequently this is also the lowest we can drop the temperature if we recycle properly
 - **highestTemp**: this highest temperature of the game and also if hit will cause a game over
 - **increaseTemperatureUnitCount**: every time an item goes into the recycler the temp bar will go up and for each properly recycled item of garbage the recycled the temp bar goes down. This is a number that will divide the temp range into evenly. ie. a value of `100` will cause the game to accept a straight 100 items before it quits out. The incinerator will go up by 1 and recycling will go down by a rate of 80%.
+
+### Docs Folder
+
+In order to have a landing page to advertise the game that is SEO friendly I decided to host a website in github pages that just takes you to the game. It's not entirely important but it lives under the docs folder. I used rapid weaver to create it. Only reason was so I could do it in 5 minutes.
