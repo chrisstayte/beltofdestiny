@@ -1,5 +1,5 @@
 import 'package:beltofdestiny/firebase_options.dart';
-import 'package:beltofdestiny/pallete.dart';
+import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/app_lifecycle.dart';
 import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
@@ -51,7 +51,6 @@ class MyApp extends StatelessWidget {
     return AppLifecycleObserver(
       child: MultiProvider(
         providers: [
-          Provider(create: (context) => Palette()),
           Provider(
             create: (context) => SettingsProvider(),
             lazy: false,
@@ -62,8 +61,6 @@ class MyApp extends StatelessWidget {
           )
         ],
         child: Builder(builder: (context) {
-          final palette = context.read<Palette>();
-
           return MaterialApp.router(
             title: 'Belt of Destiny',
             theme: flutterNesTheme().copyWith(

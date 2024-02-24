@@ -1,19 +1,13 @@
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/widgets/temperature_bar.dart';
-import 'package:beltofdestiny/game/game_config.dart';
 import 'package:beltofdestiny/models/remote_config.dart';
-import 'package:beltofdestiny/pallete.dart';
+import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/app_lifecycle.dart';
 import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:beltofdestiny/screens/widgets/pause_modal.dart';
-import 'package:beltofdestiny/screens/widgets/settings_modal.dart';
-import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:gap/gap.dart';
-import 'package:nes_ui/nes_ui.dart';
 import 'package:provider/provider.dart';
 
 class GameScreen extends StatefulWidget {
@@ -83,8 +77,6 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final palette = context.read<Palette>();
-
     return Scaffold(
       backgroundColor: Palette.hampton,
       body: SafeArea(
@@ -113,14 +105,14 @@ class _GameScreenState extends State<GameScreen> {
                             },
                             child: Text(
                               'SCORE: ${game.score.value}',
-                              style: const TextStyle(color: Colors.white),
+                              style: TextStyle(color: Palette.eggPlant),
                             ),
                           );
                         },
                       ),
                     ),
                     IconButton(
-                      color: Colors.white,
+                      color: Palette.eggPlant,
                       icon: const Icon(Icons.pause),
                       onPressed: () async {
                         game.paused = true;

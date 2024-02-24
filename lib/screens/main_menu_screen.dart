@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:beltofdestiny/pallete.dart';
+import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/screens/widgets/settings_modal.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
 import 'package:flutter/foundation.dart';

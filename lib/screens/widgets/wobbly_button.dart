@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:beltofdestiny/pallete.dart';
+import 'package:beltofdestiny/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:nes_ui/nes_ui.dart';
 

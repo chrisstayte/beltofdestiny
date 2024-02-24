@@ -1,3 +1,4 @@
+import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -12,6 +13,7 @@ class PauseModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settings = context.read<SettingsProvider>();
+
     return Align(
       child: Material(
         child: IntrinsicWidth(
@@ -21,6 +23,7 @@ class PauseModal extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 NesContainer(
+                  backgroundColor: Palette.hampton,
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Center(

@@ -1,4 +1,3 @@
-import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flutter/material.dart';
 
 extension IntExtension on int {

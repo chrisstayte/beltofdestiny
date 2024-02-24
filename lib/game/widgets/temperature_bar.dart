@@ -1,6 +1,6 @@
 import 'package:beltofdestiny/game/game_config.dart';
 import 'package:beltofdestiny/models/remote_config.dart';
-import 'package:beltofdestiny/pallete.dart';
+import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -38,14 +38,15 @@ class TemperatureBar extends StatelessWidget {
             color: Palette.eggPlant,
             fontSize: 10,
           ),
-        ),
+        ), // TODO: flash the text as the temperature hits near the top
         const Gap(10),
         Container(
           height: 200,
           width: 18,
+          clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Colors.black,
+            color: Palette.eggPlant,
           ),
           child: Stack(
             children: [
@@ -97,13 +98,14 @@ class TemperatureBar extends StatelessWidget {
                   width: 7,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(0),
-                    color: Colors.black,
+                    color: Palette.eggPlant,
                   ),
                 ),
               ),
             ],
           ),
-        ),
+        )
+        // TODO: Animate bar shaking as it gets closer to the top,
       ],
     );
   }

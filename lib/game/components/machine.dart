@@ -37,6 +37,11 @@ class Machine extends RectangleComponent
       Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollisionStart(intersectionPoints, other);
 
+    // if the game is over just skip more points
+    if (game.gameOver) {
+      return;
+    }
+
     double increaseTemperatureUnit = (game.highestTemp - game.lowestTemp) /
         game.increaseTemperatureUnitCount;
 
@@ -47,16 +52,11 @@ class Machine extends RectangleComponent
         return;
       }
 
-      // if the game is over just skip more points
-      if (game.controlArm.lockedOpen) {
-        return;
-      }
-
       game.score.value += 100;
 
       if (!game.controlArm.isSeized) {
         if (game.temperature.value > game.lowestTemp) {
-          game.temperature.value -= increaseTemperatureUnit * 1.5;
+          game.temperature.value -= increaseTemperatureUnit * 0.8;
         }
       }
     } else {

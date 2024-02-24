@@ -53,13 +53,14 @@ class BeltOfDestiny extends FlameGame
 
   ControlArm controlArm = ControlArm();
 
-  final Machine incinerator =
+  final Machine _incinerator =
       Machine(key: ComponentKey.named('Incinerator'), isIncinerator: true)
         ..position = Vector2((gameWidth / 2) - machineWidth - 50, 25);
 
-  final Machine recycler =
+  final Machine _recycler =
       Machine(key: ComponentKey.named('Recycler'), isIncinerator: false);
 
+  /// The main belt of the game headed towards the incinerator
   final MainBelt mainBelt = MainBelt();
 
   @override
@@ -73,14 +74,14 @@ class BeltOfDestiny extends FlameGame
     world.add(PlayArea());
 
     // Incinerator
-    world.add(incinerator);
+    world.add(_incinerator);
 
     // Recycler
-    world.add(recycler..position = Vector2(width / 2 + 50, 25));
+    world.add(_recycler..position = Vector2(width / 2 + 50, 25));
 
     // Main belt
     world.add(
-      mainBelt..position = incinerator.center,
+      mainBelt..position = _incinerator.center,
     );
 
     // Invisible gate that spawns new garbage
@@ -95,7 +96,7 @@ class BeltOfDestiny extends FlameGame
     // Recyclable garbage gate
     world.add(
       RecyclableGarbageGate()
-        ..position = recycler.center + Vector2(garbageWidth / 2, 0),
+        ..position = _recycler.center + Vector2(garbageWidth / 2, 0),
     );
 
     // Control arm
@@ -109,11 +110,19 @@ class BeltOfDestiny extends FlameGame
       if (temperature.value >= highestTemp) {
         if (!gameOver) {
           gameOver = true;
+          controlArm.lockArmOpen();
+
+          // remove all garbage on screen
+          for (var child in world.children) {
+            if (child is Garbage) {
+              child.removeFromParent();
+            }
+          }
         }
       }
     });
 
-    debugMode = true;
+    debugMode = kDebugMode;
   }
 
   void addNewGarbage() {

@@ -3,8 +3,8 @@ const gameWidth = 1080.0;
 const gameHeight = 1920.0;
 
 // Machines
-const machineWidth = gameWidth / 2.5;
-const machineHeight = gameHeight / 10.0;
+const double machineWidth = 400;
+const double machineHeight = 200;
 
 // Control arm
 const double armWidth = 15;
