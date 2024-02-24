@@ -47,10 +47,12 @@ class Machine extends RectangleComponent
       game.score.value += 100;
 
       if (!game.controlArm.isSeized) {
-        if (game.temperature.value > lowestTemp) game.temperature.value -= 0.15;
+        if (game.temperature.value > game.lowestTemp)
+          game.temperature.value -= 0.15;
       }
     } else {
-      if (game.temperature.value < highestTemp) game.temperature.value += 0.1;
+      if (game.temperature.value < game.highestTemp)
+        game.temperature.value += 0.1;
     }
   }
 }

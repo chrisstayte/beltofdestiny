@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:beltofdestiny/pallete.dart';
 import 'package:beltofdestiny/screens/widgets/settings_modal.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
 import 'package:flutter/foundation.dart';
@@ -30,10 +31,10 @@ class MainMenuScreen extends StatelessWidget {
                   child: Center(
                     child: Transform.rotate(
                       angle: -0.1,
-                      child: const Text(
+                      child: Text(
                         'Belt\nOf\nDestiny',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 40, color: Colors.white),
+                        style: TextStyle(fontSize: 40, color: Palette.eggPlant),
                       )
                           .animate(
                             autoPlay: true,

@@ -13,15 +13,15 @@ const double rotationAngle = 60;
 const double seizeArmDuration = 3;
 
 // Garbage
-const double baseSpeed = 320;
-const double speedIncreasePer100Points = 10;
-const double maxSpeedIncreaseMultiplier = 2;
+// const double baseSpeed = 320;
+// const double speedIncreasePer100Points = 10;
+// const double maxSpeedIncreaseMultiplier = 2;
 const double garbageWidth = beltWidth * .5;
 const double garbageHeight = beltWidth * .5;
 
 // Temperature
-const double lowestTemp = 54.7;
-const double highestTemp = 57.2;
+// const double lowestTemp = 54.7;
+// const double highestTemp = 57.2;
 
 // Belt
 const double beltWidth = machineWidth * .6;

@@ -1,8 +1,10 @@
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/widgets/temperature_bar.dart';
 import 'package:beltofdestiny/game/game_config.dart';
+import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:beltofdestiny/pallete.dart';
 import 'package:beltofdestiny/providers/app_lifecycle.dart';
+import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:beltofdestiny/screens/widgets/pause_modal.dart';
 import 'package:beltofdestiny/screens/widgets/settings_modal.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
@@ -22,7 +24,7 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
-  late final BeltOfDestiny game = BeltOfDestiny();
+  late final BeltOfDestiny game;
 
   ValueNotifier<AppLifecycleState>? _lifecycleNotifier;
 
@@ -34,6 +36,17 @@ class _GameScreenState extends State<GameScreen> {
         Provider.of<AppLifecycleStateNotifier>(context, listen: false);
 
     _lifecycleNotifier!.addListener(_handleAppLifecycle);
+
+    RemoteConfig remoteConfig =
+        context.read<RemoteConfigProvider>().remoteConfig;
+
+    game = BeltOfDestiny(
+      baseSpeed: remoteConfig.baseSpeed,
+      maxSpeedIncreaseMultiplier: remoteConfig.maxSpeedIncreaseMultiplier,
+      speedIncreasePer100Points: remoteConfig.speedIncreasePer100Points,
+      lowestTemp: remoteConfig.lowestTemp,
+      highestTemp: remoteConfig.highestTemp,
+    );
   }
 
   @override

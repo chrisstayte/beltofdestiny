@@ -1,10 +1,13 @@
 import 'package:beltofdestiny/firebase_options.dart';
 import 'package:beltofdestiny/pallete.dart';
 import 'package:beltofdestiny/providers/app_lifecycle.dart';
+import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
 import 'package:beltofdestiny/router.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flame/flame.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:logging/logging.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +27,13 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
+
   Logger.root.level = Level.ALL;
   Logger.root.onRecord.listen((record) {
     debugPrint(
@@ -42,7 +52,14 @@ class MyApp extends StatelessWidget {
       child: MultiProvider(
         providers: [
           Provider(create: (context) => Palette()),
-          Provider(create: (context) => SettingsProvider()),
+          Provider(
+            create: (context) => SettingsProvider(),
+            lazy: false,
+          ),
+          Provider(
+            create: (context) => RemoteConfigProvider(),
+            lazy: false,
+          )
         ],
         child: Builder(builder: (context) {
           final palette = context.read<Palette>();
@@ -50,7 +67,7 @@ class MyApp extends StatelessWidget {
           return MaterialApp.router(
             title: 'Belt of Destiny',
             theme: flutterNesTheme().copyWith(
-                scaffoldBackgroundColor: palette.backgroundMain,
+                scaffoldBackgroundColor: Palette.hampton,
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                 textTheme: GoogleFonts.pressStart2pTextTheme().apply(),
                 extensions: flutterNesTheme().extensions.values),

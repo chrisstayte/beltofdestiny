@@ -17,18 +17,31 @@ class BeltOfDestiny extends FlameGame
         TapDetector,
         KeyboardEvents,
         HasCollisionDetection {
-  BeltOfDestiny()
-      : super(
+  BeltOfDestiny({
+    required this.baseSpeed,
+    required this.maxSpeedIncreaseMultiplier,
+    required this.speedIncreasePer100Points,
+    required this.lowestTemp,
+    required this.highestTemp,
+  }) : super(
           camera: CameraComponent.withFixedResolution(
             width: gameWidth,
             height: gameHeight,
           ),
         ) {
     pauseWhenBackgrounded = false;
+    temperature = ValueNotifier<double>(lowestTemp);
   }
 
+  // Remote config values
+  final double baseSpeed;
+  final double maxSpeedIncreaseMultiplier;
+  final double speedIncreasePer100Points;
+  final double lowestTemp;
+  final double highestTemp;
+
   final ValueNotifier<int> score = ValueNotifier<int>(0);
-  final ValueNotifier<double> temperature = ValueNotifier<double>(lowestTemp);
+  late ValueNotifier<double> temperature;
 
   double get width => size.x;
   double get height => size.y;

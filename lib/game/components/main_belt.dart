@@ -58,16 +58,16 @@ class MainBelt extends RectangleComponent with HasGameReference<BeltOfDestiny> {
 
   void updateAnimationSpeed() {
     final speed = game.score.value.getSpeedIncreasePer100Points(
-      speedIncreasePer100Points,
-      baseSpeed,
-      maxSpeedIncreaseMultiplier,
+      game.speedIncreasePer100Points,
+      game.baseSpeed,
+      game.maxSpeedIncreaseMultiplier,
     );
 
     // Assuming there are 12 frames in the animation that visually represent the belt moving 320 pixels per second
     int fps = 12; // frames per second
 
     // Calculate the new stepTime based on the current speed
-    double newStepTime = (1 / fps) * (baseSpeed / speed);
+    double newStepTime = (1 / fps) * (game.baseSpeed / speed);
 
     // Update the stepTime for each frame in the animation
     for (final frame in _spriteAnimationComponent.animation!.frames) {
