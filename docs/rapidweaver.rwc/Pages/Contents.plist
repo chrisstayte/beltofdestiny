@@ -17,6 +17,8 @@
 			<key>Subsandwiches</key>
 			<array>
 				<string>1-home</string>
+				<string>2-privacy</string>
+				<string>3-terms</string>
 			</array>
 		</dict>
 	</array>

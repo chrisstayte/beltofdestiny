@@ -185,10 +185,182 @@
 						<key>Version</key>
 						<integer>3</integer>
 					</dict>
+					<key>page1 - file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
+					<dict>
+						<key>CreationDate</key>
+						<date>2024-02-25T01:21:32Z</date>
+						<key>DigestAlgorithm</key>
+						<string>MD5</string>
+						<key>PageDigests</key>
+						<dict>
+							<key>files/bs-fonts/bootstrap-icons.woff</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								UhlihN4fy1sE
+								TwAadUgtug==
+								</data>
+								<key>Size</key>
+								<integer>164352</integer>
+							</dict>
+							<key>files/bs-fonts/bootstrap-icons.woff2</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								f0d2M93RL4Qo
+								RlTyouibig==
+								</data>
+								<key>Size</key>
+								<integer>121296</integer>
+							</dict>
+							<key>files/foundry-cc-edit-mode-icon.png</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								NsaK1kaVjAFZ
+								R6qmyy6QKg==
+								</data>
+								<key>Size</key>
+								<integer>74241</integer>
+							</dict>
+							<key>files/stacks.css</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								wANifJ2yGeIS
+								vLjVRAp1mw==
+								</data>
+								<key>Size</key>
+								<integer>1296</integer>
+							</dict>
+							<key>files/stacks_page_page1.css</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								lMR8ip0iE1vZ
+								Y0xE4ZK5mw==
+								</data>
+								<key>Size</key>
+								<integer>113004</integer>
+							</dict>
+							<key>files/stacks_page_page1.js</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								egHlEp2+X1RE
+								Sync0d9snA==
+								</data>
+								<key>Size</key>
+								<integer>962</integer>
+							</dict>
+							<key>index.html</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								Y0U+p0HnVJA1
+								hiU0kEF2dg==
+								</data>
+								<key>Size</key>
+								<integer>10331</integer>
+							</dict>
+						</dict>
+						<key>PageID</key>
+						<string>page1</string>
+						<key>SiteRoot</key>
+						<string>privacy</string>
+						<key>Version</key>
+						<integer>3</integer>
+					</dict>
+					<key>page2 - file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
+					<dict>
+						<key>CreationDate</key>
+						<date>2024-02-25T01:58:12Z</date>
+						<key>DigestAlgorithm</key>
+						<string>MD5</string>
+						<key>PageDigests</key>
+						<dict>
+							<key>files/bs-fonts/bootstrap-icons.woff</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								UhlihN4fy1sE
+								TwAadUgtug==
+								</data>
+								<key>Size</key>
+								<integer>164352</integer>
+							</dict>
+							<key>files/bs-fonts/bootstrap-icons.woff2</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								f0d2M93RL4Qo
+								RlTyouibig==
+								</data>
+								<key>Size</key>
+								<integer>121296</integer>
+							</dict>
+							<key>files/foundry-cc-edit-mode-icon.png</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								NsaK1kaVjAFZ
+								R6qmyy6QKg==
+								</data>
+								<key>Size</key>
+								<integer>74241</integer>
+							</dict>
+							<key>files/stacks.css</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								wANifJ2yGeIS
+								vLjVRAp1mw==
+								</data>
+								<key>Size</key>
+								<integer>1296</integer>
+							</dict>
+							<key>files/stacks_page_page2.css</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								lMR8ip0iE1vZ
+								Y0xE4ZK5mw==
+								</data>
+								<key>Size</key>
+								<integer>113004</integer>
+							</dict>
+							<key>files/stacks_page_page2.js</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								egHlEp2+X1RE
+								Sync0d9snA==
+								</data>
+								<key>Size</key>
+								<integer>962</integer>
+							</dict>
+							<key>index.html</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								V2xTB2E8YELW
+								B5yGjNwIOw==
+								</data>
+								<key>Size</key>
+								<integer>10444</integer>
+							</dict>
+						</dict>
+						<key>PageID</key>
+						<string>page2</string>
+						<key>SiteRoot</key>
+						<string>terms</string>
+						<key>Version</key>
+						<integer>3</integer>
+					</dict>
 					<key>rw:document:extrafiles - file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
 					<dict>
 						<key>CreationDate</key>
-						<date>2024-02-24T23:05:47Z</date>
+						<date>2024-02-25T01:58:12Z</date>
 						<key>DigestAlgorithm</key>
 						<string>MD5</string>
 						<key>PageDigests</key>
@@ -207,11 +379,11 @@
 							<dict>
 								<key>Digest</key>
 								<data>
-								Qu1n0cd+e3le
-								g8/pCoQhzQ==
+								IxVZmKtoXCby
+								nZHlRXdWEA==
 								</data>
 								<key>Size</key>
-								<integer>207</integer>
+								<integer>351</integer>
 							</dict>
 						</dict>
 						<key>PageID</key>
@@ -362,7 +534,7 @@
 					<key>rw:plugin:stacks - file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
 					<dict>
 						<key>CreationDate</key>
-						<date>2024-02-24T23:05:47Z</date>
+						<date>2024-02-25T01:58:12Z</date>
 						<key>DigestAlgorithm</key>
 						<string>MD5</string>
 						<key>PageDigests</key>
@@ -391,11 +563,11 @@
 							<dict>
 								<key>Digest</key>
 								<data>
-								wANifJ2yGeIS
-								vLjVRAp1mw==
+								zMH4Y3Fvp/u+
+								PfbStWdNcA==
 								</data>
 								<key>Size</key>
-								<integer>1296</integer>
+								<integer>1312</integer>
 							</dict>
 						</dict>
 						<key>PageID</key>
@@ -593,7 +765,7 @@
 				E4APgA6AEYAQXxAkNkJCOEZGMDktOTFDNi00QkJELThD
 				MDAtQTYzOUJDMzAxRjk0XkFSQ0FERV9JLndvZmYyXxAk
 				NzkwNTI3MzYtNTExRS00MTMxLTg4NDMtNzMzN0YzQzhG
-				NjZD0lUPVldXTlMudGltZSNBxcVXXHCRsIAS0jIzWVpW
+				NjZD0lUPVldXTlMudGltZSNBxcVrGosYqIAS0jIzWVpW
 				TlNEYXRlolk30w0OD1xeYKFdgBShX4AVgBZfEDtmaWxl
 				Oi8vL1VzZXJzL2Nocmlzc3RheXRlL1NvdXJjZUNvbnRy
 				b2wvYmVsdG9mZGVzdGlueS9kb2NzLwjSMjNkZV8QE05T
@@ -604,8 +776,8 @@
 				Skpyc3R1dgiAIIAYgACAAIAegBuAGoAdgBxfECQ2NTgx
 				RTE0Ri1BMTZBLTRGOEItQkUyRi04QzdCNjBCRjI5NUZe
 				QVJDQURFX04ud29mZjJfECQ3N0E1ODk4NC05RTc4LTRE
-				Q0ItOEUwNy01MTk2QkU5ODI1MjPSVQ97VyNBxcVXXHCR
-				2oAS0w0OD36AYKF/gB+hX4AVgBZfEDtmaWxlOi8vL1Vz
+				Q0ItOEUwNy01MTk2QkU5ODI1MjPSVQ97VyNBxcVrGosY
+				24AS0w0OD36AYKF/gB+hX4AVgBZfEDtmaWxlOi8vL1Vz
 				ZXJzL2Nocmlzc3RheXRlL1NvdXJjZUNvbnRyb2wvYmVs
 				dG9mZGVzdGlueS9kb2NzL18QKy9Vc2Vycy9jaHJpc3N0
 				YXl0ZS9Eb3dubG9hZHMvQVJDQURFX04ud29mZjLaP0AP
@@ -613,7 +785,7 @@
 				JYAkXxAkQkY5NDY4ODctQTFCRS00MTIxLUIwQTgtOTVD
 				ODQxRjVDMDUxXkFSQ0FERV9SLndvZmYyXxAkNjdGMDNC
 				M0UtOUFEMC00RDUzLTlCMUYtMjZBOTM4RjY3MkMz0lUP
-				lFcjQcXFV1xwkfOAEtMNDg+XmWChmIAnoV+AFYAWXxA7
+				lFcjQcXFaxqLGPSAEtMNDg+XmWChmIAnoV+AFYAWXxA7
 				ZmlsZTovLy9Vc2Vycy9jaHJpc3N0YXl0ZS9Tb3VyY2VD
 				b250cm9sL2JlbHRvZmRlc3RpbnkvZG9jcy9fECsvVXNl
 				cnMvY2hyaXNzdGF5dGUvRG93bmxvYWRzL0FSQ0FERV9S
@@ -764,7 +936,7 @@
 					<key>PublishingSettingsConfigured</key>
 					<true/>
 					<key>RWBadge</key>
-					<string>{"delayDistance":30,"delayType":"time","openInNewWindow":true,"delayMillis":1000,"transition":"slide","colorScheme":"auto","position":"bottomLeft","url":"https:\/\/www.realmacsoftware.com","useDefaultImage":true,"text":"Made in RapidWeaver","enabled":false,"hiddenOnTablet":false,"hiddenOnDesktop":false,"imageAlt":"RapidWeaver Icon","hiddenOnMobile":false}</string>
+					<string>{"openInNewWindow":true,"position":"bottomLeft","enabled":false,"delayType":"time","useDefaultImage":true,"delayDistance":30,"text":"Made in RapidWeaver","hiddenOnMobile":false,"delayMillis":1000,"transition":"slide","colorScheme":"auto","hiddenOnDesktop":false,"imageAlt":"RapidWeaver Icon","hiddenOnTablet":false,"url":"https:\/\/www.realmacsoftware.com"}</string>
 					<key>RememberPrivacyMessageDismissed</key>
 					<false/>
 					<key>SelectedPublishingDestinationIndex</key>

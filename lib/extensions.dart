@@ -9,7 +9,6 @@ extension IntExtension on int {
     double speed = baseSpeed + ((this / 100.0) * speedIncreasePer100Points);
     // Throttle speed
     speed = speed.clamp(baseSpeed, baseSpeed * maxSpeedIncreaseMultiplier);
-    debugPrint('Speed: $speed');
     return speed;
   }
 }

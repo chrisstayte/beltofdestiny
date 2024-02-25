@@ -52,6 +52,8 @@ class RemoteConfigProvider {
           _firebaseRemoteConfig.getDouble('speedIncreasePer100Points'),
       lowestTemp: _firebaseRemoteConfig.getDouble('lowestTemp'),
       highestTemp: _firebaseRemoteConfig.getDouble('highestTemp'),
+      increaseTemperatureUnitCount:
+          _firebaseRemoteConfig.getDouble('increaseTemperatureUnitCount'),
     );
   }
 }

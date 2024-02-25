@@ -8,23 +8,59 @@ class CreditsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Credits'),
-            const Gap(12),
-            WobblyButton(
-              child: Text('Back'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            const Gap(12),
-            Text('Made by:'),
-            const Gap(12),
-            Text('Chris Stayte'),
-          ],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Credits',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+              Expanded(
+                child: ListView(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 25,
+                  ),
+                  children: [
+                    ListTile(
+                      title: Text('Author'),
+                      subtitle: Text('Chris Stayte'),
+                      trailing: IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.link),
+                      ),
+                    ),
+                    ListTile(
+                      title: Text('Privacy'),
+                      trailing: IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.link),
+                      ),
+                    ),
+                    ListTile(
+                      title: Text('Terms'),
+                      trailing: IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.link),
+                      ),
+                    ),
+                    ListTile(
+                      title: Text('Terms'),
+                    )
+                  ],
+                ),
+              ),
+              const Gap(12),
+              WobblyButton(
+                child: Text('Back'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -90,8 +90,6 @@ class Garbage extends RectangleComponent
       if (!game.gameOver) {
         game.addNewGarbage();
       }
-    } else {
-      debugPrint('hit something else');
     }
   }
 }

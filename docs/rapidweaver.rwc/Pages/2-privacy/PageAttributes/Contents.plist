@@ -9,17 +9,31 @@
 		<dict>
 			<key>Dictionary</key>
 			<dict>
-				<key>ColourStyles</key>
+				<key>ChangedStatuses</key>
 				<dict>
-					<key>Offroad</key>
-					<dict/>
+					<key>default</key>
+					<true/>
+					<key>file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
+					<false/>
+					<key>file:///Users/chrisstayte/SourceControl/beltofdestiny/front_page/</key>
+					<true/>
 				</dict>
+				<key>ColourStyles</key>
+				<dict/>
 				<key>CreditRapidWeaver</key>
 				<true/>
+				<key>CustomCopyrightUsed</key>
+				<false/>
+				<key>CustomSiteTitleUsed</key>
+				<false/>
+				<key>CustomSloganUsed</key>
+				<false/>
 				<key>DefaultLinkTarget</key>
 				<string></string>
 				<key>FilenameExtension</key>
 				<string>html</string>
+				<key>FolderName</key>
+				<string>privacy</string>
 				<key>HasCustomThemeStyle</key>
 				<false/>
 				<key>Hidden</key>
@@ -29,9 +43,13 @@
 				<key>ImageQuality</key>
 				<string>High</string>
 				<key>IndexFilename</key>
-				<string></string>
+				<string>index.html</string>
 				<key>OutputXMLDeclaration</key>
 				<false/>
+				<key>PluginExtension</key>
+				<string>html</string>
+				<key>PluginHasPerformedMigrationToSharedData</key>
+				<true/>
 				<key>RobotsShouldFollowLinks</key>
 				<true/>
 				<key>RobotsShouldIndexPage</key>
@@ -44,21 +62,8 @@
 				<integer>1</integer>
 				<key>TextEncoding</key>
 				<string>utf-8</string>
-				<key>ThemeStyles</key>
-				<dict>
-					<key>Offroad</key>
-					<array>
-						<string>Background overlay.80% opacity</string>
-						<string>Background.Use background image</string>
-						<string>Blur background on scroll.Blur</string>
-						<string>Desktop navigation.Main colour</string>
-						<string>Global colours.Main</string>
-						<string>Photo album.Show captions</string>
-						<string>Sidebar.Right</string>
-						<string>Site description.Visible</string>
-						<string>Site title.Show site title</string>
-					</array>
-				</dict>
+				<key>UseCustomLanguage</key>
+				<false/>
 				<key>Variables</key>
 				<dict/>
 			</dict>

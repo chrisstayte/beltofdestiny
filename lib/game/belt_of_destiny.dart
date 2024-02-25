@@ -141,7 +141,6 @@ class BeltOfDestiny extends FlameGame
   @override
   KeyEventResult onKeyEvent(
       KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    debugPrint('on key event ${event.logicalKey.toString()}');
     super.onKeyEvent(event, keysPressed);
 
     if (event.logicalKey == LogicalKeyboardKey.space && event is KeyDownEvent) {
