@@ -29,6 +29,8 @@ dependencies:
   firebase_crashlytics: ^3.4.15
   url_launcher: ^6.2.5
 
+  logging: any
+  flutter_web_plugins: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

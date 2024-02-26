@@ -16,7 +16,7 @@ class CreditsScreen extends StatelessWidget {
         child: SafeArea(
           child: Center(
             child: ConstrainedBox(
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxWidth: 800,
               ),
               child: Column(
@@ -33,8 +33,8 @@ class CreditsScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Container(
-                              padding: EdgeInsets.symmetric(vertical: 25),
-                              child: Text(
+                              padding: const EdgeInsets.symmetric(vertical: 25),
+                              child: const Text(
                                   '''Submission for 2024 Flutter Dev Challenge
                                   
                                   Much love and support to all of the packages I relied on to help me build this app and much thanks to flutter for such a great framework.
@@ -64,7 +64,7 @@ class CreditsScreen extends StatelessWidget {
                             ),
                             ListTile(
                               contentPadding: EdgeInsets.zero,
-                              title: Text('Privacy'),
+                              title: const Text('Privacy'),
                               trailing: IconButton(
                                 onPressed: () async {
                                   Uri url = Uri.parse(
@@ -78,12 +78,12 @@ class CreditsScreen extends StatelessWidget {
                                     }
                                   }
                                 },
-                                icon: Icon(Icons.link),
+                                icon: const Icon(Icons.link),
                               ),
                             ),
                             ListTile(
                               contentPadding: EdgeInsets.zero,
-                              title: Text('Terms'),
+                              title: const Text('Terms'),
                               trailing: IconButton(
                                 onPressed: () async {
                                   Uri url = Uri.parse(
@@ -97,12 +97,12 @@ class CreditsScreen extends StatelessWidget {
                                     }
                                   }
                                 },
-                                icon: Icon(Icons.link),
+                                icon: const Icon(Icons.link),
                               ),
                             ),
                             ListTile(
                               contentPadding: EdgeInsets.zero,
-                              title: Text('Github'),
+                              title: const Text('Github'),
                               trailing: IconButton(
                                 onPressed: () async {
                                   Uri url = Uri.parse(
@@ -116,12 +116,12 @@ class CreditsScreen extends StatelessWidget {
                                     }
                                   }
                                 },
-                                icon: Icon(Icons.link),
+                                icon: const Icon(Icons.link),
                               ),
                             ),
                             ListTile(
                               contentPadding: EdgeInsets.zero,
-                              title: Text('Flutter Dev Challenge'),
+                              title: const Text('Flutter Dev Challenge'),
                               trailing: IconButton(
                                 onPressed: () async {
                                   Uri url = Uri.parse(
@@ -135,7 +135,7 @@ class CreditsScreen extends StatelessWidget {
                                     }
                                   }
                                 },
-                                icon: Icon(Icons.link),
+                                icon: const Icon(Icons.link),
                               ),
                             ),
                             const Gap(34),
@@ -150,7 +150,7 @@ class CreditsScreen extends StatelessWidget {
                   ),
                   const Gap(12),
                   WobblyButton(
-                    child: Text('Back'),
+                    child: const Text('Back'),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },

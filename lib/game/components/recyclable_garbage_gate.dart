@@ -1,7 +1,6 @@
 import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flame/palette.dart';
 
 class RecyclableGarbageGate extends PositionComponent {
   RecyclableGarbageGate()

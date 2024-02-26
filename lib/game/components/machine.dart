@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/components/garbage.dart';

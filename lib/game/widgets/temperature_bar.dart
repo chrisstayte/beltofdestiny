@@ -1,10 +1,8 @@
 import 'package:beltofdestiny/extensions.dart';
-import 'package:beltofdestiny/game/game_config.dart';
 import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';

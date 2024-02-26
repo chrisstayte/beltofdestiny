@@ -1,9 +1,7 @@
 import 'package:beltofdestiny/screens/credits_screen.dart';
 import 'package:beltofdestiny/screens/game/game_root.dart';
-import 'package:beltofdestiny/screens/game/game_screen.dart';
 import 'package:beltofdestiny/screens/main_menu_screen.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nes_ui/nes_ui.dart';
 

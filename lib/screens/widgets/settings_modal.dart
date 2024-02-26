@@ -6,6 +6,8 @@ import 'package:nes_ui/nes_ui.dart';
 import 'package:provider/provider.dart';
 
 class SettingsModal extends StatelessWidget {
+  const SettingsModal({super.key});
+
   @override
   Widget build(BuildContext context) {
     final settings = context.read<SettingsProvider>();

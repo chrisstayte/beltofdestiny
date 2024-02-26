@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:beltofdestiny/game/components/recyclable_garbage_gate.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 

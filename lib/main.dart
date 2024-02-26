@@ -9,9 +9,9 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flame/flame.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:logging/logging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:logging/logging.dart';
 import 'package:nes_ui/nes_ui.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:provider/provider.dart';

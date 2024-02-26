@@ -1,5 +1,3 @@
-import 'dart:io';
-import 'dart:math';
 
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/screens/widgets/settings_modal.dart';
@@ -71,7 +69,7 @@ class MainMenuScreen extends StatelessWidget {
                                 onPressed: () async {
                                   await showDialog(
                                     context: context,
-                                    builder: (context) => SettingsModal(),
+                                    builder: (context) => const SettingsModal(),
                                   );
                                 },
                                 child: const Text('Settings'),
@@ -92,15 +90,15 @@ class MainMenuScreen extends StatelessWidget {
                             onPressed: () {
                               // Navigator.of(context).pushNamed('/game');
                             },
-                            child: Center(
-                              child: const Text('Leaderboards'),
+                            child: const Center(
+                              child: Text('Leaderboards'),
                             ),
                           ),
                         ]
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20.0),
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: NesRunningText(
                         text: 'Save the world',
                         textStyle: TextStyle(

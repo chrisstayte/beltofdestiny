@@ -1,16 +1,12 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:beltofdestiny/extensions.dart';
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/components/components.dart';
-import 'package:beltofdestiny/game/components/recyclable_garbage_gate.dart';
 import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flame/effects.dart';
 import 'package:flame/palette.dart';
-import 'package:flutter/material.dart';
 
 class Garbage extends RectangleComponent
     with HasGameReference<BeltOfDestiny>, CollisionCallbacks {

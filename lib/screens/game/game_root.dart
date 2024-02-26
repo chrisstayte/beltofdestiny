@@ -2,7 +2,6 @@ import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:beltofdestiny/screens/game/game_screen.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,9 +1,7 @@
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/widgets/temperature_bar.dart';
-import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/app_lifecycle.dart';
-import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:beltofdestiny/game/widgets/pause_modal.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
@@ -152,7 +150,7 @@ class _GameScreenState extends State<GameScreen> {
                         );
                       },
                     },
-                    initialActiveOverlays: ['temperatureBar'],
+                    initialActiveOverlays: const ['temperatureBar'],
                   ),
                 ],
               ),

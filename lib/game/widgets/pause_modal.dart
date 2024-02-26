@@ -82,7 +82,7 @@ class PauseModal extends StatelessWidget {
                             ),
                             NesButton(
                               type: NesButtonType.error,
-                              child: Text('Quit'),
+                              child: const Text('Quit'),
                               onPressed: () {
                                 Navigator.popUntil(
                                     context, (route) => route.isFirst);
