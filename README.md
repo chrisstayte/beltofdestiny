@@ -63,7 +63,7 @@ The remote config was added as a way for the game to adjust gameplay feel and me
 - **speedIncreasePer100Points**: the game awards 100 points per item of garbage that is properly recycled. Each time this will increase the speed by said value. The default is `10`
 - **lowestTemp**: the initial temperature will also be the lowest value. Consequently this is also the lowest we can drop the temperature if we recycle properly
 - **highestTemp**: this highest temperature of the game and also if hit will cause a game over
-- **increaseTemperatureUnitCount**: every time an item goes into the recycler the temp bar will go up and for each properly recycled item of garbage the recycled the temp bar goes down. This is a number that will divide the temp range into evenly. ie. a value of `100` will cause the game to accept a straight 100 items before it quits out. The incinerator will go up by 1 and recycling will go down by a rate of 80%.
+- **increaseTemperatureUnitCount**: every time an item goes into the recycler the temp bar will go up and for each properly recycled item of garbage the recycled the temp bar goes down. This is a number that will divide the temp range into evenly. ie. a value of `100` will cause the game to accept a straight 100 items before it quits out.
 
 ### Docs Folder
 

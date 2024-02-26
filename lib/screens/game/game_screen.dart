@@ -4,44 +4,36 @@ import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/app_lifecycle.dart';
 import 'package:beltofdestiny/providers/remote_config_provider.dart';
-import 'package:beltofdestiny/screens/widgets/pause_modal.dart';
+import 'package:beltofdestiny/game/widgets/pause_modal.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class GameScreen extends StatefulWidget {
-  GameScreen({super.key});
+  const GameScreen({super.key, required this.game});
+
+  final BeltOfDestiny game;
 
   @override
   State<GameScreen> createState() => _GameScreenState();
 }
 
 class _GameScreenState extends State<GameScreen> {
-  late final BeltOfDestiny game;
-
   ValueNotifier<AppLifecycleState>? _lifecycleNotifier;
+
+  late BeltOfDestiny game;
 
   @override
   void initState() {
     super.initState();
 
+    game = widget.game;
+
     _lifecycleNotifier =
         Provider.of<AppLifecycleStateNotifier>(context, listen: false);
 
     _lifecycleNotifier!.addListener(_handleAppLifecycle);
-
-    RemoteConfig remoteConfig =
-        context.read<RemoteConfigProvider>().remoteConfig;
-
-    game = BeltOfDestiny(
-      baseSpeed: remoteConfig.baseSpeed,
-      maxSpeedIncreaseMultiplier: remoteConfig.maxSpeedIncreaseMultiplier,
-      speedIncreasePer100Points: remoteConfig.speedIncreasePer100Points,
-      lowestTemp: remoteConfig.lowestTemp,
-      highestTemp: remoteConfig.highestTemp,
-      increaseTemperatureUnitCount: remoteConfig.increaseTemperatureUnitCount,
-    );
   }
 
   @override

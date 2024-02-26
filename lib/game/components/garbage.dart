@@ -87,7 +87,7 @@ class Garbage extends RectangleComponent
     } else if (other is Machine) {
       removeFromParent();
     } else if (other is NewGarbageGate) {
-      if (!game.gameOver) {
+      if (!game.gameOver.value) {
         game.addNewGarbage();
       }
     }

@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
             title: 'Belt of Destiny',
             theme: flutterNesTheme().copyWith(
               scaffoldBackgroundColor: Palette.hampton,
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              colorScheme: ColorScheme.fromSeed(seedColor: Palette.hampton),
               textTheme: GoogleFonts.pressStart2pTextTheme().apply(),
               extensions: flutterNesTheme().extensions.values,
             ),

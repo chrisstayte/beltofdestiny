@@ -1,5 +1,6 @@
 import 'package:beltofdestiny/screens/credits_screen.dart';
-import 'package:beltofdestiny/screens/game_screen.dart';
+import 'package:beltofdestiny/screens/game/game_root.dart';
+import 'package:beltofdestiny/screens/game/game_screen.dart';
 import 'package:beltofdestiny/screens/main_menu_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +8,8 @@ import 'package:go_router/go_router.dart';
 import 'package:nes_ui/nes_ui.dart';
 
 final router = GoRouter(
-  // initialLocation: kDebugMode ? '/game' : '/',
-  initialLocation: '/credits',
+  initialLocation: kDebugMode ? '/game' : '/',
+  // initialLocation: '/',
   routes: [
     GoRoute(
       path: '/',
@@ -20,7 +21,7 @@ final router = GoRouter(
           path: 'game',
           pageBuilder: (context, state) => CustomTransitionPage<void>(
             key: state.pageKey,
-            child: GameScreen(
+            child: const GameRoot(
               key: Key('game_screen'),
             ),
             transitionDuration: const Duration(milliseconds: 1050),
@@ -37,7 +38,7 @@ final router = GoRouter(
           path: 'credits',
           pageBuilder: (context, state) => CustomTransitionPage<void>(
             key: state.pageKey,
-            child: CreditsScreen(
+            child: const CreditsScreen(
               key: Key('credits_screen'),
             ),
             transitionDuration: const Duration(milliseconds: 1050),

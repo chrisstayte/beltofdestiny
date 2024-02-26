@@ -26,12 +26,7 @@ class ControlArm extends RectangleComponent
           children: [
             RectangleHitbox(
               isSolid: true,
-
               collisionType: CollisionType.passive,
-              // size: Vector2(
-              //   armLength * 2,
-              //   armLength,
-              // ),
             ),
           ],
         );
@@ -42,7 +37,7 @@ class ControlArm extends RectangleComponent
 
     // position = Vector2(game.width / 2, game.height / 5);
     position =
-        Vector2(game.mainBelt.position.x + (beltWidth / 2), game.height / 3.5);
+        Vector2(game.mainBelt.position.x + (beltWidth / 2), game.size.y / 3.5);
 
     add(
       CircleComponent(

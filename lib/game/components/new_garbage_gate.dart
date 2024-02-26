@@ -10,7 +10,7 @@ class NewGarbageGate extends PositionComponent with CollisionCallbacks {
           anchor: Anchor.centerLeft,
           children: [
             RectangleHitbox(
-              size: Vector2(beltWidth, 100),
+              size: Vector2(beltWidth, gameHeight / 2),
               isSolid: true,
               collisionType: CollisionType.passive,
               anchor: Anchor.bottomLeft,

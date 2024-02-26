@@ -1,18 +1,26 @@
+import 'package:beltofdestiny/extensions.dart';
 import 'package:beltofdestiny/game/game_config.dart';
 import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
 class TemperatureBar extends StatelessWidget {
-  const TemperatureBar({super.key, required temperature})
+  const TemperatureBar({super.key, required double temperature})
       : _temperature = temperature;
 
   final double _temperature;
 
+  /// Normalizes a value within a given range.
+  ///
+  /// The [value] is the input value to be normalized.
+  /// The [low] and [high] parameters define the range within which the value should be normalized.
+  /// Returns the normalized value.
+  /// The normalized value is a double between 0 and 1.
   double _normalizeValue(double value, double low, double high) {
     // Clamp the value between low and high
     double clampedValue = value.clamp(low, high);
@@ -28,6 +36,9 @@ class TemperatureBar extends StatelessWidget {
     RemoteConfig remoteConfig =
         context.read<RemoteConfigProvider>().remoteConfig;
 
+    double normalizedValue = _temperature.normalizeMinMax(
+        remoteConfig.lowestTemp, remoteConfig.highestTemp);
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,7 +49,15 @@ class TemperatureBar extends StatelessWidget {
             color: Palette.eggPlant,
             fontSize: 10,
           ),
-        ), // TODO: flash the text as the temperature hits near the top
+        )
+            .animate(
+              autoPlay: false,
+              // onComplete: (controller) => controller.repeat(reverse: true),
+            )
+            .tint(
+              color: Colors.red,
+              duration: .8.seconds,
+            ),
         const Gap(10),
         Container(
           height: 200,
@@ -68,33 +87,13 @@ class TemperatureBar extends StatelessWidget {
                       stops: [0, 0.4, .5],
                     ),
                   ),
-                )
-                    .animate(
-                      autoPlay: _normalizeValue(
-                                  _temperature,
-                                  remoteConfig.lowestTemp,
-                                  remoteConfig.highestTemp) >
-                              0.8
-                          ? true
-                          : false,
-                      onComplete: (controller) => controller.repeat(),
-                    )
-                    .shimmer(
-                      color: Colors.white,
-                      duration: 1.5.seconds,
-                    ),
+                ),
               ),
               Align(
                 alignment: Alignment.topCenter,
                 child: AnimatedContainer(
                   duration: 300.milliseconds,
-                  height: 180 *
-                      (1 -
-                          _normalizeValue(
-                            _temperature,
-                            remoteConfig.lowestTemp,
-                            remoteConfig.highestTemp,
-                          )),
+                  height: 180 * (1 - normalizedValue),
                   width: 7,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(0),
@@ -105,7 +104,6 @@ class TemperatureBar extends StatelessWidget {
             ],
           ),
         )
-        // TODO: Animate bar shaking as it gets closer to the top,
       ],
     );
   }

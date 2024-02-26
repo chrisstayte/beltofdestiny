@@ -6,8 +6,8 @@ import 'package:flame/palette.dart';
 class RecyclableGarbageGate extends PositionComponent {
   RecyclableGarbageGate()
       : super(
-          size: Vector2(1, gameHeight),
-          anchor: Anchor.topCenter,
+          size: Vector2(75, gameHeight),
+          anchor: Anchor.topLeft,
           children: [
             RectangleHitbox(),
           ],

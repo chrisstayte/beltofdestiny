@@ -38,7 +38,7 @@ class Machine extends RectangleComponent
     super.onCollisionStart(intersectionPoints, other);
 
     // if the game is over just skip more points
-    if (game.gameOver) {
+    if (game.gameOver.value) {
       return;
     }
 
@@ -56,7 +56,7 @@ class Machine extends RectangleComponent
 
       if (!game.controlArm.isSeized) {
         if (game.temperature.value > game.lowestTemp) {
-          game.temperature.value -= increaseTemperatureUnit * 0.8;
+          game.temperature.value -= increaseTemperatureUnit;
         }
       }
     } else {

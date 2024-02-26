@@ -43,22 +43,26 @@ class BeltOfDestiny extends FlameGame
   final double highestTemp;
   final double increaseTemperatureUnitCount;
 
-  bool gameOver = false;
+  // Game Stats
+  // bool gameOver = false;
+  int garbageIncinerated = 0;
+  int garbageRecycled = 0;
+  int garbageRecycledIncorrectly = 0;
 
+  // Game metrics fed live
+  final ValueNotifier<bool> gameOver = ValueNotifier<bool>(false);
   final ValueNotifier<int> score = ValueNotifier<int>(0);
   late ValueNotifier<double> temperature;
 
-  double get width => size.x;
-  double get height => size.y;
-
+  // Components
   ControlArm controlArm = ControlArm();
 
   final Machine _incinerator =
       Machine(key: ComponentKey.named('Incinerator'), isIncinerator: true)
         ..position = Vector2((gameWidth / 2) - machineWidth - 50, 25);
-
   final Machine _recycler =
-      Machine(key: ComponentKey.named('Recycler'), isIncinerator: false);
+      Machine(key: ComponentKey.named('Recycler'), isIncinerator: false)
+        ..position = Vector2(gameWidth / 2 + 50, 25);
 
   /// The main belt of the game headed towards the incinerator
   final MainBelt mainBelt = MainBelt();
@@ -70,37 +74,17 @@ class BeltOfDestiny extends FlameGame
 
     camera.viewfinder.anchor = Anchor.topLeft;
 
-    // Play area
-    world.add(PlayArea());
-
-    // Incinerator
-    world.add(_incinerator);
-
-    // Recycler
-    world.add(_recycler..position = Vector2(width / 2 + 50, 25));
-
-    // Main belt
-    world.add(
-      mainBelt..position = _incinerator.center,
-    );
-
-    // Invisible gate that spawns new garbage
-    world.add(
-      NewGarbageGate()
-        ..position = Vector2(
-          mainBelt.position.x - beltWidth / 2,
-          mainBelt.height * .7,
-        ),
-    );
-
-    // Recyclable garbage gate
-    world.add(
+    List<Component> componentsToAdd = [
+      _incinerator, // Incinerator machine
+      _recycler, // Recycler machine
+      mainBelt..position = _incinerator.center, // Main belt for gate
       RecyclableGarbageGate()
-        ..position = _recycler.center + Vector2(garbageWidth / 2, 0),
-    );
+        ..position = _recycler.center +
+            Vector2(garbageWidth / 2, 0), // recyclable garbage gate
+      controlArm // Control arm
+    ];
 
-    // Control arm
-    world.add(controlArm);
+    world.addAll(componentsToAdd);
 
     // Add the first garbage to the game
     addNewGarbage();
@@ -108,8 +92,8 @@ class BeltOfDestiny extends FlameGame
     // If temperature rises to max then game over
     temperature.addListener(() {
       if (temperature.value >= highestTemp) {
-        if (!gameOver) {
-          gameOver = true;
+        if (!gameOver.value) {
+          gameOver.value = true;
           controlArm.lockArmOpen();
 
           // remove all garbage on screen
