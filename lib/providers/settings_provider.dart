@@ -27,6 +27,9 @@ class SettingsProvider {
   // Whether or not the music is on.
   ValueNotifier<bool> musicOn = ValueNotifier(true);
 
+  // Whether or not to show debug mode on game
+  ValueNotifier<bool> debugModeOn = ValueNotifier(false);
+
   /// Creates new instance of [SettingsProvider] backed by [settings]
   ///
   /// By default, settings are persisted using [LocalStorageSettingsStore]
@@ -50,6 +53,7 @@ class SettingsProvider {
       }),
       _settings.getSoundsOn(defaultValue: true),
       _settings.getMusicOn(defaultValue: true),
+      _settings.getDebugModeOn(defaultValue: false),
     ]);
 
     _log.fine(() => 'Loaded values: $loadedValues');
@@ -71,5 +75,11 @@ class SettingsProvider {
     musicOn.value = !musicOn.value;
     _settings.saveMusicOn(value: musicOn.value);
     _log.fine(() => 'Music on: ${musicOn.value}');
+  }
+
+  void toggleDebugModeOn() {
+    debugModeOn.value = !debugModeOn.value;
+    _settings.saveDebugModeOn(value: debugModeOn.value);
+    _log.fine(() => 'Debug mode on: ${debugModeOn.value}');
   }
 }

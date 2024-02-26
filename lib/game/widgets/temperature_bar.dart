@@ -13,22 +13,6 @@ class TemperatureBar extends StatelessWidget {
 
   final double _temperature;
 
-  /// Normalizes a value within a given range.
-  ///
-  /// The [value] is the input value to be normalized.
-  /// The [low] and [high] parameters define the range within which the value should be normalized.
-  /// Returns the normalized value.
-  /// The normalized value is a double between 0 and 1.
-  double _normalizeValue(double value, double low, double high) {
-    // Clamp the value between low and high
-    double clampedValue = value.clamp(low, high);
-
-    // Normalize the clamped value to a 0-1 range
-    double normalizedValue = (clampedValue - low) / (high - low);
-
-    return normalizedValue;
-  }
-
   @override
   Widget build(BuildContext context) {
     RemoteConfig remoteConfig =

@@ -34,7 +34,7 @@ class RemoteConfigProvider {
     }
 
     // if debugging the app then listen to changes instantly
-    if (kDebugMode) {
+    if (kDebugMode && !kIsWeb) {
       _firebaseRemoteConfig.onConfigUpdated.listen((event) async {
         Logger().i("Got new config values");
         await _firebaseRemoteConfig.activate();

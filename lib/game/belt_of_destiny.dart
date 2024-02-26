@@ -24,6 +24,7 @@ class BeltOfDestiny extends FlameGame
     required this.lowestTemp,
     required this.highestTemp,
     required this.increaseTemperatureUnitCount,
+    required this.showDebug,
   }) : super(
           camera: CameraComponent.withFixedResolution(
             width: gameWidth,
@@ -41,6 +42,7 @@ class BeltOfDestiny extends FlameGame
   final double lowestTemp;
   final double highestTemp;
   final double increaseTemperatureUnitCount;
+  final bool showDebug;
 
   // Game Stats
   // bool gameOver = false;
@@ -105,7 +107,7 @@ class BeltOfDestiny extends FlameGame
       }
     });
 
-    debugMode = kDebugMode;
+    debugMode = showDebug;
   }
 
   void addNewGarbage() {

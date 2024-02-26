@@ -1,6 +1,7 @@
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:beltofdestiny/providers/remote_config_provider.dart';
+import 'package:beltofdestiny/providers/settings_provider.dart';
 import 'package:beltofdestiny/screens/game/game_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +22,8 @@ class _GameRootState extends State<GameRoot> {
     RemoteConfig remoteConfig =
         context.read<RemoteConfigProvider>().remoteConfig;
 
+    SettingsProvider settings = context.read<SettingsProvider>();
+
     _game = BeltOfDestiny(
       baseSpeed: remoteConfig.baseSpeed,
       maxSpeedIncreaseMultiplier: remoteConfig.maxSpeedIncreaseMultiplier,
@@ -28,6 +31,7 @@ class _GameRootState extends State<GameRoot> {
       lowestTemp: remoteConfig.lowestTemp,
       highestTemp: remoteConfig.highestTemp,
       increaseTemperatureUnitCount: remoteConfig.increaseTemperatureUnitCount,
+      showDebug: settings.debugModeOn.value,
     );
 
     _game.gameOver.addListener(() {

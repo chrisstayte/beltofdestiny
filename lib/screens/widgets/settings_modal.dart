@@ -78,6 +78,20 @@ class SettingsModal extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            ListTile(
+                              contentPadding: EdgeInsets.zero,
+                              title: const Text('Debug'),
+                              trailing: ValueListenableBuilder<bool>(
+                                valueListenable: settings.debugModeOn,
+                                builder: (context, soundsOn, child) =>
+                                    NesCheckBox(
+                                  value: soundsOn,
+                                  onChange: (value) {
+                                    settings.toggleDebugModeOn();
+                                  },
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),

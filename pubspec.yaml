@@ -28,9 +28,8 @@ dependencies:
   firebase_analytics: ^10.8.6
   firebase_crashlytics: ^3.4.15
   url_launcher: ^6.2.5
+  logging: ^1.2.0
 
-  logging: any
-  flutter_web_plugins: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
