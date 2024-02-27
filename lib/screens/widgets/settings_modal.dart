@@ -83,9 +83,9 @@ class SettingsModal extends StatelessWidget {
                               title: const Text('Debug'),
                               trailing: ValueListenableBuilder<bool>(
                                 valueListenable: settings.debugModeOn,
-                                builder: (context, soundsOn, child) =>
+                                builder: (context, debugModeOn, child) =>
                                     NesCheckBox(
-                                  value: soundsOn,
+                                  value: debugModeOn,
                                   onChange: (value) {
                                     settings.toggleDebugModeOn();
                                   },

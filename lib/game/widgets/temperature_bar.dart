@@ -21,16 +21,20 @@ class TemperatureBar extends StatelessWidget {
     double normalizedValue = _temperature.normalizeMinMax(
         remoteConfig.lowestTemp, remoteConfig.highestTemp);
 
+    double screenHeight = MediaQuery.of(context).size.height;
+
+    double temperatureBarHeight = screenHeight / 2;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Text(
           '${_temperature.toStringAsFixed(1)}°',
           style: TextStyle(
-            color: Palette.eggPlant,
-            fontSize: 10,
-          ),
+              color: Palette.eggPlant,
+              fontSize: 16,
+              fontWeight: FontWeight.bold),
         )
             .animate(
               autoPlay: false,
@@ -42,11 +46,11 @@ class TemperatureBar extends StatelessWidget {
             ),
         const Gap(10),
         Container(
-          height: 200,
-          width: 18,
+          height: temperatureBarHeight,
+          width: 30,
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(15),
             color: Palette.eggPlant,
           ),
           child: Stack(
@@ -55,9 +59,9 @@ class TemperatureBar extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 child: Container(
                   height: double.infinity,
-                  width: 6,
+                  width: 15,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(0),
                     gradient: const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -75,8 +79,10 @@ class TemperatureBar extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 child: AnimatedContainer(
                   duration: 300.milliseconds,
-                  height: 180 * (1 - normalizedValue),
-                  width: 7,
+                  height:
+                      (temperatureBarHeight - (temperatureBarHeight * .05)) *
+                          (1 - normalizedValue),
+                  width: 17,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(0),
                     color: Palette.eggPlant,
