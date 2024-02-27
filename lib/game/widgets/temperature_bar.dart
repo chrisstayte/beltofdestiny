@@ -23,7 +23,7 @@ class TemperatureBar extends StatelessWidget {
 
     double screenHeight = MediaQuery.of(context).size.height;
 
-    double temperatureBarHeight = screenHeight / 2;
+    double temperatureBarHeight = screenHeight / 2.8;
 
     return Column(
       mainAxisSize: MainAxisSize.min,

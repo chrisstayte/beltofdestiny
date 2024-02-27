@@ -14,6 +14,7 @@ class SettingsModal extends StatelessWidget {
 
     return Align(
       child: Material(
+        color: Colors.transparent,
         child: IntrinsicWidth(
           stepHeight: 0.56,
           child: SizedBox.expand(

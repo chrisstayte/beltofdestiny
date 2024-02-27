@@ -137,6 +137,10 @@ class BeltOfDestiny extends FlameGame
           event is KeyDownEvent) {
         score.value += 1000;
       }
+      if (event.logicalKey == LogicalKeyboardKey.keyQ &&
+          event is KeyDownEvent) {
+        temperature.value = remoteConfig.highestTemp;
+      }
     }
     return KeyEventResult.handled;
   }

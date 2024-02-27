@@ -10,7 +10,7 @@ const double machineHeight = 200;
 const double armWidth = 15;
 const double armLength = 260;
 const double rotationAngle = 60;
-const double seizeArmDuration = 3;
+//const double seizeArmDuration = 3; // moved to remote config
 
 // Garbage
 // const double baseSpeed = 320; // moved to remote config

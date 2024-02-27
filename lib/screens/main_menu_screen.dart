@@ -73,6 +73,31 @@ class MainMenuScreen extends StatelessWidget {
                                     context: context,
                                     builder: (context) => const SettingsModal(),
                                   );
+
+                                  // TODO: Create a custom animation for the settings modal
+                                  // showGeneralDialog(
+                                  //   context: context,
+                                  //   pageBuilder: (_, __, ___) => const SizedBox
+                                  //       .shrink(), // Empty widget, since animationBuilder is handling the transition
+                                  //   transitionBuilder: (context, animation,
+                                  //       secondaryAnimation, child) {
+                                  //     final curvedAnimation = CurvedAnimation(
+                                  //         parent: animation,
+                                  //         curve: Curves.easeOut);
+
+                                  //     // Using scale animation
+                                  //     return Transform(
+                                  //       transform: Matrix4.identity()
+                                  //         ..scale(1.0, curvedAnimation.value),
+                                  //       child: Dialog(
+                                  //         backgroundColor: Colors.transparent,
+                                  //         child: SettingsModal(),
+                                  //       ),
+                                  //     );
+                                  //   },
+                                  //   transitionDuration:
+                                  //       const Duration(milliseconds: 500),
+                                  // );
                                 },
                                 child: const Text('Settings'),
                               ),

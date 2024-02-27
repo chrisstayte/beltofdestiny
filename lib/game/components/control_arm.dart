@@ -72,7 +72,7 @@ class ControlArm extends RectangleComponent
     _rotateWithEffect();
     paint = BasicPalette.red.paint();
     countdown = Timer(
-      seizeArmDuration,
+      game.remoteConfig.controlArmSeizedTime,
       onTick: () {
         isSeized = false;
         paint = BasicPalette.green.paint();

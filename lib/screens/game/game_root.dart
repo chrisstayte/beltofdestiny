@@ -2,7 +2,9 @@ import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
+import 'package:beltofdestiny/screens/game/game_over_screen.dart';
 import 'package:beltofdestiny/screens/game/game_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +16,7 @@ class GameRoot extends StatefulWidget {
 }
 
 class _GameRootState extends State<GameRoot> {
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
   Future<BeltOfDestiny>? _gameInitializationFuture;
 
   @override
@@ -48,7 +51,10 @@ class _GameRootState extends State<GameRoot> {
   }
 
   void _gameOver() {
-    debugPrint('Game Over');
+    if (kDebugMode) {
+      print('Game Over');
+    }
+    _navigatorKey.currentState?.pushNamed('/game-over');
   }
 
   @override
@@ -74,12 +80,21 @@ class _GameRootState extends State<GameRoot> {
 
   Navigator _buildNavigator(BeltOfDestiny game) {
     return Navigator(
+      key: _navigatorKey,
       initialRoute: '/',
       onGenerateRoute: (settings) {
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (context) => GameScreen(game: game),
-        );
+        switch (settings.name) {
+          case '/':
+            return MaterialPageRoute(
+              builder: (context) => GameScreen(game: game),
+            );
+          case '/game-over':
+            return MaterialPageRoute(
+              builder: (context) => GameOverScreen(game: game),
+            );
+          default:
+            throw Exception('Invalid route: ${settings.name}');
+        }
       },
     );
   }

@@ -508,10 +508,10 @@ packages:
     dependency: "direct main"
     description:
       name: nes_ui
-      sha256: "76fc3053f337d4b3775ea8bba003148f440e7c22f587222551d67342afd677bb"
+      sha256: "32857496688fa4022a90c072761234f2062b53a8889c3b1fd820dcb80895bf31"
       url: "https://pub.dev"
     source: hosted
-    version: "0.16.0"
+    version: "0.17.0"
   nested:
     dependency: transitive
     description:
@@ -528,6 +528,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.2"
+  package_info_plus:
+    dependency: "direct main"
+    description:
+      name: package_info_plus
+      sha256: "88bc797f44a94814f2213db1c9bd5badebafdfb8290ca9f78d4b9ee2a3db4d79"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.1"
+  package_info_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: package_info_plus_platform_interface
+      sha256: "9bc8ba46813a4cc42c66ab781470711781940780fd8beddd0c3da62506d3a6c6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   path:
     dependency: transitive
     description:

@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:nes_ui/nes_ui.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CreditsScreen extends StatelessWidget {
@@ -37,7 +38,7 @@ class CreditsScreen extends StatelessWidget {
                               child: const Text(
                                   '''Submission for 2024 Flutter Dev Challenge
                                   
-                                  Much love and support to all of the packages I relied on to help me build this app and much thanks to flutter for such a great framework.
+Much love and support to all of the packages I relied on to help me build this app and much thanks to flutter for such a great framework.
                                   '''),
                             ),
                             ListTile(
@@ -59,7 +60,7 @@ class CreditsScreen extends StatelessWidget {
                                     }
                                   }
                                 },
-                                icon: const Icon(Icons.link),
+                                icon: const Icon(Icons.open_in_new),
                               ),
                             ),
                             ListTile(
@@ -78,7 +79,7 @@ class CreditsScreen extends StatelessWidget {
                                     }
                                   }
                                 },
-                                icon: const Icon(Icons.link),
+                                icon: const Icon(Icons.open_in_new),
                               ),
                             ),
                             ListTile(
@@ -97,7 +98,7 @@ class CreditsScreen extends StatelessWidget {
                                     }
                                   }
                                 },
-                                icon: const Icon(Icons.link),
+                                icon: const Icon(Icons.open_in_new),
                               ),
                             ),
                             ListTile(
@@ -116,7 +117,7 @@ class CreditsScreen extends StatelessWidget {
                                     }
                                   }
                                 },
-                                icon: const Icon(Icons.link),
+                                icon: const Icon(Icons.open_in_new),
                               ),
                             ),
                             ListTile(
@@ -135,14 +136,50 @@ class CreditsScreen extends StatelessWidget {
                                     }
                                   }
                                 },
-                                icon: const Icon(Icons.link),
+                                icon: const Icon(Icons.open_in_new),
                               ),
                             ),
-                            const Gap(34),
-                            const AboutListTile(
-                              dense: false,
-                              icon: Icon(Icons.info_outline_rounded),
-                            ),
+                            FutureBuilder(
+                                future: PackageInfo.fromPlatform(),
+                                builder: (widget, snapshot) {
+                                  if (snapshot.connectionState !=
+                                      ConnectionState.done) {
+                                    return const SizedBox.shrink();
+                                  } else {
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        ListTile(
+                                          contentPadding: EdgeInsets.zero,
+                                          title: const Text(
+                                              'About Belt of Destiny'),
+                                          trailing: IconButton(
+                                            onPressed: () => showAboutDialog(
+                                                context: context,
+                                                applicationVersion: (snapshot
+                                                        .data as PackageInfo)
+                                                    .version,
+                                                applicationLegalese:
+                                                    'Made by Chris Stayte'),
+                                            icon:
+                                                const Icon(Icons.info_outline),
+                                          ),
+                                        ),
+                                        ListTile(
+                                          contentPadding: EdgeInsets.zero,
+                                          title: const Text('Version'),
+                                          trailing: Text(
+                                            (snapshot.data as PackageInfo)
+                                                .version,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium,
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  }
+                                }),
                           ],
                         ),
                       ),

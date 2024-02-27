@@ -49,10 +49,12 @@ class Machine extends RectangleComponent
       // if the piece of garbage is not recyclable, size arm
       if (!other.canBeRecycled) {
         game.controlArm.seizeArm();
+        game.garbageRecycledIncorrectly++;
         return;
       }
 
       game.score.value += 100;
+      game.garbageRecycled++;
 
       if (!game.controlArm.isSeized) {
         if (game.temperature.value > game.remoteConfig.lowestTemp) {
@@ -62,6 +64,7 @@ class Machine extends RectangleComponent
     } else {
       if (game.temperature.value < game.remoteConfig.highestTemp) {
         game.temperature.value += increaseTemperatureUnit;
+        game.garbageIncinerated++;
       }
     }
   }
