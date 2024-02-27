@@ -5,6 +5,8 @@ import 'package:beltofdestiny/game/components/garbage.dart';
 import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/palette.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Machine extends RectangleComponent
@@ -24,9 +26,28 @@ class Machine extends RectangleComponent
 
   bool isIncinerator;
 
+  final _regular = TextPaint(
+    style: TextStyle(
+      fontSize: 36.0,
+      // fontFamily: 'PressStart2P',
+      color: BasicPalette.black.color,
+    ),
+  );
+
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
+
+    if (game.showDebug) {
+      add(
+        TextComponent(
+          text: isIncinerator ? 'Incinerator' : 'Recycler',
+          textRenderer: _regular,
+          anchor: Anchor.center,
+          position: size / 2,
+        ),
+      );
+    }
 
     paint.color = isIncinerator ? Colors.red : Colors.orange;
   }

@@ -6,6 +6,7 @@ import 'package:beltofdestiny/screens/game/game_over_screen.dart';
 import 'package:beltofdestiny/screens/game/game_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:nes_ui/nes_ui.dart';
 import 'package:provider/provider.dart';
 
 class GameRoot extends StatefulWidget {
@@ -89,8 +90,8 @@ class _GameRootState extends State<GameRoot> {
               builder: (context) => GameScreen(game: game),
             );
           case '/game-over':
-            return MaterialPageRoute(
-              builder: (context) => GameOverScreen(game: game),
+            return NesVerticalCloseTransition.route(
+              pageBuilder: (context, _, ___) => GameOverScreen(game: game),
             );
           default:
             throw Exception('Invalid route: ${settings.name}');

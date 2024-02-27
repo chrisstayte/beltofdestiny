@@ -29,18 +29,11 @@ class BeltOfDestiny extends FlameGame
     temperature = ValueNotifier<double>(remoteConfig.lowestTemp);
   }
 
-  // Remote config values
-  // final double baseSpeed;
-  // final double maxSpeedIncreaseMultiplier;
-  // final double speedIncreasePer100Points;
-  // final double lowestTemp;
-  // final double highestTemp;
-  // final double increaseTemperatureUnitCount;
+  // Configuration
   final bool showDebug;
   final RemoteConfig remoteConfig;
 
   // Game Stats
-  // bool gameOver = false;
   int garbageIncinerated = 0;
   int garbageRecycled = 0;
   int garbageRecycledIncorrectly = 0;
@@ -66,7 +59,13 @@ class BeltOfDestiny extends FlameGame
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
+
+    // register for performance gainz
     children.register<Machine>();
+    children.register<Garbage>();
+
+    // debugMode = showDebug;
+    debugMode = showDebug;
 
     camera.viewfinder.anchor = Anchor.topLeft;
 
@@ -101,9 +100,6 @@ class BeltOfDestiny extends FlameGame
         }
       }
     });
-
-    // debugMode = showDebug;
-    debugMode = showDebug;
   }
 
   void addNewGarbage() {
