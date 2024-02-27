@@ -42,16 +42,8 @@ class _GameRootState extends State<GameRoot> {
   BeltOfDestiny createGameInstance(RemoteConfigProvider remoteConfigProvider,
       SettingsProvider settingsProvider) {
     return BeltOfDestiny(
-      baseSpeed: remoteConfigProvider.remoteConfig.baseSpeed,
-      maxSpeedIncreaseMultiplier:
-          remoteConfigProvider.remoteConfig.maxSpeedIncreaseMultiplier,
-      speedIncreasePer100Points:
-          remoteConfigProvider.remoteConfig.speedIncreasePer100Points,
-      lowestTemp: remoteConfigProvider.remoteConfig.lowestTemp,
-      highestTemp: remoteConfigProvider.remoteConfig.highestTemp,
-      increaseTemperatureUnitCount:
-          remoteConfigProvider.remoteConfig.increaseTemperatureUnitCount,
       showDebug: settingsProvider.debugModeOn.value,
+      remoteConfig: remoteConfigProvider.remoteConfig,
     );
   }
 

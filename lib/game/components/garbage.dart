@@ -46,9 +46,9 @@ class Garbage extends RectangleComponent
     super.update(dt);
 
     final speed = game.score.value.getSpeedIncreasePer100Points(
-      speedIncreasePer100Points: game.speedIncreasePer100Points,
-      baseSpeed: game.baseSpeed,
-      maxSpeedIncreaseMultiplier: game.maxSpeedIncreaseMultiplier,
+      speedIncreasePer100Points: game.remoteConfig.speedIncreasePer100Points,
+      baseSpeed: game.remoteConfig.baseSpeed,
+      maxSpeedIncreaseMultiplier: game.remoteConfig.maxSpeedIncreaseMultiplier,
     );
 
     if (shouldHeadTowardsRecycler) {

@@ -41,8 +41,9 @@ class Machine extends RectangleComponent
       return;
     }
 
-    double increaseTemperatureUnit = (game.highestTemp - game.lowestTemp) /
-        game.increaseTemperatureUnitCount;
+    double increaseTemperatureUnit =
+        (game.remoteConfig.highestTemp - game.remoteConfig.lowestTemp) /
+            game.remoteConfig.increaseTemperatureUnitCount;
 
     if (other is Garbage && !isIncinerator) {
       // if the piece of garbage is not recyclable, size arm
@@ -54,12 +55,12 @@ class Machine extends RectangleComponent
       game.score.value += 100;
 
       if (!game.controlArm.isSeized) {
-        if (game.temperature.value > game.lowestTemp) {
+        if (game.temperature.value > game.remoteConfig.lowestTemp) {
           game.temperature.value -= increaseTemperatureUnit;
         }
       }
     } else {
-      if (game.temperature.value < game.highestTemp) {
+      if (game.temperature.value < game.remoteConfig.highestTemp) {
         game.temperature.value += increaseTemperatureUnit;
       }
     }

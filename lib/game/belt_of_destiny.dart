@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -17,32 +18,26 @@ class BeltOfDestiny extends FlameGame
         TapDetector,
         KeyboardEvents,
         HasCollisionDetection {
-  BeltOfDestiny({
-    required this.baseSpeed,
-    required this.maxSpeedIncreaseMultiplier,
-    required this.speedIncreasePer100Points,
-    required this.lowestTemp,
-    required this.highestTemp,
-    required this.increaseTemperatureUnitCount,
-    required this.showDebug,
-  }) : super(
+  BeltOfDestiny({required this.showDebug, required this.remoteConfig})
+      : super(
           camera: CameraComponent.withFixedResolution(
             width: gameWidth,
             height: gameHeight,
           ),
         ) {
     pauseWhenBackgrounded = false;
-    temperature = ValueNotifier<double>(lowestTemp);
+    temperature = ValueNotifier<double>(remoteConfig.lowestTemp);
   }
 
   // Remote config values
-  final double baseSpeed;
-  final double maxSpeedIncreaseMultiplier;
-  final double speedIncreasePer100Points;
-  final double lowestTemp;
-  final double highestTemp;
-  final double increaseTemperatureUnitCount;
+  // final double baseSpeed;
+  // final double maxSpeedIncreaseMultiplier;
+  // final double speedIncreasePer100Points;
+  // final double lowestTemp;
+  // final double highestTemp;
+  // final double increaseTemperatureUnitCount;
   final bool showDebug;
+  final RemoteConfig remoteConfig;
 
   // Game Stats
   // bool gameOver = false;
@@ -92,7 +87,7 @@ class BeltOfDestiny extends FlameGame
 
     // If temperature rises to max then game over
     temperature.addListener(() {
-      if (temperature.value >= highestTemp) {
+      if (temperature.value >= remoteConfig.highestTemp) {
         if (!gameOver.value) {
           gameOver.value = true;
           controlArm.lockArmOpen();

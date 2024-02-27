@@ -1,13 +1,15 @@
-
 import 'package:beltofdestiny/palette.dart';
+import 'package:beltofdestiny/providers/settings_provider.dart';
 import 'package:beltofdestiny/screens/widgets/settings_modal.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nes_ui/nes_ui.dart';
+import 'package:provider/provider.dart';
 
 class MainMenuScreen extends StatelessWidget {
   const MainMenuScreen({super.key});
@@ -94,6 +96,36 @@ class MainMenuScreen extends StatelessWidget {
                               child: Text('Leaderboards'),
                             ),
                           ),
+                        ],
+                        if (kIsWeb) ...[
+                          const Gap(20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              ValueListenableBuilder(
+                                valueListenable:
+                                    context.read<SettingsProvider>().audioOn,
+                                builder: (context, value, widget) => Tooltip(
+                                  message: 'Toggle audio',
+                                  child: IconButton(
+                                    onPressed: () {
+                                      context
+                                          .read<SettingsProvider>()
+                                          .toggleAudioOn();
+                                    },
+                                    icon: NesIcon(
+                                      iconData: value
+                                          ? NesIcons.audio
+                                          : NesIcons.audioMuted,
+                                      primaryColor: value
+                                          ? Palette.eggPlant
+                                          : Palette.valentineRed,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          )
                         ]
                       ],
                     ),
