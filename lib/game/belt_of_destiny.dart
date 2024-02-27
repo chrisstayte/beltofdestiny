@@ -107,7 +107,7 @@ class BeltOfDestiny extends FlameGame
       }
     });
 
-    debugMode = showDebug;
+    // debugMode = showDebug;
   }
 
   void addNewGarbage() {

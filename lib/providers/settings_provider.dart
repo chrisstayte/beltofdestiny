@@ -57,6 +57,9 @@ class SettingsProvider {
     ]);
 
     _log.fine(() => 'Loaded values: $loadedValues');
+    soundsOn.value = loadedValues[1];
+    musicOn.value = loadedValues[2];
+    debugModeOn.value = loadedValues[3];
   }
 
   void toggleAudioOn() {

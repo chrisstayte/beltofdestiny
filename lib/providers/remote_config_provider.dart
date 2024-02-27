@@ -10,11 +10,10 @@ class RemoteConfigProvider {
   final FirebaseRemoteConfig _firebaseRemoteConfig =
       FirebaseRemoteConfig.instance;
 
+  late Future<void> initializationDone;
+
   RemoteConfigProvider() {
-    if (kDebugMode) {
-      _remoteConfig = RemoteConfig();
-    }
-    _initialize();
+    initializationDone = _initialize();
   }
 
   Future<void> _initialize() async {
@@ -33,7 +32,8 @@ class RemoteConfigProvider {
       _remoteConfig = RemoteConfig();
     }
 
-    // if debugging the app then listen to changes instantly
+    // if debugging the app then listen to changes instantly, web does not support
+    // listening to changes
     if (kDebugMode && !kIsWeb) {
       _firebaseRemoteConfig.onConfigUpdated.listen((event) async {
         Logger().i("Got new config values");
