@@ -21,9 +21,12 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Flame setup
   await Flame.device.fullScreen();
   await Flame.device.setPortraitUpOnly();
 
+  // Needed for flutter web pretty URL
   usePathUrlStrategy();
 
   await Firebase.initializeApp(
@@ -31,11 +34,18 @@ void main() async {
   );
 
   if (!kIsWeb) {
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-  }
+    // Crashlytics setup (not supported on flutter web)
 
-  if (Platform.isIOS) {
-    GameAuth.signIn();
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+    if (Platform.isIOS) {
+      try {
+        await GameAuth.signIn();
+      } catch (e) {
+        if (kDebugMode) {
+          print('Game Auth Error: $e');
+        }
+      }
+    }
   }
 
   // PlatformDispatcher.instance.onError = (error, stack) {
