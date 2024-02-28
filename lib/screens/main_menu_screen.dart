@@ -12,6 +12,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nes_ui/nes_ui.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MainMenuScreen extends StatefulWidget {
   const MainMenuScreen({super.key});
@@ -84,6 +85,35 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                           ),
                         ),
                         const Gap(10),
+                        WobblyButton(
+                          onPressed: () async {
+                            await showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (context) => const StoryModal(),
+                            );
+                          },
+                          buttonBackgroundColor: Palette.paleOrange,
+                          child: const Center(child: Text('Story')),
+                        ),
+                        const Gap(10),
+                        WobblyButton(
+                          onPressed: () async {
+                            Uri url = Uri.parse(
+                                'https://www.epa.gov/recycle/how-do-i-recycle-common-recyclables');
+
+                            if (kIsWeb) {
+                              launchUrl(url);
+                            } else {
+                              if (await canLaunchUrl(url)) {
+                                launchUrl(url);
+                              }
+                            }
+                          },
+                          buttonBackgroundColor: Colors.green.shade300,
+                          child: const Center(child: Text('Do Your Part')),
+                        ),
+                        const Gap(10),
                         IntrinsicWidth(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,33 +122,9 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                                 onPressed: () async {
                                   await showDialog(
                                     context: context,
+                                    barrierDismissible: false,
                                     builder: (context) => const SettingsModal(),
                                   );
-
-                                  // TODO: Create a custom animation for the settings modal
-                                  // showGeneralDialog(
-                                  //   context: context,
-                                  //   pageBuilder: (_, __, ___) => const SizedBox
-                                  //       .shrink(), // Empty widget, since animationBuilder is handling the transition
-                                  //   transitionBuilder: (context, animation,
-                                  //       secondaryAnimation, child) {
-                                  //     final curvedAnimation = CurvedAnimation(
-                                  //         parent: animation,
-                                  //         curve: Curves.easeOut);
-
-                                  //     // Using scale animation
-                                  //     return Transform(
-                                  //       transform: Matrix4.identity()
-                                  //         ..scale(1.0, curvedAnimation.value),
-                                  //       child: Dialog(
-                                  //         backgroundColor: Colors.transparent,
-                                  //         child: SettingsModal(),
-                                  //       ),
-                                  //     );
-                                  //   },
-                                  //   transitionDuration:
-                                  //       const Duration(milliseconds: 500),
-                                  // );
                                 },
                                 child: const Text('Settings'),
                               ),
@@ -133,7 +139,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                           ),
                         ),
                         if (!kIsWeb) ...[
-                          const Gap(15),
+                          const Gap(10),
                           WobblyButton(
                             onPressed: () async {
                               bool isSignedIn = await GameAuth.isSignedIn;

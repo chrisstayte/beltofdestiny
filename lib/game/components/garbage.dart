@@ -23,13 +23,6 @@ class Garbage extends RectangleComponent
   bool hitControlArm = false;
   bool shouldHeadTowardsRecycler = false;
 
-  // final CircleHitbox _centerHitbox = CircleHitbox(
-  //   radius: 1,
-  //   isSolid: true,
-  //   anchor: Anchor.center,
-  //   position: Vector2(garbageWidth / 2, garbageHeight / 2),
-  // );
-
   final RectangleHitbox _edgeHitbox = RectangleHitbox();
 
   @override
