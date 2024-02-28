@@ -141,4 +141,15 @@ class BeltOfDestiny extends FlameGame
     }
     return KeyEventResult.handled;
   }
+
+  void retryGame() {
+    gameOver.value = false;
+    score.value = 0;
+    temperature.value = remoteConfig.lowestTemp;
+    garbageIncinerated = 0;
+    garbageRecycled = 0;
+    garbageRecycledIncorrectly = 0;
+    controlArm.unlockArm();
+    addNewGarbage();
+  }
 }

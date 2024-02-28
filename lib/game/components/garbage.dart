@@ -4,6 +4,7 @@ import 'package:beltofdestiny/extensions.dart';
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/components/components.dart';
 import 'package:beltofdestiny/game/game_config.dart';
+import 'package:beltofdestiny/palette.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/palette.dart';
@@ -14,8 +15,8 @@ class Garbage extends RectangleComponent
       : super(
           size: Vector2(beltWidth * .5, beltWidth * .5),
           paint: canBeRecycled
-              ? BasicPalette.green.paint()
-              : BasicPalette.brown.paint(),
+              ? Palette.pistachioPaletteEntry.paint()
+              : Palette.valentineRedPaletteEntry.paint(),
           anchor: Anchor.center,
         );
 

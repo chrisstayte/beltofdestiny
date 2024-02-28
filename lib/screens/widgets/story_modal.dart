@@ -57,9 +57,9 @@ class _StoryModalState extends State<StoryModal> {
                           child: Center(
                             child: Container(
                               width: 400,
-                              height: 300,
+                              height: 450,
                               child: NesRunningTextLines(
-                                speed: .02,
+                                speed: .015,
                                 key: ValueKey(_currentStoryIndex),
                                 texts: _storyLines[_currentStoryIndex],
                               ),

@@ -110,7 +110,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                               }
                             }
                           },
-                          buttonBackgroundColor: Colors.green.shade300,
+                          buttonBackgroundColor: Palette.pistachio,
                           child: const Center(child: Text('Do Your Part')),
                         ),
                         const Gap(10),

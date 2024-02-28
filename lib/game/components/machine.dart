@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/components/garbage.dart';
 import 'package:beltofdestiny/game/game_config.dart';
+import 'package:beltofdestiny/palette.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/palette.dart';
@@ -49,7 +50,7 @@ class Machine extends RectangleComponent
       );
     }
 
-    paint.color = isIncinerator ? Colors.red : Colors.orange;
+    paint.color = isIncinerator ? Palette.valentineRed : Palette.pistachio;
   }
 
   @override

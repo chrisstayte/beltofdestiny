@@ -94,6 +94,15 @@ class ControlArm extends RectangleComponent
     _rotateWithEffect();
   }
 
+  ///
+  /// open the arm up for a game reset
+  ///
+  void unlockArm() {
+    lockedOpen = false;
+    isSeized = false;
+    // paint = BasicPalette.green.paint();
+  }
+
   void toggleDirection() {
     if (isSeized) return;
     armIsStraightDown = !armIsStraightDown;

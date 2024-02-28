@@ -19,6 +19,7 @@ class GameRoot extends StatefulWidget {
 class _GameRootState extends State<GameRoot> {
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
   Future<BeltOfDestiny>? _gameInitializationFuture;
+  BeltOfDestiny? _game;
 
   @override
   void initState() {
@@ -55,7 +56,10 @@ class _GameRootState extends State<GameRoot> {
     if (kDebugMode) {
       print('Game Over');
     }
-    _navigatorKey.currentState?.pushNamed('/game-over');
+
+    if (_game!.gameOver.value) {
+      _navigatorKey.currentState?.pushNamed('/game-over');
+    }
   }
 
   @override
@@ -66,7 +70,8 @@ class _GameRootState extends State<GameRoot> {
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
           // Game is ready; proceed with rendering using the created game instance.
-          return _buildNavigator(snapshot.data!);
+          _game = snapshot.data;
+          return _buildNavigator(_game!);
         } else {
           // Still loading; show a loading indicator.
           return const Scaffold(

@@ -1,5 +1,6 @@
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/palette.dart';
+import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -156,12 +157,24 @@ class _GameOverScreenState extends State<GameOverScreen> {
                 ),
               ),
               const Gap(16),
-              NesButton(
-                onPressed: () {
-                  context.go('/');
-                },
-                type: NesButtonType.error,
-                child: const Text('Quit'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  WobblyButton(
+                    onPressed: () {
+                      widget._game.retryGame();
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Retry'),
+                  ),
+                  WobblyButton(
+                    onPressed: () {
+                      context.go('/');
+                    },
+                    buttonBackgroundColor: Palette.valentineRed,
+                    child: const Text('Quit'),
+                  ),
+                ],
               ),
             ],
           ),
