@@ -139,47 +139,38 @@ Much love and support to all of the packages I relied on to help me build this a
                                 icon: const Icon(Icons.open_in_new),
                               ),
                             ),
-                            FutureBuilder(
+                            ListTile(
+                              contentPadding: EdgeInsets.zero,
+                              title: const Text("Version"),
+                              trailing: FutureBuilder(
                                 future: PackageInfo.fromPlatform(),
                                 builder: (widget, snapshot) {
-                                  if (snapshot.connectionState !=
-                                      ConnectionState.done) {
-                                    return const SizedBox.shrink();
-                                  } else {
-                                    return Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        ListTile(
-                                          contentPadding: EdgeInsets.zero,
-                                          title: const Text(
-                                              'About Belt of Destiny'),
-                                          trailing: IconButton(
-                                            onPressed: () => showAboutDialog(
-                                                context: context,
-                                                applicationVersion: (snapshot
-                                                        .data as PackageInfo)
-                                                    .version,
-                                                applicationLegalese:
-                                                    'Made by Chris Stayte'),
-                                            icon:
-                                                const Icon(Icons.info_outline),
-                                          ),
-                                        ),
-                                        ListTile(
-                                          contentPadding: EdgeInsets.zero,
-                                          title: const Text('Version'),
-                                          trailing: Text(
-                                            (snapshot.data as PackageInfo)
-                                                .version,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium,
-                                          ),
-                                        ),
-                                      ],
+                                  if (snapshot.hasData) {
+                                    PackageInfo info =
+                                        snapshot.data as PackageInfo;
+                                    return Text(
+                                      'v${info.version}+${info.buildNumber}',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
                                     );
+                                  } else {
+                                    return const Text('Loading...');
                                   }
-                                }),
+                                },
+                              ),
+                            ),
+                            ListTile(
+                              contentPadding: EdgeInsets.zero,
+                              title: const Text('About Belt of Destiny'),
+                              trailing: IconButton(
+                                onPressed: () => showAboutDialog(
+                                  context: context,
+                                  applicationLegalese: 'Made by Chris Stayte',
+                                ),
+                                icon: const Icon(Icons.info_outline),
+                              ),
+                            ),
                           ],
                         ),
                       ),

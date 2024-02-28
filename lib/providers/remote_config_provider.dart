@@ -1,7 +1,6 @@
 import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
-import 'package:logger/logger.dart';
 
 class RemoteConfigProvider {
   late RemoteConfig _remoteConfig;
@@ -28,7 +27,6 @@ class RemoteConfigProvider {
       await _firebaseRemoteConfig.fetchAndActivate();
       _updateLocalRemoteConfig();
     } catch (exception) {
-      Logger().e('Error fetching remote config', error: exception);
       _remoteConfig = RemoteConfig();
     }
 
@@ -36,7 +34,6 @@ class RemoteConfigProvider {
     // listening to changes
     if (kDebugMode && !kIsWeb) {
       _firebaseRemoteConfig.onConfigUpdated.listen((event) async {
-        Logger().i("Got new config values");
         await _firebaseRemoteConfig.activate();
         _updateLocalRemoteConfig();
       });
