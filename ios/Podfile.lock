@@ -87,6 +87,9 @@ PODS:
     - PromisesSwift (~> 2.1)
   - FirebaseSharedSwift (10.21.0)
   - Flutter (1.0.0)
+  - games_services (0.0.1):
+    - Flutter
+    - FlutterMacOS
   - GoogleAppMeasurement (10.20.0):
     - GoogleAppMeasurement/AdIdSupport (= 10.20.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
@@ -156,6 +159,7 @@ DEPENDENCIES:
   - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
   - firebase_remote_config (from `.symlinks/plugins/firebase_remote_config/ios`)
   - Flutter (from `Flutter`)
+  - games_services (from `.symlinks/plugins/games_services/darwin`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
@@ -194,6 +198,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_remote_config/ios"
   Flutter:
     :path: Flutter
+  games_services:
+    :path: ".symlinks/plugins/games_services/darwin"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_foundation:
@@ -221,6 +227,7 @@ SPEC CHECKSUMS:
   FirebaseSessions: 80c2bbdd28166267b3d132debe5f7531efdb00bc
   FirebaseSharedSwift: 19b3f709993d6fa1d84941d41c01e3c4c11eab93
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  games_services: 9d174ae29e8de7aa3f511bc00fedd7006594063f
   GoogleAppMeasurement: bb3c564c3efb933136af0e94899e0a46167466a8
   GoogleDataTransport: 57c22343ab29bc686febbf7cbb13bad167c2d8fe
   GoogleUtilities: 0759d1a57ebb953965c2dfe0ba4c82e95ccc2e34

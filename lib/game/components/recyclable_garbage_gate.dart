@@ -8,7 +8,9 @@ class RecyclableGarbageGate extends PositionComponent {
           size: Vector2(75, gameHeight),
           anchor: Anchor.topLeft,
           children: [
-            RectangleHitbox(),
+            RectangleHitbox(
+              collisionType: CollisionType.passive,
+            ),
           ],
         );
 }

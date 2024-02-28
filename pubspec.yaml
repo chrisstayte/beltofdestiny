@@ -30,6 +30,7 @@ dependencies:
   url_launcher: ^6.2.5
   logging: ^1.2.0
   package_info_plus: ^5.0.1
+  games_services: ^4.0.1
 
 dev_dependencies:
   flutter_test:

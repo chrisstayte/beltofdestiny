@@ -11,6 +11,12 @@ class GameOverScreen extends StatelessWidget {
 
   final BeltOfDestiny _game;
 
+  static TextStyle get _scoreStyle => TextStyle(
+        color: Palette.eggPlant,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+      );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,36 +38,69 @@ class GameOverScreen extends StatelessWidget {
                   ),
               const Gap(20),
               const Text('You got it next time!'),
+              const Gap(40),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(_game.score.value > 10000
+                          ? Icons.star
+                          : Icons.star_border),
+                      const Text('10K'),
+                    ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(_game.score.value > 50000
+                          ? Icons.star
+                          : Icons.star_border),
+                      const Text('50K'),
+                    ],
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(_game.score.value > 100000
+                          ? Icons.star
+                          : Icons.star_border),
+                      const Text('100K'),
+                    ],
+                  ),
+                ],
+              ),
               const Gap(25),
               ListTile(
-                title: Text('Score: '),
+                title: const Text('Score: '),
                 trailing: Text(
                   '${_game.score.value}',
-                  style: TextStyle(color: Palette.eggPlant),
+                  style: _scoreStyle,
                 ),
               ),
               ListTile(
-                title: Text('Incinerated: '),
+                title: const Text('Incinerated: '),
                 trailing: Text(
                   '${_game.garbageIncinerated}',
-                  style: TextStyle(color: Palette.eggPlant),
+                  style: _scoreStyle,
                 ),
               ),
               ListTile(
-                title: Text('Recycled: '),
+                title: const Text('Recycled: '),
                 trailing: Text(
                   '${_game.garbageRecycled}',
-                  style: TextStyle(color: Palette.eggPlant),
+                  style: _scoreStyle,
                 ),
               ),
               ListTile(
-                title: Text('Recycled Incorrectly: '),
+                title: const Text('Recycled Incorrectly: '),
                 trailing: Text(
                   '${_game.garbageRecycledIncorrectly}',
-                  style: TextStyle(color: Palette.eggPlant),
+                  style: _scoreStyle,
                 ),
               ),
-              SizedBox(height: 16),
+              const Gap(16),
               NesButton(
                 onPressed: () {
                   context.go('/');

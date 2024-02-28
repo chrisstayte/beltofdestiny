@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:beltofdestiny/firebase_options.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/app_lifecycle.dart';
@@ -10,6 +12,7 @@ import 'package:flame/flame.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
+import 'package:games_services/games_services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logging/logging.dart';
 import 'package:nes_ui/nes_ui.dart';
@@ -29,6 +32,10 @@ void main() async {
 
   if (!kIsWeb) {
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  }
+
+  if (Platform.isIOS) {
+    GameAuth.signIn();
   }
 
   // PlatformDispatcher.instance.onError = (error, stack) {
