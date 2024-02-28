@@ -2,11 +2,12 @@ import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:games_services/games_services.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nes_ui/nes_ui.dart';
 
-class GameOverScreen extends StatelessWidget {
+class GameOverScreen extends StatefulWidget {
   const GameOverScreen({super.key, required BeltOfDestiny game}) : _game = game;
 
   final BeltOfDestiny _game;
@@ -16,6 +17,32 @@ class GameOverScreen extends StatelessWidget {
         fontWeight: FontWeight.bold,
         fontSize: 16,
       );
+
+  @override
+  State<GameOverScreen> createState() => _GameOverScreenState();
+}
+
+class _GameOverScreenState extends State<GameOverScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    // Submit Game Achievements If Any
+  }
+
+  void submitGameAchievements() async {
+    if (await GameAuth.isSignedIn) {
+      if (widget._game.score.value > 10000) {
+        // Submit 10K achievement
+      }
+      if (widget._game.score.value > 50000) {
+        // Submit 50K achievement
+      }
+      if (widget._game.score.value > 100000) {
+        // Submit 100K achievement
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +72,7 @@ class GameOverScreen extends StatelessWidget {
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(_game.score.value > 10000
+                      Icon(widget._game.score.value > 10000
                           ? Icons.star
                           : Icons.star_border),
                       const Text('10K'),
@@ -54,7 +81,7 @@ class GameOverScreen extends StatelessWidget {
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(_game.score.value > 50000
+                      Icon(widget._game.score.value > 50000
                           ? Icons.star
                           : Icons.star_border),
                       const Text('50K'),
@@ -63,7 +90,7 @@ class GameOverScreen extends StatelessWidget {
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(_game.score.value > 100000
+                      Icon(widget._game.score.value > 100000
                           ? Icons.star
                           : Icons.star_border),
                       const Text('100K'),
@@ -75,29 +102,29 @@ class GameOverScreen extends StatelessWidget {
               ListTile(
                 title: const Text('Score: '),
                 trailing: Text(
-                  '${_game.score.value}',
-                  style: _scoreStyle,
+                  '${widget._game.score.value}',
+                  style: GameOverScreen._scoreStyle,
                 ),
               ),
               ListTile(
                 title: const Text('Incinerated: '),
                 trailing: Text(
-                  '${_game.garbageIncinerated}',
-                  style: _scoreStyle,
+                  '${widget._game.garbageIncinerated}',
+                  style: GameOverScreen._scoreStyle,
                 ),
               ),
               ListTile(
                 title: const Text('Recycled: '),
                 trailing: Text(
-                  '${_game.garbageRecycled}',
-                  style: _scoreStyle,
+                  '${widget._game.garbageRecycled}',
+                  style: GameOverScreen._scoreStyle,
                 ),
               ),
               ListTile(
                 title: const Text('Recycled Incorrectly: '),
                 trailing: Text(
-                  '${_game.garbageRecycledIncorrectly}',
-                  style: _scoreStyle,
+                  '${widget._game.garbageRecycledIncorrectly}',
+                  style: GameOverScreen._scoreStyle,
                 ),
               ),
               const Gap(16),

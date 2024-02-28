@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:games_services/games_services.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nes_ui/nes_ui.dart';
@@ -114,8 +115,20 @@ class MainMenuScreen extends StatelessWidget {
                         if (!kIsWeb) ...[
                           const Gap(15),
                           WobblyButton(
-                            onPressed: () {
-                              // Navigator.of(context).pushNamed('/game');
+                            onPressed: () async {
+                              bool isSignedIn = await GameAuth.isSignedIn;
+                              if (isSignedIn) {
+                                Leaderboards.showLeaderboards(
+                                    iOSLeaderboardID: 'highScore');
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text(
+                                      'You must be signed in to view leaderboards',
+                                    ),
+                                  ),
+                                );
+                              }
                             },
                             child: const Center(
                               child: Text('Leaderboards'),

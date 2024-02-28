@@ -17,7 +17,6 @@ dependencies:
   go_router: ^13.0.1
   flame: ^1.14.0
   flame_audio: ^2.1.7
-  logger: ^2.0.2+1
   gap: ^3.0.1
   google_fonts: ^6.1.0
   nes_ui: ^0.17.0
@@ -41,17 +40,18 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
   assets:
     - 'assets/images/'
     - 'assets/data/'
-
-fonts:
-  - family: 'ArcadeYA'
-    fonts:
-      - asset: 'assets/fonts/arcade_ya/ARCADE_I.TTF'
-        style: italic
-      - asset: 'assets/fonts/arcade_ya/ARCADE_N.TTF'
+  fonts:
+    - family: 'ArcadeYA'
+      fonts:
+        - asset: 'assets/fonts/arcade_ya/ARCADE_I.TTF'
+          style: italic
+        - asset: 'assets/fonts/arcade_ya/ARCADE_N.TTF'
+    - family: 'PressStart2P'
+      fonts:
+        - asset: 'assets/fonts/press_start_2p/PressStart2P-Regular.ttf'
 
 flutter_launcher_icons:
   android: true
