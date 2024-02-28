@@ -1,6 +1,7 @@
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
 import 'package:beltofdestiny/screens/widgets/settings_modal.dart';
+import 'package:beltofdestiny/screens/widgets/story_modal.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,27 @@ import 'package:go_router/go_router.dart';
 import 'package:nes_ui/nes_ui.dart';
 import 'package:provider/provider.dart';
 
-class MainMenuScreen extends StatelessWidget {
+class MainMenuScreen extends StatefulWidget {
   const MainMenuScreen({super.key});
+
+  @override
+  State<MainMenuScreen> createState() => _MainMenuScreenState();
+}
+
+class _MainMenuScreenState extends State<MainMenuScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      SettingsProvider settingsProvider = context.read<SettingsProvider>();
+      if (await context.read<SettingsProvider>().getStoryAutoShown() <
+          SettingsProvider.currentStoryVersion) {
+        showDialog(context: context, builder: (context) => StoryModal());
+        settingsProvider.storyHasBeenAutoShown();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,9 +142,30 @@ class MainMenuScreen extends StatelessWidget {
                                     iOSLeaderboardID: 'highScore');
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
+                                  SnackBar(
                                     content: Text(
-                                      'You must be signed in to view leaderboards',
+                                      'Login to view leaderboards',
+                                    ),
+                                    actionOverflowThreshold: 1,
+                                    action: SnackBarAction(
+                                      label: 'Sign In',
+                                      onPressed: () async {
+                                        try {
+                                          await GameAuth.signIn();
+                                        } catch (e) {
+                                          if (kDebugMode) {
+                                            print('Game Auth Error: $e');
+                                          }
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'An error occurred while signing in',
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                      },
                                     ),
                                   ),
                                 );

@@ -30,6 +30,12 @@ class LocalStorageSettingsStore extends ISettings {
   }
 
   @override
+  Future<int> getStoryAutoShown({required int defaultValue}) async {
+    final preferences = await instanceFuture;
+    return preferences.getInt('story_auto_shown') ?? defaultValue;
+  }
+
+  @override
   Future<void> saveAudioOn({required bool value}) async {
     final preferences = await instanceFuture;
     await preferences.setBool('audio_on', value);
@@ -51,5 +57,11 @@ class LocalStorageSettingsStore extends ISettings {
   Future<void> saveDebugModeOn({required bool value}) async {
     final preferences = await instanceFuture;
     await preferences.setBool('debug_mode', value);
+  }
+
+  @override
+  Future<void> saveStoryAutoShown({required int value}) async {
+    final preferences = await instanceFuture;
+    await preferences.setInt('story_auto_shown', value);
   }
 }

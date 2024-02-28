@@ -14,6 +14,7 @@ import 'package:beltofdestiny/models/settings.dart';
 
 class SettingsProvider {
   static final _log = Logger('SettingsProvider');
+  static const currentStoryVersion = 1;
 
   final ISettings _settings;
 
@@ -54,12 +55,13 @@ class SettingsProvider {
       _settings.getSoundsOn(defaultValue: true),
       _settings.getMusicOn(defaultValue: true),
       _settings.getDebugModeOn(defaultValue: false),
+      _settings.getStoryAutoShown(defaultValue: 0),
     ]);
 
     _log.fine(() => 'Loaded values: $loadedValues');
-    soundsOn.value = loadedValues[1];
-    musicOn.value = loadedValues[2];
-    debugModeOn.value = loadedValues[3];
+    soundsOn.value = loadedValues[1] as bool;
+    musicOn.value = loadedValues[2] as bool;
+    debugModeOn.value = loadedValues[3] as bool;
   }
 
   void toggleAudioOn() {
@@ -84,5 +86,15 @@ class SettingsProvider {
     debugModeOn.value = !debugModeOn.value;
     _settings.saveDebugModeOn(value: debugModeOn.value);
     _log.fine(() => 'Debug mode on: ${debugModeOn.value}');
+  }
+
+  void storyHasBeenAutoShown() {
+    // REMINDER: Update this when the story changes to force it to show again
+    _settings.saveStoryAutoShown(value: currentStoryVersion);
+    _log.fine(() => 'Story auto shown: $currentStoryVersion');
+  }
+
+  Future<int> getStoryAutoShown() async {
+    return _settings.getStoryAutoShown(defaultValue: 0);
   }
 }

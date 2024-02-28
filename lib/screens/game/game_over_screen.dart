@@ -1,5 +1,7 @@
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/palette.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:games_services/games_services.dart';
@@ -31,15 +33,41 @@ class _GameOverScreenState extends State<GameOverScreen> {
   }
 
   void submitGameAchievements() async {
-    if (await GameAuth.isSignedIn) {
-      if (widget._game.score.value > 10000) {
-        // Submit 10K achievement
+    try {
+      if (await GameAuth.isSignedIn) {
+        if (widget._game.score.value > 10000) {
+          await Achievements.unlock(
+            achievement: Achievement(
+              iOSID: '10.000.points',
+              percentComplete: 100,
+            ),
+          );
+        }
+        if (widget._game.score.value > 50000) {
+          await Achievements.unlock(
+            achievement: Achievement(
+              iOSID: '50.000.points',
+              percentComplete: 100,
+            ),
+          );
+        }
+        if (widget._game.score.value > 100000) {
+          await Achievements.unlock(
+            achievement: Achievement(
+              iOSID: '100.000.points',
+              percentComplete: 100,
+            ),
+          );
+        }
       }
-      if (widget._game.score.value > 50000) {
-        // Submit 50K achievement
-      }
-      if (widget._game.score.value > 100000) {
-        // Submit 100K achievement
+    } catch (e) {
+      // Log error to analytics
+      FirebaseAnalytics.instance.logEvent(
+        name: 'game_achievements_error',
+        parameters: {'error': e.toString()},
+      );
+      if (kDebugMode) {
+        print('Error submitting game achievements: $e');
       }
     }
   }

@@ -57,15 +57,15 @@ flutter_launcher_icons:
   android: true
   ios: true
   remove_alpha_ios: true
-  image_path: 'assets/app_icon/placeholder.png'
+  image_path: 'assets/app_icon/1024.png'
   mac:
     generate: true
-    image_path: 'assets/app_icon/placeholder.png'
+    image_path: 'assets/app_icon/1024.png'
   web:
     generate: true
-    image_path: 'assets/app_icon/placeholder.png'
-    background_color: '#14452F'
-    theme_color: '#14452F'
+    image_path: 'assets/app_icon/1024.png'
+    background_color: '#D8DCB4'
+    theme_color: '#D8DCB4'
   windows:
     generate: true
-    image_path: 'assets/app_icon/placeholder.png'
+    image_path: 'assets/app_icon/1024.png'

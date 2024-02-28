@@ -6,8 +6,10 @@ abstract class ISettings {
   Future<bool> getMusicOn({required bool defaultValue});
   Future<bool> getSoundsOn({required bool defaultValue});
   Future<bool> getDebugModeOn({required bool defaultValue});
+  Future<int> getStoryAutoShown({required int defaultValue});
   Future<void> saveAudioOn({required bool value});
   Future<void> saveMusicOn({required bool value});
   Future<void> saveSoundsOn({required bool value});
   Future<void> saveDebugModeOn({required bool value});
+  Future<void> saveStoryAutoShown({required int value});
 }
