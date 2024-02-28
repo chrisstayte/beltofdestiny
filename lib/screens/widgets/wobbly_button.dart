@@ -8,8 +8,16 @@ class WobblyButton extends StatefulWidget {
   final Widget child;
 
   final VoidCallback? onPressed;
+  final Color? buttonBackgroundColor;
+  final bool willWobble;
 
-  const WobblyButton({super.key, required this.child, this.onPressed});
+  const WobblyButton({
+    super.key,
+    required this.child,
+    this.onPressed,
+    this.buttonBackgroundColor,
+    bool? willWobble,
+  }) : willWobble = willWobble ?? true;
 
   @override
   State<WobblyButton> createState() => _WobblyButtonState();
@@ -34,17 +42,18 @@ class _WobblyButtonState extends State<WobblyButton>
 
     return MouseRegion(
       onEnter: (event) {
-        _controller.repeat();
+        if (widget.willWobble) _controller.repeat();
       },
       onExit: (event) {
         _controller.stop(canceled: false);
+        _controller.reset();
       },
       child: RotationTransition(
         turns: _controller.drive(const _MySineTween(0.005)),
         child: Theme(
           data: flutterNesTheme(
             nesButtonTheme: currentButtonTheme.copyWith(
-              primary: Palette.fountainBlue,
+              primary: widget.buttonBackgroundColor ?? Palette.fountainBlue,
             ),
           ),
           child: NesButton(
