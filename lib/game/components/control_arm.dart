@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
+import 'package:beltofdestiny/game/components/components.dart';
 import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -71,6 +72,9 @@ class ControlArm extends RectangleComponent
     armIsStraightDown = true;
     _rotateWithEffect();
     paint = BasicPalette.red.paint();
+    game.world.add(
+      ControlArmCountdown(),
+    );
     countdown = Timer(
       game.remoteConfig.controlArmSeizedTime,
       onTick: () {

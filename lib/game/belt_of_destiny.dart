@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:beltofdestiny/game/components/control_arm_countdown.dart';
 import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -76,7 +77,7 @@ class BeltOfDestiny extends FlameGame
       RecyclableGarbageGate()
         ..position = _recycler.center +
             Vector2(garbageWidth / 2, 0), // recyclable garbage gate
-      controlArm // Control arm
+      controlArm, // Control arm,
     ];
 
     world.addAll(componentsToAdd);
