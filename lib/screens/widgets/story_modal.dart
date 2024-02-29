@@ -2,7 +2,9 @@ import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nes_ui/nes_ui.dart';
 
 class StoryModal extends StatefulWidget {
@@ -14,6 +16,7 @@ class StoryModal extends StatefulWidget {
 
 class _StoryModalState extends State<StoryModal> {
   int _currentStoryIndex = 0;
+  bool _showPlayButton = false;
 
   final List<List<String>> _storyLines = [
     [
@@ -28,7 +31,9 @@ class _StoryModalState extends State<StoryModal> {
     ],
     [
       "Remember, this is more than just a game. It's a reflection of the choices we face every day. By learning which items can be given a second life through recycling, you're not only mastering this challenge; you're becoming a part of a global solution.",
-      "Are you ready to take on the challenge and become a hero for our planet? The conveyor belt is rolling — let's make those decisions count!"
+    ],
+    [
+      "Are you ready to take on the challenge and become a hero for our planet? The conveyor belt is rolling — let's make those decisions count!",
     ],
   ];
 
@@ -57,11 +62,48 @@ class _StoryModalState extends State<StoryModal> {
                           child: Center(
                             child: Container(
                               width: 400,
-                              height: 450,
-                              child: NesRunningTextLines(
-                                speed: .015,
-                                key: ValueKey(_currentStoryIndex),
-                                texts: _storyLines[_currentStoryIndex],
+                              height: 350,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  NesRunningTextLines(
+                                    speed: .015,
+                                    key: ValueKey(_currentStoryIndex),
+                                    texts: _storyLines[_currentStoryIndex],
+                                    onEnd: () {
+                                      if (_currentStoryIndex ==
+                                          _storyLines.length - 1) {
+                                        setState(() {
+                                          _showPlayButton = true;
+                                        });
+                                      }
+                                    },
+                                  ),
+                                  Visibility(
+                                    maintainSize: false,
+                                    visible: _showPlayButton,
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 85.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          WobblyButton(
+                                            buttonBackgroundColor:
+                                                Palette.fountainBlue,
+                                            onPressed: () {
+                                              context.go('/game');
+                                            },
+                                            child: const Text('Let\'s Go!'),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                           ),
@@ -100,6 +142,7 @@ class _StoryModalState extends State<StoryModal> {
                                 ? () {
                                     setState(() {
                                       _currentStoryIndex--;
+                                      _showPlayButton = false;
                                     });
                                   }
                                 : null,

@@ -65,7 +65,7 @@ class BeltOfDestiny extends FlameGame
     children.register<Machine>();
     children.register<Garbage>();
 
-    // debugMode = showDebug;
+    // debugMode = showDebug;ff
     debugMode = showDebug;
 
     camera.viewfinder.anchor = Anchor.topLeft;
@@ -78,6 +78,7 @@ class BeltOfDestiny extends FlameGame
         ..position = _recycler.center +
             Vector2(garbageWidth / 2, 0), // recyclable garbage gate
       controlArm, // Control arm,
+      RecyclableBelt()..position = _recycler.center, // Recyclable belt
     ];
 
     world.addAll(componentsToAdd);

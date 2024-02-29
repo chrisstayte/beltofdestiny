@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/components/components.dart';
 import 'package:beltofdestiny/game/game_config.dart';
+import 'package:beltofdestiny/palette.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
@@ -22,7 +23,7 @@ class ControlArm extends RectangleComponent
       : super(
           anchor: Anchor.topCenter,
           size: Vector2(armWidth, armLength),
-          paint: BasicPalette.green.paint(),
+          paint: Palette.fountainBluePaletteEntry.paint(),
           priority: 2,
           children: [
             RectangleHitbox(
@@ -71,7 +72,7 @@ class ControlArm extends RectangleComponent
     isSeized = true;
     armIsStraightDown = true;
     _rotateWithEffect();
-    paint = BasicPalette.red.paint();
+    paint = Palette.dogwoodRosePaletteEntry.paint();
     game.world.add(
       ControlArmCountdown(),
     );
@@ -79,7 +80,7 @@ class ControlArm extends RectangleComponent
       game.remoteConfig.controlArmSeizedTime,
       onTick: () {
         isSeized = false;
-        paint = BasicPalette.green.paint();
+        paint = Palette.fountainBluePaletteEntry.paint();
       },
     );
   }
@@ -91,7 +92,6 @@ class ControlArm extends RectangleComponent
     lockedOpen = true;
     armIsStraightDown = true;
     isSeized = true;
-    _rotateWithEffect();
   }
 
   ///
@@ -100,7 +100,6 @@ class ControlArm extends RectangleComponent
   void unlockArm() {
     lockedOpen = false;
     isSeized = false;
-    // paint = BasicPalette.green.paint();
   }
 
   void toggleDirection() {
@@ -120,7 +119,7 @@ class ControlArm extends RectangleComponent
         armIsStraightDown
             ? _degreesToRadians(0)
             : _degreesToRadians(rotationAngle),
-        EffectController(duration: 0.15), onComplete: () {
+        EffectController(duration: 0.12), onComplete: () {
       _currentRotateEffect = null;
       isMoving = false;
     });

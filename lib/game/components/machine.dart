@@ -7,7 +7,6 @@ import 'package:beltofdestiny/palette.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/palette.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Machine extends RectangleComponent
@@ -15,7 +14,6 @@ class Machine extends RectangleComponent
   Machine({super.key, required this.isIncinerator})
       : super(
           priority: 2,
-          paint: Paint()..color = Colors.blue,
           size: Vector2(machineWidth, machineHeight),
           children: [
             RectangleHitbox(
@@ -29,9 +27,9 @@ class Machine extends RectangleComponent
 
   final _regular = TextPaint(
     style: TextStyle(
-      fontSize: 36.0,
-      // fontFamily: 'PressStart2P',
-      color: BasicPalette.black.color,
+      fontSize: 32.0,
+      fontFamily: 'PressStart2P',
+      color: Palette.eggPlant,
     ),
   );
 
@@ -39,16 +37,14 @@ class Machine extends RectangleComponent
   FutureOr<void> onLoad() async {
     super.onLoad();
 
-    if (game.showDebug) {
-      add(
-        TextComponent(
-          text: isIncinerator ? 'Incinerator' : 'Recycler',
-          textRenderer: _regular,
-          anchor: Anchor.center,
-          position: size / 2,
-        ),
-      );
-    }
+    add(
+      TextComponent(
+        text: isIncinerator ? 'Incinerator' : 'Recycler',
+        textRenderer: _regular,
+        anchor: Anchor.center,
+        position: size / 2,
+      ),
+    );
 
     paint.color = isIncinerator ? Palette.valentineRed : Palette.pistachio;
   }

@@ -12,6 +12,7 @@ class Palette {
   static Color get teal => const Color(0xff1C958D);
   static Color get yaleBlue => const Color(0xff0F5390);
   static Color get pistachio => const Color(0xff81C774);
+  static Color get balticSea => const Color(0xff25292E);
 
   static PaletteEntry get eggPlantPaletteEntry => PaletteEntry(eggPlant);
   static PaletteEntry get dogwoodRosePaletteEntry => PaletteEntry(dogwoodRose);
@@ -24,4 +25,5 @@ class Palette {
   static PaletteEntry get tealPaletteEntry => PaletteEntry(teal);
   static PaletteEntry get yaleBluePaletteEntry => PaletteEntry(yaleBlue);
   static PaletteEntry get pistachioPaletteEntry => PaletteEntry(pistachio);
+  static PaletteEntry get balticSeaPaletteEntry => PaletteEntry(balticSea);
 }
