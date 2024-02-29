@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:beltofdestiny/firebase_options.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/app_lifecycle.dart';
+import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
 import 'package:beltofdestiny/router.dart';
@@ -77,7 +79,17 @@ class MyApp extends StatelessWidget {
           Provider(
             create: (context) => RemoteConfigProvider(),
             lazy: false,
-          )
+          ),
+          ProxyProvider2<SettingsProvider, AppLifecycleStateNotifier,
+              AudioProvider>(
+            lazy: false,
+            create: (context) => AudioProvider(),
+            update: (context, settings, lifecycleNotifier, audio) {
+              audio!.update(lifecycleNotifier, settings);
+              return audio;
+            },
+            dispose: (context, audio) => audio.dispose(),
+          ),
         ],
         child: Builder(builder: (context) {
           return MaterialApp.router(

@@ -1,8 +1,10 @@
 import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
+import 'package:logging/logging.dart';
 
 class RemoteConfigProvider {
+  static final _log = Logger('RemoteConfigProvider');
   late RemoteConfig _remoteConfig;
   RemoteConfig get remoteConfig => _remoteConfig;
 
@@ -52,5 +54,7 @@ class RemoteConfigProvider {
       increaseTemperatureUnitCount:
           _firebaseRemoteConfig.getDouble('increaseTemperatureUnitCount'),
     );
+
+    _log.fine(() => 'RemoteConfig updated: ${_remoteConfig.toString()}');
   }
 }

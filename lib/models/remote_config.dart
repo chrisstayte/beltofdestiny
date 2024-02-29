@@ -36,4 +36,9 @@ class RemoteConfig {
         highestTemp = highestTemp ?? 57.2,
         increaseTemperatureUnitCount = increaseTemperatureUnitCount ?? 100,
         controlArmSeizedTime = controlArmSeizedTime ?? 3;
+
+  @override
+  String toString() {
+    return 'RemoteConfig{baseSpeed: $baseSpeed, maxSpeedIncreaseMultiplier: $maxSpeedIncreaseMultiplier, speedIncreasePer100Points: $speedIncreasePer100Points, lowestTemp: $lowestTemp, highestTemp: $highestTemp, increaseTemperatureUnitCount: $increaseTemperatureUnitCount, controlArmSeizedTime: $controlArmSeizedTime}';
+  }
 }

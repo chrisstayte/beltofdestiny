@@ -15,16 +15,16 @@ class RecyclableBelt extends PositionComponent
 
     RectangleComponent beltFromRecycler = RectangleComponent(
       paint: Palette.balticSeaPaletteEntry.paint(),
-      size: Vector2(beltWidth, 465),
+      size: Vector2(beltWidth, 455),
       anchor: Anchor.topCenter,
     );
 
     beltFromRecycler.add(
       RectangleComponent(
         paint: Palette.balticSeaPaletteEntry.paint(),
-        size: Vector2(650, beltWidth),
+        size: Vector2(650, beltWidth + 2),
         anchor: Anchor.topRight,
-        position: Vector2(beltWidth, beltFromRecycler.height),
+        position: Vector2(beltWidth, beltFromRecycler.height - 2),
       ),
     );
 

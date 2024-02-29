@@ -9,11 +9,12 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/palette.dart';
 
-class Garbage extends RectangleComponent
+class Garbage extends CircleComponent
     with HasGameReference<BeltOfDestiny>, CollisionCallbacks {
   Garbage({this.canBeRecycled = false})
       : super(
-          size: Vector2(beltWidth * .5, beltWidth * .5),
+          // size: Vector2(beltWidth * .5, beltWidth * .5),
+          radius: beltWidth * .25,
           paint: canBeRecycled
               ? Palette.pistachioPaletteEntry.paint()
               : Palette.valentineRedPaletteEntry.paint(),
@@ -24,10 +25,10 @@ class Garbage extends RectangleComponent
   bool hitControlArm = false;
   bool shouldHeadTowardsRecycler = false;
 
-  final RectangleHitbox _edgeHitbox = RectangleHitbox();
+  final CircleHitbox _edgeHitbox = CircleHitbox();
 
   @override
-  FutureOr<void> onLoad() async {
+  Future<void> onLoad() async {
     super.onLoad();
 
     position = Vector2(game.mainBelt.position.x, game.mainBelt.size.y);
