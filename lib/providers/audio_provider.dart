@@ -11,7 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
 const List<Song> songs = [
-  Song('a-hero-of-the-80s-126684.mp3', 'A Hero of the 80s'),
+  // Song('a-hero-of-the-80s-126684.mp3', 'A Hero of the 80s',
+  //     artist: 'Grand_Project'),
+  Song('chiptune-grooving-142242.mp3', 'Chiptune Grooving', artist: '8059346'),
 ];
 
 class AudioProvider {
@@ -53,6 +55,15 @@ class AudioProvider {
     unawaited(_preloadSfx());
   }
 
+  void dispose() {
+    _lifecycleNotifier?.removeListener(_handleAppLifecycle);
+    _stopAllSound();
+    _musicPlayer.dispose();
+    for (final player in _sfxPlayers) {
+      player.dispose();
+    }
+  }
+
   /// Makes sure the audio controller is listening to changes
   /// of both the app lifecycle (e.g. suspended, resumed), and
   /// the settings (e.g. volume, muted sound).
@@ -62,13 +73,14 @@ class AudioProvider {
     _attachSettingsProvider(settingsProvider);
   }
 
-  void dispose() {
+  /// Enables the [AudioController] to listen to [AppLifecycleState] events,
+  /// and therefore do things like stopping playback when the game
+  /// goes into the background.
+  void _attachLifecycleNotifier(AppLifecycleStateNotifier lifecycleNotifier) {
     _lifecycleNotifier?.removeListener(_handleAppLifecycle);
-    _stopAllSound();
-    _musicPlayer.dispose();
-    for (final player in _sfxPlayers) {
-      player.dispose();
-    }
+
+    lifecycleNotifier.addListener(_handleAppLifecycle);
+    _lifecycleNotifier = lifecycleNotifier;
   }
 
   /// Enables the [AudioController] to track changes to settings.
@@ -150,21 +162,16 @@ class AudioProvider {
     }
   }
 
-  /// Enables the [AudioController] to listen to [AppLifecycleState] events,
-  /// and therefore do things like stopping playback when the game
-  /// goes into the background.
-  void _attachLifecycleNotifier(AppLifecycleStateNotifier lifecycleNotifier) {
-    _lifecycleNotifier?.removeListener(_handleAppLifecycle);
-
-    lifecycleNotifier.addListener(_handleAppLifecycle);
-    _lifecycleNotifier = lifecycleNotifier;
-  }
-
   void _handleSongFinished(void _) {
-    _log.info('Last song finished playing.');
-    // Move the song that just finished playing to the end of the playlist.
-    _playlist.addLast(_playlist.removeFirst());
-    // Play the song at the beginning of the playlist.
+    if (_playlist.length > 1) {
+      // If the playlist has more than one song, cycle through them.
+      _log.info('Last song finished playing. Moving to the next song.');
+      _playlist.addLast(_playlist.removeFirst());
+    } else {
+      // If there's only one song in the playlist, log that it will repeat.
+      _log.info('Only one song in the playlist. Repeating the song.');
+    }
+    // Play the current (or repeated) song in the playlist.
     _playCurrentSongInPlaylist();
   }
 
