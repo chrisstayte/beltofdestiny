@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:beltofdestiny/models/remote_config.dart';
+import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:flame/image_composition.dart' as ic;
 import 'package:flame/sprite.dart';
@@ -69,6 +70,22 @@ class BeltOfDestiny extends FlameGame
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
+
+    if (showDebug) {
+      add(
+        FpsTextComponent(
+          position: Vector2(20, 0),
+          priority: 2,
+          textRenderer: TextPaint(
+            style: TextStyle(
+              fontSize: 15.0,
+              fontFamily: 'PressStart2P',
+              color: Palette.eggPlant,
+            ),
+          ),
+        ),
+      );
+    }
 
     incineratorImage = await images.load('Incinerator.png');
     incineratorSprite = SpriteSheet(

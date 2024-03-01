@@ -169,7 +169,7 @@ class AudioProvider {
   /// The controller will ignore this call when the attached settings'
   /// [SettingsController.audioOn] is `true` or if its
   /// [SettingsController.soundsOn] is `false`.
-  void playSfx(SfxType type) async {
+  Future<void> playSfx(SfxType type) async {
     final audioOn = _settingsProvider?.audioOn.value ?? false;
     if (!audioOn) {
       _log.fine(() => 'Ignoring playing sound ($type) because audio is muted.');

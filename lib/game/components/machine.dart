@@ -28,7 +28,6 @@ class Machine extends RectangleComponent
         );
 
   bool isIncinerator;
-  late Sprite _sprite;
   late final SpriteAnimationComponent _spriteAnimationComponent;
 
   final _regular = TextPaint(
@@ -54,7 +53,7 @@ class Machine extends RectangleComponent
         ),
       );
     } else {
-      // NOTE: Changing the method to animate to remove json requirement
+      // NOTE: Changing the method to animate to remove json
       // final jsonString = await rootBundle.loadString(
       //     'assets/data/${isIncinerator ? 'Incinerator' : 'Recycler'}.json');
       // final json = jsonDecode(jsonString);
@@ -83,13 +82,10 @@ class Machine extends RectangleComponent
       }
 
       paint.color = Colors.transparent;
-      // _sprite = game.incineratorSprite.getSprite(0, 0);
-      // add(SpriteComponent(sprite: _sprite));
       add(_spriteAnimationComponent);
     }
   }
 
-  @override
   @override
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
