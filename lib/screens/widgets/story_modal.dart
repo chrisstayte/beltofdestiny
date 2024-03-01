@@ -1,9 +1,7 @@
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nes_ui/nes_ui.dart';
@@ -62,7 +60,7 @@ class _StoryModalState extends State<StoryModal> {
                         child: Padding(
                           padding: const EdgeInsets.all(16),
                           child: Center(
-                            child: Container(
+                            child: SizedBox(
                               width: 400,
                               height: 350,
                               child: Column(

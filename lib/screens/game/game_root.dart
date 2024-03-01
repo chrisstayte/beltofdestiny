@@ -1,5 +1,4 @@
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
-import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';

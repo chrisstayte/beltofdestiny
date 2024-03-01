@@ -184,7 +184,7 @@ Much love and support to all of the packages I relied on to help me build this a
                                         .textTheme
                                         .headlineSmall,
                                   ),
-                                  Text('Music from pixabay'),
+                                  const Text('Music from pixabay'),
                                   const Gap(10),
                                   const ListTile(
                                     title: Text('Title'),
@@ -209,7 +209,7 @@ Much love and support to all of the packages I relied on to help me build this a
                                         .textTheme
                                         .headlineSmall,
                                   ),
-                                  Text('Sound effects from pixabay'),
+                                  const Text('Sound effects from pixabay'),
                                   const Gap(10),
                                   const ListTile(
                                     title: Text('Title'),

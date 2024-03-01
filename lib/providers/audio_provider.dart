@@ -322,31 +322,22 @@ class AudioProvider {
 
   void _stopAllSound() {
     _log.info('Stopping all sound');
-    _musicPlayer.pause();
+    if (_musicPlayer.state != PlayerState.paused) {
+      _musicPlayer.pause();
+    }
+    // Stop SFX players only if they're playing
     for (final player in _sfxPlayers) {
-      player.stop();
+      if (player.state == PlayerState.playing) {
+        player.stop();
+      }
     }
   }
 
-  /// Allows control over loudness of different SFX types.
-  double _soundTypeToVolume(SfxType type) {
-    switch (type) {
-      case SfxType.score:
-      case SfxType.jump:
-      case SfxType.doubleJump:
-      case SfxType.hit:
-      case SfxType.gameStart:
-      case SfxType.gameOver:
-      case SfxType.buttonTap:
-      case SfxType.countdown:
-      case SfxType.controlArmEnabled:
-        return 1.0;
-      case SfxType.pointGain:
-      case SfxType.pauseIn:
-      case SfxType.pauseOut:
-        return 0.65;
-      case SfxType.damage:
-        return 0.8;
-    }
-  }
+  final Map<SfxType, double> _sfxVolumeMap = {
+    SfxType.damage: 0.8,
+    SfxType.pauseOut: 0.65,
+    SfxType.pauseIn: 0.65,
+  };
+
+  double _soundTypeToVolume(SfxType type) => _sfxVolumeMap[type] ?? 1.0;
 }

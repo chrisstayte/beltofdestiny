@@ -6,7 +6,6 @@ import 'package:beltofdestiny/screens/widgets/story_modal.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:games_services/games_services.dart';
 import 'package:gap/gap.dart';
@@ -31,7 +30,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
       SettingsProvider settingsProvider = context.read<SettingsProvider>();
       if (await context.read<SettingsProvider>().getStoryAutoShown() <
           SettingsProvider.currentStoryVersion) {
-        showDialog(context: context, builder: (context) => StoryModal());
+        showDialog(context: context, builder: (context) => const StoryModal());
         settingsProvider.storyHasBeenAutoShown();
       }
     });
@@ -153,7 +152,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: Text(
+                                    content: const Text(
                                       'Login to view leaderboards',
                                     ),
                                     actionOverflowThreshold: 1,
@@ -168,7 +167,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                                           }
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
-                                            SnackBar(
+                                            const SnackBar(
                                               content: Text(
                                                 'An error occurred while signing in',
                                               ),

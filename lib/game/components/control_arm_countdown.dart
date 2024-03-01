@@ -68,7 +68,7 @@ class ControlArmCountdown extends PositionComponent
       },
     );
     // Don't forget to start the timer
-    _countdownTimer?.start();
+    _countdownTimer.start();
   }
 
   @override

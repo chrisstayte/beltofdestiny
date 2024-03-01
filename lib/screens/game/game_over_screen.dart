@@ -8,7 +8,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:games_services/games_services.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nes_ui/nes_ui.dart';
 
 class GameOverScreen extends StatefulWidget {
   const GameOverScreen({super.key, required BeltOfDestiny game}) : _game = game;

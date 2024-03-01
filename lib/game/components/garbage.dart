@@ -7,7 +7,6 @@ import 'package:beltofdestiny/game/game_config.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flame/palette.dart';
 
 class Garbage extends CircleComponent
     with HasGameReference<BeltOfDestiny>, CollisionCallbacks {
