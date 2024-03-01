@@ -13,7 +13,7 @@ class MainBelt extends RectangleComponent with HasGameReference<BeltOfDestiny> {
         ) {
     // Invisible gate that spawns new garbage
     add(
-      NewGarbageGate()..position = Vector2(0, height * .7),
+      NewGarbageGate()..position = Vector2(0, height * .63),
     );
   }
 }
