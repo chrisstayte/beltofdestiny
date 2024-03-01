@@ -16,7 +16,7 @@
 					<key>page0 - file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
 					<dict>
 						<key>CreationDate</key>
-						<date>2024-02-24T23:09:44Z</date>
+						<date>2024-03-01T06:00:42Z</date>
 						<key>DigestAlgorithm</key>
 						<string>MD5</string>
 						<key>PageDigests</key>
@@ -40,6 +40,26 @@
 								</data>
 								<key>Size</key>
 								<integer>121296</integer>
+							</dict>
+							<key>files/drag-and-drop-img-60.png</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								hLdFv3C66u6c
+								8tUpIsZ5+g==
+								</data>
+								<key>Size</key>
+								<integer>43228</integer>
+							</dict>
+							<key>files/drag-and-drop-img-69.png</key>
+							<dict>
+								<key>Digest</key>
+								<data>
+								HpHQLPWpAvOP
+								KSPABteSgQ==
+								</data>
+								<key>Size</key>
+								<integer>4904</integer>
 							</dict>
 							<key>files/foundry-cc-edit-mode-icon.png</key>
 							<dict>
@@ -65,18 +85,18 @@
 							<dict>
 								<key>Digest</key>
 								<data>
-								vueMgGL2ac4T
-								5Mv66LwvQA==
+								u5U4puL/1YiA
+								Ex1FOtF89A==
 								</data>
 								<key>Size</key>
-								<integer>112200</integer>
+								<integer>120533</integer>
 							</dict>
 							<key>files/stacks_page_page0.js</key>
 							<dict>
 								<key>Digest</key>
 								<data>
-								egHlEp2+X1RE
-								Sync0d9snA==
+								k4UsuYsqZ8gG
+								TCg/JDtyRQ==
 								</data>
 								<key>Size</key>
 								<integer>962</integer>
@@ -85,11 +105,11 @@
 							<dict>
 								<key>Digest</key>
 								<data>
-								RLRZkmig+A+A
-								xfFe+GkLhg==
+								w031KMy4+QDm
+								+9EUPVQ6wA==
 								</data>
 								<key>Size</key>
-								<integer>4786</integer>
+								<integer>12256</integer>
 							</dict>
 						</dict>
 						<key>PageID</key>
@@ -360,7 +380,7 @@
 					<key>rw:document:extrafiles - file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
 					<dict>
 						<key>CreationDate</key>
-						<date>2024-02-25T01:58:12Z</date>
+						<date>2024-03-01T06:00:42Z</date>
 						<key>DigestAlgorithm</key>
 						<string>MD5</string>
 						<key>PageDigests</key>
@@ -379,11 +399,11 @@
 							<dict>
 								<key>Digest</key>
 								<data>
-								IxVZmKtoXCby
-								nZHlRXdWEA==
+								bMNt6/DjMl5Q
+								EpyRtud+aw==
 								</data>
 								<key>Size</key>
-								<integer>351</integer>
+								<integer>319</integer>
 							</dict>
 						</dict>
 						<key>PageID</key>
@@ -765,7 +785,7 @@
 				E4APgA6AEYAQXxAkNkJCOEZGMDktOTFDNi00QkJELThD
 				MDAtQTYzOUJDMzAxRjk0XkFSQ0FERV9JLndvZmYyXxAk
 				NzkwNTI3MzYtNTExRS00MTMxLTg4NDMtNzMzN0YzQzhG
-				NjZD0lUPVldXTlMudGltZSNBxcVrGosYqIAS0jIzWVpW
+				NjZD0lUPVldXTlMudGltZSNBxcjTRct0BIAS0jIzWVpW
 				TlNEYXRlolk30w0OD1xeYKFdgBShX4AVgBZfEDtmaWxl
 				Oi8vL1VzZXJzL2Nocmlzc3RheXRlL1NvdXJjZUNvbnRy
 				b2wvYmVsdG9mZGVzdGlueS9kb2NzLwjSMjNkZV8QE05T
@@ -776,8 +796,8 @@
 				Skpyc3R1dgiAIIAYgACAAIAegBuAGoAdgBxfECQ2NTgx
 				RTE0Ri1BMTZBLTRGOEItQkUyRi04QzdCNjBCRjI5NUZe
 				QVJDQURFX04ud29mZjJfECQ3N0E1ODk4NC05RTc4LTRE
-				Q0ItOEUwNy01MTk2QkU5ODI1MjPSVQ97VyNBxcVrGosY
-				24AS0w0OD36AYKF/gB+hX4AVgBZfEDtmaWxlOi8vL1Vz
+				Q0ItOEUwNy01MTk2QkU5ODI1MjPSVQ97VyNBxcjTRct0
+				P4AS0w0OD36AYKF/gB+hX4AVgBZfEDtmaWxlOi8vL1Vz
 				ZXJzL2Nocmlzc3RheXRlL1NvdXJjZUNvbnRyb2wvYmVs
 				dG9mZGVzdGlueS9kb2NzL18QKy9Vc2Vycy9jaHJpc3N0
 				YXl0ZS9Eb3dubG9hZHMvQVJDQURFX04ud29mZjLaP0AP
@@ -785,7 +805,7 @@
 				JYAkXxAkQkY5NDY4ODctQTFCRS00MTIxLUIwQTgtOTVD
 				ODQxRjVDMDUxXkFSQ0FERV9SLndvZmYyXxAkNjdGMDNC
 				M0UtOUFEMC00RDUzLTlCMUYtMjZBOTM4RjY3MkMz0lUP
-				lFcjQcXFaxqLGPSAEtMNDg+XmWChmIAnoV+AFYAWXxA7
+				lFcjQcXI00XLdE+AEtMNDg+XmWChmIAnoV+AFYAWXxA7
 				ZmlsZTovLy9Vc2Vycy9jaHJpc3N0YXl0ZS9Tb3VyY2VD
 				b250cm9sL2JlbHRvZmRlc3RpbnkvZG9jcy9fECsvVXNl
 				cnMvY2hyaXNzdGF5dGUvRG93bmxvYWRzL0FSQ0FERV9S
@@ -936,7 +956,7 @@
 					<key>PublishingSettingsConfigured</key>
 					<true/>
 					<key>RWBadge</key>
-					<string>{"openInNewWindow":true,"position":"bottomLeft","enabled":false,"delayType":"time","useDefaultImage":true,"delayDistance":30,"text":"Made in RapidWeaver","hiddenOnMobile":false,"delayMillis":1000,"transition":"slide","colorScheme":"auto","hiddenOnDesktop":false,"imageAlt":"RapidWeaver Icon","hiddenOnTablet":false,"url":"https:\/\/www.realmacsoftware.com"}</string>
+					<string>{"openInNewWindow":true,"text":"Made in RapidWeaver","delayMillis":1000,"url":"https:\/\/www.realmacsoftware.com","delayType":"time","position":"bottomLeft","imageAlt":"RapidWeaver Icon","hiddenOnTablet":false,"useDefaultImage":true,"delayDistance":30,"hiddenOnMobile":false,"colorScheme":"auto","hiddenOnDesktop":false,"transition":"slide","enabled":false}</string>
 					<key>RememberPrivacyMessageDismissed</key>
 					<false/>
 					<key>SelectedPublishingDestinationIndex</key>
