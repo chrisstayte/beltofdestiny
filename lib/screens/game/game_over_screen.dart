@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
@@ -29,7 +31,7 @@ class _GameOverScreenState extends State<GameOverScreen> {
   void initState() {
     super.initState();
 
-    if (!kIsWeb) {
+    if (Platform.isIOS) {
       // Submit Game Achievements If Any
       submitGameAchievements();
     }

@@ -36,7 +36,6 @@ void main() async {
 
   if (!kIsWeb) {
     // Crashlytics setup (not supported on flutter web)
-
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
     if (Platform.isIOS) {
       try {
