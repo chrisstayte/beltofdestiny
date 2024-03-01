@@ -191,7 +191,7 @@ class AudioProvider {
     await currentPlayer.play(
       AssetSource('sfx/$filename'),
       volume: _soundTypeToVolume(type),
-      mode: PlayerMode.mediaPlayer,
+      mode: PlayerMode.lowLatency,
       ctx: const AudioContext(
         iOS: AudioContextIOS(category: AVAudioSessionCategory.ambient),
       ),
