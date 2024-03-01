@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:beltofdestiny/game/components/control_arm_countdown.dart';
 import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:beltofdestiny/providers/audio_provider.dart';
+import 'package:flame/sprite.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -62,9 +63,17 @@ class BeltOfDestiny extends FlameGame
   /// The main belt of the game headed towards the incinerator
   final MainBelt mainBelt = MainBelt();
 
+  late SpriteSheet incineratorSprite;
+
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
+
+    final incineratorImage = await images.load('Incinerator.png');
+    incineratorSprite = SpriteSheet(
+      image: incineratorImage,
+      srcSize: Vector2.all(400),
+    );
 
     // register for performance gainz
     children.register<Machine>();

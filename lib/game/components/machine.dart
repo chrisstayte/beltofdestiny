@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/components/garbage.dart';
@@ -7,7 +8,9 @@ import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Machine extends RectangleComponent
     with HasGameReference<BeltOfDestiny>, CollisionCallbacks {
@@ -17,13 +20,15 @@ class Machine extends RectangleComponent
           size: Vector2(machineWidth, machineHeight),
           children: [
             RectangleHitbox(
-              size: Vector2(machineWidth, 60),
-              position: Vector2(0, machineHeight * .05),
+              size: Vector2(machineWidth, machineHeight * .45),
+              position: Vector2(0, machineHeight * .15),
             ),
           ],
         );
 
   bool isIncinerator;
+  late Sprite _sprite;
+  late final SpriteAnimationComponent _spriteAnimationComponent;
 
   final _regular = TextPaint(
     style: TextStyle(
@@ -37,18 +42,44 @@ class Machine extends RectangleComponent
   FutureOr<void> onLoad() async {
     super.onLoad();
 
-    add(
-      TextComponent(
-        text: isIncinerator ? 'Incinerator' : 'Recycler',
-        textRenderer: _regular,
-        anchor: Anchor.center,
-        position: size / 2,
-      ),
-    );
+    if (game.showDebug) {
+      paint.color = isIncinerator ? Palette.valentineRed : Palette.pistachio;
+      add(
+        TextComponent(
+          text: isIncinerator ? 'Incinerator' : 'Recycler',
+          textRenderer: _regular,
+          anchor: Anchor.center,
+          position: size / 2,
+        ),
+      );
+    } else {
+      final jsonString = await rootBundle.loadString(
+          'assets/data/${isIncinerator ? 'Incinerator' : 'Recycler'}.json');
+      final json = jsonDecode(jsonString);
+      final image = await Flame.images
+          .load('${isIncinerator ? 'Incinerator' : 'Recycler'}.png');
+      final SpriteAnimation animation = SpriteAnimation.fromAsepriteData(
+        image,
+        json,
+      );
 
-    paint.color = isIncinerator ? Palette.valentineRed : Palette.pistachio;
+      _spriteAnimationComponent = SpriteAnimationComponent(
+        animation: animation,
+        size: Vector2(machineWidth, machineHeight),
+      );
+
+      for (final frame in _spriteAnimationComponent.animation!.frames) {
+        frame.stepTime = .5;
+      }
+
+      paint.color = Colors.transparent;
+      // _sprite = game.incineratorSprite.getSprite(0, 0);
+      // add(SpriteComponent(sprite: _sprite));
+      add(_spriteAnimationComponent);
+    }
   }
 
+  @override
   @override
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {

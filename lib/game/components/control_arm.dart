@@ -39,8 +39,8 @@ class ControlArm extends RectangleComponent
     super.onLoad();
 
     // position = Vector2(game.width / 2, game.height / 5);
-    position =
-        Vector2(game.mainBelt.position.x + (beltWidth / 2), game.size.y / 3.5);
+    position = Vector2(
+        game.mainBelt.position.x + (beltWidth / 2), machineHeight + 260);
 
     add(
       CircleComponent(

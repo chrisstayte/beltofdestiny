@@ -4,7 +4,7 @@ const gameHeight = 1920.0;
 
 // Machines
 const double machineWidth = 400;
-const double machineHeight = 200;
+const double machineHeight = 400;
 
 // Control arm
 const double armWidth = 15;
