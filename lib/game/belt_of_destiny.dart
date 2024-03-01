@@ -1,19 +1,17 @@
 import 'dart:async';
 import 'dart:math';
-
-import 'package:beltofdestiny/game/components/control_arm_countdown.dart';
 import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:beltofdestiny/providers/audio_provider.dart';
+import 'package:flame/image_composition.dart' as ic;
 import 'package:flame/sprite.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'components/components.dart';
 import 'package:beltofdestiny/game/game_config.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
-import 'package:flutter/material.dart';
 
 class BeltOfDestiny extends FlameGame
     with
@@ -63,15 +61,24 @@ class BeltOfDestiny extends FlameGame
   /// The main belt of the game headed towards the incinerator
   final MainBelt mainBelt = MainBelt();
 
+  late ic.Image incineratorImage;
   late SpriteSheet incineratorSprite;
+  late ic.Image recyclerImage;
+  late SpriteSheet recyclerSprite;
 
   @override
   FutureOr<void> onLoad() async {
     super.onLoad();
 
-    final incineratorImage = await images.load('Incinerator.png');
+    incineratorImage = await images.load('Incinerator.png');
     incineratorSprite = SpriteSheet(
       image: incineratorImage,
+      srcSize: Vector2.all(400),
+    );
+
+    recyclerImage = await images.load('Recycler.png');
+    recyclerSprite = SpriteSheet(
+      image: recyclerImage,
       srcSize: Vector2.all(400),
     );
 

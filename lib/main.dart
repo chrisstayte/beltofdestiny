@@ -55,11 +55,14 @@ void main() async {
   //   return true;
   // };
 
-  Logger.root.level = Level.ALL;
-  Logger.root.onRecord.listen((record) {
-    debugPrint(
-        '${record.loggerName} -- ${record.level.name}: ${record.time}: ${record.message}');
-  });
+  if (kDebugMode) {
+    Logger.root.level = Level.ALL;
+    Logger.root.onRecord.listen((record) {
+      debugPrint(
+          '${record.loggerName} -- ${record.level.name}: ${record.time}: ${record.message}');
+    });
+  }
+
   runApp(const MyApp());
 }
 

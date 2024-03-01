@@ -68,3 +68,7 @@ The remote config was added as a way for the game to adjust gameplay feel and me
 ### Docs Folder
 
 In order to have a landing page to advertise the game that is SEO friendly I decided to host a website in github pages that just takes you to the game. It's not entirely important but it lives under the docs folder. I used rapid weaver to create it. Only reason was so I could do it in 5 minutes.
+
+### Browser Compatibility
+
+Everything seemed to be working fine in safari up until the part where I added sprites and sprite animations. Then safari got super laggy.

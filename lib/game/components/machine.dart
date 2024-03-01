@@ -9,6 +9,7 @@ import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
+import 'package:flame/sprite.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -53,18 +54,27 @@ class Machine extends RectangleComponent
         ),
       );
     } else {
-      final jsonString = await rootBundle.loadString(
-          'assets/data/${isIncinerator ? 'Incinerator' : 'Recycler'}.json');
-      final json = jsonDecode(jsonString);
-      final image = await Flame.images
-          .load('${isIncinerator ? 'Incinerator' : 'Recycler'}.png');
-      final SpriteAnimation animation = SpriteAnimation.fromAsepriteData(
-        image,
-        json,
+      // NOTE: Changing the method to animate to remove json requirement
+      // final jsonString = await rootBundle.loadString(
+      //     'assets/data/${isIncinerator ? 'Incinerator' : 'Recycler'}.json');
+      // final json = jsonDecode(jsonString);
+      // final image = await Flame.images
+      //     .load('${isIncinerator ? 'Incinerator' : 'Recycler'}.png');
+      final image = isIncinerator ? game.incineratorImage : game.recyclerImage;
+      // final SpriteAnimation animation = SpriteAnimation.fromAsepriteData(
+      //   image,
+      //   json,
+      // );
+
+      final SpriteSheet spriteSheet = SpriteSheet(
+        image: image,
+        srcSize: Vector2(machineWidth, machineHeight),
       );
 
+      final animation2 = spriteSheet.createAnimation(row: 0, stepTime: .5);
+
       _spriteAnimationComponent = SpriteAnimationComponent(
-        animation: animation,
+        animation: animation2,
         size: Vector2(machineWidth, machineHeight),
       );
 
