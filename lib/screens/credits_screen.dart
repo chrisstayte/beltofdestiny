@@ -1,3 +1,4 @@
+import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -169,6 +170,57 @@ Much love and support to all of the packages I relied on to help me build this a
                                   applicationLegalese: 'Made by Chris Stayte',
                                 ),
                                 icon: const Icon(Icons.info_outline),
+                              ),
+                            ),
+                            const Gap(50),
+                            NesContainer(
+                              backgroundColor: Colors.transparent,
+                              padding: const EdgeInsets.all(15),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'Music',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineSmall,
+                                  ),
+                                  Text('Music from pixabay'),
+                                  const Gap(10),
+                                  const ListTile(
+                                    title: Text('Title'),
+                                    trailing: Text(
+                                      'Artist',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  ...songs.map(
+                                    (song) => ListTile(
+                                      dense: false,
+                                      title: Text(song.name),
+                                      trailing: Text(song.artist ?? 'Unknown'),
+                                    ),
+                                  ),
+                                  const Gap(20),
+                                  Text(
+                                    'Sound Effects',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineSmall,
+                                  ),
+                                  Text('Sound effects from pixabay'),
+                                  const Gap(10),
+                                  const ListTile(
+                                    title: Text('Title'),
+                                    trailing: Text(
+                                      'Artist',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],

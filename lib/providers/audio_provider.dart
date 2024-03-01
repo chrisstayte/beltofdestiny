@@ -6,6 +6,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:beltofdestiny/models/song.dart';
 import 'package:beltofdestiny/providers/app_lifecycle.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
@@ -15,6 +16,45 @@ const List<Song> songs = [
   //     artist: 'Grand_Project'),
   Song('chiptune-grooving-142242.mp3', 'Chiptune Grooving', artist: '8059346'),
 ];
+
+List<String> soundTypeToFilename(SfxType type) {
+  switch (type) {
+    case SfxType.gameStart:
+      return ['game-start-6104.mp3'];
+    case SfxType.gameOver:
+      return ['game-over-38511.mp3'];
+    case SfxType.damage:
+      return ['hurt_c_08-102842.mp3'];
+    case SfxType.countdown:
+      return ['countdown-beep.wav'];
+    case SfxType.pointGain:
+      return ['sfx_coin_single2.wav'];
+    case SfxType.pauseIn:
+      return ['sfx_sounds_pause7_in.wav'];
+    case SfxType.pauseOut:
+      return ['sfx_sounds_pause7_out.wav'];
+    case SfxType.controlArmEnabled:
+      return ['8-bit-powerup-6768.mp3'];
+    default:
+      return [];
+  }
+}
+
+enum SfxType {
+  score,
+  jump,
+  doubleJump,
+  hit,
+  damage,
+  buttonTap,
+  gameStart,
+  gameOver,
+  countdown,
+  pointGain,
+  pauseIn,
+  pauseOut,
+  controlArmEnabled,
+}
 
 class AudioProvider {
   static final _log = Logger('AudioController');
@@ -51,6 +91,13 @@ class AudioProvider {
                 polyphony, (index) => AudioPlayer(playerId: 'sfxPlayer#$index'))
             .toList(growable: false),
         _playlist = Queue.of(List<Song>.of(songs)..shuffle()) {
+    unawaited(_musicPlayer.setVolume(.2));
+    unawaited(_musicPlayer.setPlayerMode(PlayerMode.lowLatency));
+    _musicPlayer.setAudioContext(
+      const AudioContext(
+        iOS: AudioContextIOS(category: AVAudioSessionCategory.ambient),
+      ),
+    );
     _musicPlayer.onPlayerComplete.listen(_handleSongFinished);
     unawaited(_preloadSfx());
   }
@@ -117,16 +164,52 @@ class AudioProvider {
     }
   }
 
+  /// Plays a single sound effect, defined by [type].
+  ///
+  /// The controller will ignore this call when the attached settings'
+  /// [SettingsController.audioOn] is `true` or if its
+  /// [SettingsController.soundsOn] is `false`.
+  void playSfx(SfxType type) async {
+    final audioOn = _settingsProvider?.audioOn.value ?? false;
+    if (!audioOn) {
+      _log.fine(() => 'Ignoring playing sound ($type) because audio is muted.');
+      return;
+    }
+    final soundsOn = _settingsProvider?.soundsOn.value ?? false;
+    if (!soundsOn) {
+      _log.fine(() =>
+          'Ignoring playing sound ($type) because sounds are turned off.');
+      return;
+    }
+
+    _log.fine(() => 'Playing sound: $type');
+    final options = soundTypeToFilename(type);
+    final filename = options[_random.nextInt(options.length)];
+    _log.fine(() => '- Chosen filename: $filename');
+
+    final currentPlayer = _sfxPlayers[_currentSfxPlayer];
+    await currentPlayer.play(
+      AssetSource('sfx/$filename'),
+      volume: _soundTypeToVolume(type),
+      mode: PlayerMode.mediaPlayer,
+      ctx: const AudioContext(
+        iOS: AudioContextIOS(category: AVAudioSessionCategory.ambient),
+      ),
+    );
+
+    _currentSfxPlayer = (_currentSfxPlayer + 1) % _sfxPlayers.length;
+  }
+
   /// Preloads all sound effects.
   Future<void> _preloadSfx() async {
     _log.info('Preloading sound effects');
     // This assumes there is only a limited number of sound effects in the game.
     // If there are hundreds of long sound effect files, it's better
     // to be more selective when preloading.
-    // await AudioCache.instance.loadAll(SfxType.values
-    //     .expand(soundTypeToFilename)
-    //     .map((path) => 'sfx/$path')
-    //     .toList());
+    await AudioCache.instance.loadAll(SfxType.values
+        .expand(soundTypeToFilename)
+        .map((path) => 'sfx/$path')
+        .toList());
   }
 
   void _audioOnHandler() {
@@ -242,6 +325,28 @@ class AudioProvider {
     _musicPlayer.pause();
     for (final player in _sfxPlayers) {
       player.stop();
+    }
+  }
+
+  /// Allows control over loudness of different SFX types.
+  double _soundTypeToVolume(SfxType type) {
+    switch (type) {
+      case SfxType.score:
+      case SfxType.jump:
+      case SfxType.doubleJump:
+      case SfxType.hit:
+      case SfxType.gameStart:
+      case SfxType.gameOver:
+      case SfxType.buttonTap:
+      case SfxType.countdown:
+      case SfxType.controlArmEnabled:
+        return 1.0;
+      case SfxType.pointGain:
+      case SfxType.pauseIn:
+      case SfxType.pauseOut:
+        return 0.65;
+      case SfxType.damage:
+        return 0.8;
     }
   }
 }

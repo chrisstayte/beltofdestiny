@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:beltofdestiny/game/components/control_arm_countdown.dart';
 import 'package:beltofdestiny/models/remote_config.dart';
+import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -19,8 +20,11 @@ class BeltOfDestiny extends FlameGame
         TapDetector,
         KeyboardEvents,
         HasCollisionDetection {
-  BeltOfDestiny({required this.showDebug, required this.remoteConfig})
-      : super(
+  BeltOfDestiny({
+    required this.showDebug,
+    required this.remoteConfig,
+    required this.audioProvider,
+  }) : super(
           camera: CameraComponent.withFixedResolution(
             width: gameWidth,
             height: gameHeight,
@@ -33,6 +37,7 @@ class BeltOfDestiny extends FlameGame
   // Configuration
   final bool showDebug;
   final RemoteConfig remoteConfig;
+  final AudioProvider audioProvider;
 
   // Game Stats
   int garbageIncinerated = 0;

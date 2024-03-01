@@ -4,9 +4,9 @@ import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/components/garbage.dart';
 import 'package:beltofdestiny/game/game_config.dart';
 import 'package:beltofdestiny/palette.dart';
+import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flame/palette.dart';
 import 'package:flutter/material.dart';
 
 class Machine extends RectangleComponent
@@ -66,11 +66,16 @@ class Machine extends RectangleComponent
     if (other is Garbage && !isIncinerator) {
       // if the piece of garbage is not recyclable, size arm
       if (!other.canBeRecycled) {
+        if (game.controlArm.isSeized) {
+          return;
+        }
+        game.audioProvider.playSfx(SfxType.damage);
         game.controlArm.seizeArm();
         game.garbageRecycledIncorrectly++;
         return;
       }
 
+      game.audioProvider.playSfx(SfxType.pointGain);
       game.score.value += 100;
       game.garbageRecycled++;
 

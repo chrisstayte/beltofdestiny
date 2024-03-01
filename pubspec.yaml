@@ -45,6 +45,7 @@ flutter:
     - 'assets/images/'
     - 'assets/data/'
     - 'assets/music/'
+    - 'assets/sfx/'
   fonts:
     - family: 'ArcadeYA'
       fonts:

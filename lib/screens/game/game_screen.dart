@@ -3,9 +3,13 @@ import 'package:beltofdestiny/game/widgets/temperature_bar.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/app_lifecycle.dart';
 import 'package:beltofdestiny/game/widgets/pause_modal.dart';
+import 'package:beltofdestiny/providers/audio_provider.dart';
+import 'package:beltofdestiny/providers/settings_provider.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:nes_ui/nes_ui.dart';
 import 'package:provider/provider.dart';
 
 class GameScreen extends StatefulWidget {
@@ -49,18 +53,24 @@ class _GameScreenState extends State<GameScreen> {
           return;
         }
         game.paused = true;
-        _showSettingsModal();
+        _showPauseModal();
       case AppLifecycleState.resumed:
       case AppLifecycleState.inactive:
         break;
     }
   }
 
-  void _showSettingsModal() {
+  void _showPauseModal() {
+    game.paused = true;
+    context.read<AudioProvider>().playSfx(SfxType.pauseIn);
     showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (context) => PauseModal(
-        onCloseButtonPressed: () => game.paused = false,
+        onCloseButtonPressed: () {
+          context.read<AudioProvider>().playSfx(SfxType.pauseOut);
+          game.paused = false;
+        },
       ),
     );
   }
@@ -95,25 +105,43 @@ class _GameScreenState extends State<GameScreen> {
                             },
                             child: Text(
                               'SCORE: ${game.score.value}',
-                              style: TextStyle(color: Palette.eggPlant),
+                              style: TextStyle(
+                                  color: Palette.eggPlant, fontSize: 20),
                             ),
                           );
                         },
                       ),
                     ),
-                    IconButton(
-                      color: Palette.eggPlant,
-                      icon: const Icon(Icons.pause),
-                      onPressed: () async {
-                        game.paused = true;
-                        await showDialog(
-                          context: context,
-                          barrierDismissible: false,
-                          builder: (context) => PauseModal(
-                            onCloseButtonPressed: () => game.paused = false,
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ValueListenableBuilder(
+                          valueListenable:
+                              context.read<SettingsProvider>().audioOn,
+                          builder: (context, value, widget) => Tooltip(
+                            message: 'Toggle audio',
+                            child: NesIconButton(
+                              onPress: () {
+                                context
+                                    .read<SettingsProvider>()
+                                    .toggleAudioOn();
+                              },
+                              icon:
+                                  value ? NesIcons.audio : NesIcons.audioMuted,
+                              primaryColor: value
+                                  ? Palette.eggPlant
+                                  : Palette.valentineRed,
+                            ),
                           ),
-                        );
-                      },
+                        ),
+                        const Gap(30),
+                        NesIconButton(
+                          icon: NesIcons.pause,
+                          size: const Size(25, 25),
+                          primaryColor: Palette.eggPlant,
+                          onPress: () => _showPauseModal(),
+                        ),
+                      ],
                     ),
                   ],
                 ),

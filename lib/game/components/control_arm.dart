@@ -4,6 +4,7 @@ import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/game/components/components.dart';
 import 'package:beltofdestiny/game/game_config.dart';
 import 'package:beltofdestiny/palette.dart';
+import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
@@ -79,6 +80,7 @@ class ControlArm extends RectangleComponent
     countdown = Timer(
       game.remoteConfig.controlArmSeizedTime,
       onTick: () {
+        game.audioProvider.playSfx(SfxType.controlArmEnabled);
         isSeized = false;
         paint = Palette.fountainBluePaletteEntry.paint();
       },

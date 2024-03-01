@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/palette.dart';
+import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:flame/components.dart';
 import 'package:flame/text.dart';
 
@@ -61,6 +62,7 @@ class ControlArmCountdown extends PositionComponent
           _countdownTimer.stop(); // Stop the timer
           removeFromParent(); // Remove this component
         } else {
+          game.audioProvider.playSfx(SfxType.countdown);
           _textComponent.text = currentCountdown.toString();
         }
       },

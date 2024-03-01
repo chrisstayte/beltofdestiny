@@ -30,7 +30,10 @@ class _GameOverScreenState extends State<GameOverScreen> {
   void initState() {
     super.initState();
 
-    // Submit Game Achievements If Any
+    if (!kIsWeb) {
+      // Submit Game Achievements If Any
+      submitGameAchievements();
+    }
   }
 
   void submitGameAchievements() async {

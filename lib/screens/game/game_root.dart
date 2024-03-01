@@ -1,5 +1,6 @@
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
 import 'package:beltofdestiny/models/remote_config.dart';
+import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:beltofdestiny/providers/remote_config_provider.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
 import 'package:beltofdestiny/screens/game/game_over_screen.dart';
@@ -49,6 +50,7 @@ class _GameRootState extends State<GameRoot> {
     return BeltOfDestiny(
       showDebug: settingsProvider.debugModeOn.value,
       remoteConfig: remoteConfigProvider.remoteConfig,
+      audioProvider: context.read<AudioProvider>(),
     );
   }
 
@@ -58,6 +60,7 @@ class _GameRootState extends State<GameRoot> {
     }
 
     if (_game!.gameOver.value) {
+      context.read<AudioProvider>().playSfx(SfxType.gameOver);
       _navigatorKey.currentState?.pushNamed('/game-over');
     }
   }

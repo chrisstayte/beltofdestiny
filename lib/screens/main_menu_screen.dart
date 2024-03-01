@@ -1,4 +1,5 @@
 import 'package:beltofdestiny/palette.dart';
+import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
 import 'package:beltofdestiny/screens/widgets/settings_modal.dart';
 import 'package:beltofdestiny/screens/widgets/story_modal.dart';
@@ -78,6 +79,9 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                       children: [
                         WobblyButton(
                           onPressed: () {
+                            context
+                                .read<AudioProvider>()
+                                .playSfx(SfxType.gameStart);
                             context.go('/game');
                           },
                           child: const Center(
