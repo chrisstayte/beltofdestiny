@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:beltofdestiny/models/remote_config.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/audio_provider.dart';
+import 'package:flame/events.dart';
 import 'package:flame/image_composition.dart' as ic;
 import 'package:flame/sprite.dart';
 import 'package:flutter/foundation.dart';
@@ -66,6 +67,8 @@ class BeltOfDestiny extends FlameGame
   late SpriteSheet incineratorSprite;
   late ic.Image recyclerImage;
   late SpriteSheet recyclerSprite;
+  late ic.Image garbageImage;
+  late ic.Image recyclableGarbageSpriteSheet;
 
   @override
   FutureOr<void> onLoad() async {
@@ -98,6 +101,9 @@ class BeltOfDestiny extends FlameGame
       image: recyclerImage,
       srcSize: Vector2.all(400),
     );
+
+    garbageImage = await images.load('garbage_items.png');
+    recyclableGarbageSpriteSheet = await images.load('recycleable_items.png');
 
     // register for performance gainz
     children.register<Machine>();

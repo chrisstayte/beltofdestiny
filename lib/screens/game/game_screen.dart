@@ -8,6 +8,7 @@ import 'package:beltofdestiny/providers/settings_provider.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gap/gap.dart';
 import 'package:nes_ui/nes_ui.dart';
 import 'package:provider/provider.dart';
@@ -167,8 +168,10 @@ class _GameScreenState extends State<GameScreen> {
                                 child: ValueListenableBuilder(
                                   valueListenable: game.temperature,
                                   builder: (context, temperature, child) {
-                                    return TemperatureBar(
-                                      temperature: temperature,
+                                    return IgnorePointer(
+                                      child: TemperatureBar(
+                                        temperature: temperature,
+                                      ),
                                     );
                                   },
                                 ),
@@ -180,6 +183,44 @@ class _GameScreenState extends State<GameScreen> {
                     },
                     initialActiveOverlays: const ['temperatureBar'],
                   ),
+                  Positioned(
+                    bottom: 15,
+                    left: 0,
+                    right: 0,
+                    child: Center(
+                      child: IgnorePointer(
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Palette.teal.withOpacity(.8),
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Palette.eggPlant,
+                                blurRadius: 10,
+                                spreadRadius: 5,
+                              ),
+                            ],
+                          ),
+                          width: 300,
+                          child: Text(
+                            kIsWeb
+                                ? 'Press Space or Click to change direction'
+                                : 'Swipe or tap to change direction',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Palette.eggPlant,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                      .animate(delay: 200.ms, autoPlay: true)
+                      .shake()
+                      .then()
+                      .fadeOut(delay: 2.seconds),
                 ],
               ),
             ),

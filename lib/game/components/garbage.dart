@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:beltofdestiny/extensions.dart';
 import 'package:beltofdestiny/game/belt_of_destiny.dart';
@@ -7,6 +8,8 @@ import 'package:beltofdestiny/game/game_config.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/sprite.dart';
+import 'package:flutter/material.dart';
 
 class Garbage extends CircleComponent
     with HasGameReference<BeltOfDestiny>, CollisionCallbacks {
@@ -14,9 +17,7 @@ class Garbage extends CircleComponent
       : super(
           // size: Vector2(beltWidth * .5, beltWidth * .5),
           radius: beltWidth * .25,
-          paint: canBeRecycled
-              ? Palette.pistachioPaletteEntry.paint()
-              : Palette.valentineRedPaletteEntry.paint(),
+
           anchor: Anchor.center,
         );
 
@@ -31,6 +32,33 @@ class Garbage extends CircleComponent
     super.onLoad();
 
     position = Vector2(game.mainBelt.position.x, game.mainBelt.size.y);
+
+    if (game.showDebug) {
+      paint.color = canBeRecycled ? Palette.pistachio : Palette.valentineRed;
+    } else {
+      paint.color = Colors.transparent;
+      final spriteSheetImage =
+          canBeRecycled ? game.recyclableGarbageSpriteSheet : game.garbageImage;
+
+      int images = 4;
+
+      final rnd = Random();
+      final randomImage = rnd.nextInt(images);
+
+      final spriteSheet = SpriteSheet(
+        image: spriteSheetImage,
+        srcSize: Vector2(64, 64),
+      );
+
+      Sprite sprite = spriteSheet.getSprite(0, randomImage);
+
+      final SpriteComponent spriteComponent = SpriteComponent(
+        sprite: sprite,
+        size: Vector2(garbageWidth, garbageHeight),
+      );
+
+      add(spriteComponent);
+    }
 
     add(_edgeHitbox);
   }

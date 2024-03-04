@@ -31,9 +31,35 @@ class _GameOverScreenState extends State<GameOverScreen> {
   void initState() {
     super.initState();
 
-    if (Platform.isIOS) {
-      // Submit Game Achievements If Any
-      submitGameAchievements();
+    // I did not add android support because of the lackluster experience
+    // that google provides trying to set it up. SO MANY HURDLES
+    if (!kIsWeb) {
+      if (Platform.isIOS) {
+        // Submit Game Achievements If Any
+        submitGameAchievements();
+        // Submit Game Score
+        submitGameScore();
+      }
+    }
+  }
+
+  void submitGameScore() async {
+    try {
+      if (await GameAuth.isSignedIn) {
+        Score score = Score(
+            value: widget._game.score.value, iOSLeaderboardID: 'highScore');
+
+        await Leaderboards.submitScore(score: score);
+      }
+    } catch (e) {
+      // Log error to analytics
+      FirebaseAnalytics.instance.logEvent(
+        name: 'game_score_error',
+        parameters: {'error': e.toString()},
+      );
+      if (kDebugMode) {
+        print('Error submitting game score: $e');
+      }
     }
   }
 

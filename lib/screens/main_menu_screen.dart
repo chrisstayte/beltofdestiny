@@ -1,6 +1,7 @@
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
+import 'package:beltofdestiny/screens/widgets/how_to_modal.dart';
 import 'package:beltofdestiny/screens/widgets/settings_modal.dart';
 import 'package:beltofdestiny/screens/widgets/story_modal.dart';
 import 'package:beltofdestiny/screens/widgets/wobbly_button.dart';
@@ -85,6 +86,19 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                           },
                           child: const Center(
                             child: Text('Start Game'),
+                          ),
+                        ),
+                        const Gap(10),
+                        WobblyButton(
+                          onPressed: () async {
+                            await showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (context) => const HowToModal(),
+                            );
+                          },
+                          child: const Center(
+                            child: Text('How to?'),
                           ),
                         ),
                         const Gap(10),
