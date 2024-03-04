@@ -8,6 +8,7 @@ import 'package:beltofdestiny/providers/settings_provider.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gap/gap.dart';
 import 'package:nes_ui/nes_ui.dart';
@@ -91,31 +92,35 @@ class _GameScreenState extends State<GameScreen> {
               ),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 400),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Expanded(
-                      child: ValueListenableBuilder(
-                        valueListenable: game.score,
-                        builder: (context, score, child) {
-                          return GestureDetector(
-                            onTap: () {
-                              if (kDebugMode) {
-                                game.score.value += 100;
-                              }
-                            },
-                            child: Text(
-                              'SCORE: ${game.score.value}',
-                              style: TextStyle(
-                                  color: Palette.eggPlant, fontSize: 20),
-                            ),
-                          );
-                        },
-                      ),
+                    ValueListenableBuilder(
+                      valueListenable: game.score,
+                      builder: (context, score, child) {
+                        return GestureDetector(
+                          onTap: () {
+                            if (kDebugMode) {
+                              game.score.value += 100;
+                            }
+                          },
+                          child: Text(
+                            'SCORE: ${game.score.value}',
+                            style: TextStyle(
+                                color: Palette.eggPlant, fontSize: 20),
+                          ),
+                        );
+                      },
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        NesIconButton(
+                          icon: NesIcons.questionMark,
+                          size: const Size(25, 25),
+                          onPress: () {},
+                        ),
+                        const Gap(21),
                         ValueListenableBuilder(
                           valueListenable:
                               context.read<SettingsProvider>().audioOn,
@@ -135,7 +140,7 @@ class _GameScreenState extends State<GameScreen> {
                             ),
                           ),
                         ),
-                        const Gap(30),
+                        const Gap(21),
                         NesIconButton(
                           icon: NesIcons.pause,
                           size: const Size(25, 25),
