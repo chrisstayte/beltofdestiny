@@ -192,7 +192,7 @@ class _GameScreenState extends State<GameScreen> {
                         child: Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: Palette.teal.withOpacity(.8),
+                            color: Palette.teal,
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(

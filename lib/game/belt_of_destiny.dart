@@ -103,7 +103,7 @@ class BeltOfDestiny extends FlameGame
     );
 
     garbageImage = await images.load('garbage_items.png');
-    recyclableGarbageSpriteSheet = await images.load('recycleable_items.png');
+    recyclableGarbageSpriteSheet = await images.load('recyclable_items.png');
 
     // register for performance gainz
     children.register<Machine>();

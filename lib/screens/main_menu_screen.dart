@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
@@ -41,211 +42,224 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: IntrinsicWidth(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 40,
-                  ),
-                  child: Center(
-                    child: Transform.rotate(
-                      angle: -0.1,
-                      child: Text(
-                        'Belt\nOf\nDestiny',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 40, color: Palette.eggPlant),
-                      )
-                          .animate(
-                            autoPlay: true,
-                            onComplete: (controller) => controller.repeat(),
-                          )
-                          .shimmer(
-                            color: Colors.yellow.shade800,
-                            duration: 1.5.seconds,
-                          ),
-                    ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 40,
+                ),
+                child: Center(
+                  child: Transform.rotate(
+                    angle: -0.1,
+                    child: AutoSizeText(
+                      'Belt\nOf\nDestiny',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 40, color: Palette.eggPlant),
+                    )
+                        .animate(
+                          autoPlay: true,
+                          onComplete: (controller) => controller.repeat(),
+                        )
+                        .shimmer(
+                          color: Colors.yellow.shade800,
+                          duration: 1.5.seconds,
+                        ),
                   ),
                 ),
               ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        WobblyButton(
-                          onPressed: () {
-                            context
-                                .read<AudioProvider>()
-                                .playSfx(SfxType.gameStart);
-                            context.go('/game');
-                          },
-                          child: const Center(
-                            child: Text('Start Game'),
+            ),
+            Expanded(
+              flex: 2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: IntrinsicWidth(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          WobblyButton(
+                            onPressed: () {
+                              context
+                                  .read<AudioProvider>()
+                                  .playSfx(SfxType.gameStart);
+                              context.go('/game');
+                            },
+                            child: const Center(
+                              child: Text('Start Game'),
+                            ),
                           ),
-                        ),
-                        const Gap(10),
-                        WobblyButton(
-                          onPressed: () async {
-                            await showDialog(
-                              context: context,
-                              barrierDismissible: false,
-                              builder: (context) => const HowToModal(),
-                            );
-                          },
-                          child: const Center(
-                            child: Text('How to?'),
+                          const Gap(10),
+                          IntrinsicWidth(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                WobblyButton(
+                                  onPressed: () async {
+                                    await showDialog(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (context) => const StoryModal(),
+                                    );
+                                  },
+                                  buttonBackgroundColor: Palette.paleOrange,
+                                  child: const Center(child: Text(' Story ')),
+                                ),
+                                const Gap(10),
+                                WobblyButton(
+                                  onPressed: () async {
+                                    await showDialog(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (context) => const HowToModal(),
+                                    );
+                                  },
+                                  child: const Center(
+                                    child: Text(' How to '),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        const Gap(10),
-                        WobblyButton(
-                          onPressed: () async {
-                            await showDialog(
-                              context: context,
-                              barrierDismissible: false,
-                              builder: (context) => const StoryModal(),
-                            );
-                          },
-                          buttonBackgroundColor: Palette.paleOrange,
-                          child: const Center(child: Text('Story')),
-                        ),
-                        const Gap(10),
-                        WobblyButton(
-                          onPressed: () async {
-                            Uri url = Uri.parse(
-                                'https://www.epa.gov/recycle/how-do-i-recycle-common-recyclables');
-
-                            if (kIsWeb) {
-                              launchUrl(url);
-                            } else {
-                              if (await canLaunchUrl(url)) {
-                                launchUrl(url);
-                              }
-                            }
-                          },
-                          buttonBackgroundColor: Palette.pistachio,
-                          child: const Center(child: Text('Do Your Part')),
-                        ),
-                        const Gap(10),
-                        IntrinsicWidth(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              WobblyButton(
-                                onPressed: () async {
-                                  await showDialog(
-                                    context: context,
-                                    barrierDismissible: false,
-                                    builder: (context) => const SettingsModal(),
-                                  );
-                                },
-                                child: const Text('Settings'),
-                              ),
-                              const Gap(10),
-                              WobblyButton(
-                                onPressed: () {
-                                  context.go('/credits');
-                                },
-                                child: const Text('Credits'),
-                              ),
-                            ],
-                          ),
-                        ),
-                        if (!kIsWeb) ...[
                           const Gap(10),
                           WobblyButton(
                             onPressed: () async {
-                              bool isSignedIn = await GameAuth.isSignedIn;
-                              if (isSignedIn) {
-                                Leaderboards.showLeaderboards(
-                                    iOSLeaderboardID: 'highScore');
+                              Uri url = Uri.parse(
+                                  'https://www.epa.gov/recycle/how-do-i-recycle-common-recyclables');
+
+                              if (kIsWeb) {
+                                launchUrl(url);
                               } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: const Text(
-                                      'Login to view leaderboards',
-                                    ),
-                                    actionOverflowThreshold: 1,
-                                    action: SnackBarAction(
-                                      label: 'Sign In',
-                                      onPressed: () async {
-                                        try {
-                                          await GameAuth.signIn();
-                                        } catch (e) {
-                                          if (kDebugMode) {
-                                            print('Game Auth Error: $e');
-                                          }
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            const SnackBar(
-                                              content: Text(
-                                                'An error occurred while signing in',
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                      },
-                                    ),
-                                  ),
-                                );
+                                if (await canLaunchUrl(url)) {
+                                  launchUrl(url);
+                                }
                               }
                             },
-                            child: const Center(
-                              child: Text('Leaderboards'),
+                            buttonBackgroundColor: Palette.pistachio,
+                            child: const Center(child: Text('Do Your Part')),
+                          ),
+                          const Gap(10),
+                          IntrinsicWidth(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                WobblyButton(
+                                  onPressed: () async {
+                                    await showDialog(
+                                      context: context,
+                                      barrierDismissible: false,
+                                      builder: (context) =>
+                                          const SettingsModal(),
+                                    );
+                                  },
+                                  child: const Text('Settings'),
+                                ),
+                                const Gap(10),
+                                WobblyButton(
+                                  onPressed: () {
+                                    context.go('/credits');
+                                  },
+                                  child: const Text('Credits'),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                        if (kIsWeb) ...[
-                          const Gap(20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              ValueListenableBuilder(
-                                valueListenable:
-                                    context.read<SettingsProvider>().audioOn,
-                                builder: (context, value, widget) => Tooltip(
-                                  message: 'Toggle audio',
-                                  child: IconButton(
-                                    onPressed: () {
-                                      context
-                                          .read<SettingsProvider>()
-                                          .toggleAudioOn();
-                                    },
-                                    icon: NesIcon(
-                                      iconData: value
-                                          ? NesIcons.audio
-                                          : NesIcons.audioMuted,
-                                      primaryColor: value
-                                          ? Palette.eggPlant
-                                          : Palette.valentineRed,
+                          if (!kIsWeb) ...[
+                            const Gap(10),
+                            WobblyButton(
+                              onPressed: () async {
+                                bool isSignedIn = await GameAuth.isSignedIn;
+                                if (isSignedIn) {
+                                  Leaderboards.showLeaderboards(
+                                      iOSLeaderboardID: 'highScore');
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: const Text(
+                                        'Login to view leaderboards',
+                                      ),
+                                      actionOverflowThreshold: 1,
+                                      action: SnackBarAction(
+                                        label: 'Sign In',
+                                        onPressed: () async {
+                                          try {
+                                            await GameAuth.signIn();
+                                          } catch (e) {
+                                            if (kDebugMode) {
+                                              print('Game Auth Error: $e');
+                                            }
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              const SnackBar(
+                                                content: Text(
+                                                  'An error occurred while signing in',
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                        },
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
+                              child: const Center(
+                                child: Text('Leaderboards'),
+                              ),
+                            ),
+                          ],
+                          if (kIsWeb) ...[
+                            const Gap(20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                ValueListenableBuilder(
+                                  valueListenable:
+                                      context.read<SettingsProvider>().audioOn,
+                                  builder: (context, value, widget) => Tooltip(
+                                    message: 'Toggle audio',
+                                    child: IconButton(
+                                      onPressed: () {
+                                        context
+                                            .read<SettingsProvider>()
+                                            .toggleAudioOn();
+                                      },
+                                      icon: NesIcon(
+                                        iconData: value
+                                            ? NesIcons.audio
+                                            : NesIcons.audioMuted,
+                                        primaryColor: value
+                                            ? Palette.eggPlant
+                                            : Palette.valentineRed,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              )
-                            ],
-                          )
-                        ]
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
-                      child: NesRunningText(
-                        text: 'Save the world',
-                        textStyle: TextStyle(
-                          color: Palette.eggPlant,
-                          fontSize: 10,
-                        ),
+                                )
+                              ],
+                            )
+                          ]
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    child: NesRunningText(
+                      text: 'Save the world',
+                      textStyle: TextStyle(
+                        color: Palette.eggPlant,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

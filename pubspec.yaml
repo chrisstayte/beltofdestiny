@@ -19,7 +19,7 @@ dependencies:
   flame_audio: ^2.1.7
   gap: ^3.0.1
   google_fonts: ^6.1.0
-  nes_ui: ^0.17.0
+  nes_ui: ^0.18.0
   provider: ^6.1.1
   flutter_animate: ^4.4.0
   firebase_core: ^2.25.4
@@ -31,6 +31,7 @@ dependencies:
   package_info_plus: ^5.0.1
   games_services: ^4.0.1
   audioplayers: ^5.2.1
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
