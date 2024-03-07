@@ -52,7 +52,8 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 padding: const EdgeInsets.symmetric(
                   vertical: 40,
                 ),
-                child: Center(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
                   child: Transform.rotate(
                     angle: -0.1,
                     child: AutoSizeText(

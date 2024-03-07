@@ -15,6 +15,7 @@ import 'package:beltofdestiny/models/settings.dart';
 class SettingsProvider {
   static final _log = Logger('SettingsProvider');
   static const currentStoryVersion = 1;
+  static const currentHowToVersion = 1;
 
   final ISettings _settings;
 
@@ -96,5 +97,15 @@ class SettingsProvider {
 
   Future<int> getStoryAutoShown() async {
     return _settings.getStoryAutoShown(defaultValue: 0);
+  }
+
+  void howToHasBeenAutoShown() {
+    // REMINDER: Update this when the how-to changes to force it to show again
+    _settings.saveHowToAutoShown(value: currentHowToVersion);
+    _log.fine(() => 'How-to auto shown: $currentHowToVersion');
+  }
+
+  Future<int> getHowToAutoShown() async {
+    return _settings.getHowToAutoShown(defaultValue: 0);
   }
 }

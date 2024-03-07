@@ -5,6 +5,7 @@ import 'package:beltofdestiny/providers/app_lifecycle.dart';
 import 'package:beltofdestiny/game/widgets/pause_modal.dart';
 import 'package:beltofdestiny/providers/audio_provider.dart';
 import 'package:beltofdestiny/providers/settings_provider.dart';
+import 'package:beltofdestiny/screens/widgets/how_to_modal.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,16 @@ class _GameScreenState extends State<GameScreen> {
         Provider.of<AppLifecycleStateNotifier>(context, listen: false);
 
     _lifecycleNotifier!.addListener(_handleAppLifecycle);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      SettingsProvider settingsProvider = context.read<SettingsProvider>();
+      if (await context.read<SettingsProvider>().getHowToAutoShown() <
+          SettingsProvider.currentHowToVersion) {
+        game.paused = true;
+        _showHowToModal();
+        settingsProvider.howToHasBeenAutoShown();
+      }
+    });
   }
 
   @override
@@ -73,6 +84,17 @@ class _GameScreenState extends State<GameScreen> {
           context.read<AudioProvider>().playSfx(SfxType.pauseOut);
           game.paused = false;
         },
+      ),
+    );
+  }
+
+  void _showHowToModal() {
+    game.paused = true;
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => HowToModal(
+        onCloseButtonPressed: () => game.paused = false,
       ),
     );
   }
@@ -118,7 +140,7 @@ class _GameScreenState extends State<GameScreen> {
                         NesIconButton(
                           icon: NesIcons.questionMark,
                           size: const Size(25, 25),
-                          onPress: () {},
+                          onPress: () => _showHowToModal(),
                         ),
                         const Gap(21),
                         ValueListenableBuilder(

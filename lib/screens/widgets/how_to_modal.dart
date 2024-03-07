@@ -15,7 +15,9 @@ import 'package:provider/provider.dart';
 import 'package:flame/image_composition.dart' as ic;
 
 class HowToModal extends StatefulWidget {
-  const HowToModal({super.key});
+  const HowToModal({super.key, this.onCloseButtonPressed});
+
+  final Function? onCloseButtonPressed;
 
   @override
   State<HowToModal> createState() => _HowToModalState();
@@ -102,6 +104,7 @@ class _HowToModalState extends State<HowToModal> {
                       type: NesButtonType.error,
                       onPressed: () {
                         Navigator.of(context).pop();
+                        widget.onCloseButtonPressed?.call();
                       },
                       child: NesIcon(
                         size: const Size(16, 16),
