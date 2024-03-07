@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:beltofdestiny/palette.dart';
 import 'package:beltofdestiny/providers/audio_provider.dart';
@@ -169,50 +171,58 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                               ],
                             ),
                           ),
-                          if (!kIsWeb) ...[
-                            const Gap(10),
-                            WobblyButton(
-                              onPressed: () async {
-                                bool isSignedIn = await GameAuth.isSignedIn;
-                                if (isSignedIn) {
-                                  Leaderboards.showLeaderboards(
-                                      iOSLeaderboardID: 'highScore');
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: const Text(
-                                        'Login to view leaderboards',
-                                      ),
-                                      actionOverflowThreshold: 1,
-                                      action: SnackBarAction(
-                                        label: 'Sign In',
+                          ...(!kIsWeb)
+                              ? (Platform.isIOS)
+                                  ? [
+                                      const Gap(10),
+                                      WobblyButton(
                                         onPressed: () async {
-                                          try {
-                                            await GameAuth.signIn();
-                                          } catch (e) {
-                                            if (kDebugMode) {
-                                              print('Game Auth Error: $e');
-                                            }
+                                          bool isSignedIn =
+                                              await GameAuth.isSignedIn;
+                                          if (isSignedIn) {
+                                            Leaderboards.showLeaderboards(
+                                                iOSLeaderboardID: 'highScore');
+                                          } else {
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
-                                              const SnackBar(
-                                                content: Text(
-                                                  'An error occurred while signing in',
+                                              SnackBar(
+                                                content: const Text(
+                                                  'Login to view leaderboards',
+                                                ),
+                                                actionOverflowThreshold: 1,
+                                                action: SnackBarAction(
+                                                  label: 'Sign In',
+                                                  onPressed: () async {
+                                                    try {
+                                                      await GameAuth.signIn();
+                                                    } catch (e) {
+                                                      if (kDebugMode) {
+                                                        print(
+                                                            'Game Auth Error: $e');
+                                                      }
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        const SnackBar(
+                                                          content: Text(
+                                                            'An error occurred while signing in',
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                  },
                                                 ),
                                               ),
                                             );
                                           }
                                         },
+                                        child: const Center(
+                                          child: Text('Leaderboards'),
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                }
-                              },
-                              child: const Center(
-                                child: Text('Leaderboards'),
-                              ),
-                            ),
-                          ],
+                                    ]
+                                  : []
+                              : [],
                           if (kIsWeb) ...[
                             const Gap(20),
                             Row(
