@@ -7,6 +7,7 @@ import 'package:flame/events.dart';
 import 'package:flame/image_composition.dart' as ic;
 import 'package:flame/sprite.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'components/components.dart';
@@ -19,6 +20,7 @@ class BeltOfDestiny extends FlameGame
     with
         SingleGameInstance,
         TapDetector,
+        HorizontalDragDetector,
         KeyboardEvents,
         HasCollisionDetection {
   BeltOfDestiny({
@@ -185,6 +187,48 @@ class BeltOfDestiny extends FlameGame
       }
     }
     return KeyEventResult.handled;
+  }
+
+  bool _isSwiping = false;
+
+  @override
+  void onHorizontalDragStart(DragStartInfo info) {
+    super.onHorizontalDragStart(info);
+
+    if (info.raw.kind == PointerDeviceKind.mouse) {
+      return;
+    }
+
+    if (!_isSwiping) {
+      _isSwiping = true;
+    }
+  }
+
+  @override
+  void onHorizontalDragUpdate(DragUpdateInfo info) {
+    super.onHorizontalDragUpdate(info);
+    if (!_isSwiping) return;
+
+    if (info.delta.global.x > 0) {
+      // Swiping right
+      if (!controlArm.armIsStraightDown) {
+        controlArm.toggleDirection();
+      }
+    } else {
+      // Swiping left
+      if (controlArm.armIsStraightDown) {
+        controlArm.toggleDirection();
+      }
+    }
+  }
+
+  @override
+  void onHorizontalDragEnd(DragEndInfo info) {
+    super.onHorizontalDragEnd(info);
+    // Reset the _isSwiping flag to allow new swipes
+    if (_isSwiping) {
+      _isSwiping = false; // Ready to process a new swipe
+    }
   }
 
   void retryGame() {
