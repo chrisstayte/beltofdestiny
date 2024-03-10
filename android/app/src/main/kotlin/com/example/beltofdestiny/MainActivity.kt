@@ -1,4 +1,4 @@
-package com.example.beltofdestiny
+package com.chrisstayte.beltofdestiny
 
 import io.flutter.embedding.android.FlutterActivity
 

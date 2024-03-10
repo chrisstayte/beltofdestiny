@@ -54,7 +54,6 @@ class BeltOfDestiny extends FlameGame
 
   // Components
   ControlArm controlArm = ControlArm();
-
   final Machine _incinerator =
       Machine(key: ComponentKey.named('Incinerator'), isIncinerator: true)
         ..position = Vector2((gameWidth / 2) - machineWidth - 50, 25);
@@ -66,11 +65,14 @@ class BeltOfDestiny extends FlameGame
   final MainBelt mainBelt = MainBelt();
 
   late ic.Image incineratorImage;
-  late SpriteSheet incineratorSprite;
+
   late ic.Image recyclerImage;
   late SpriteSheet recyclerSprite;
-  late ic.Image garbageImage;
-  late ic.Image recyclableGarbageSpriteSheet;
+  late ic.Image garbageItemsSpriteSheet;
+  late ic.Image recyclableItemsSpriteSheet;
+
+  // Controls
+  bool _isSwiping = false; // lock to only detect one swipe at a time
 
   @override
   FutureOr<void> onLoad() async {
@@ -92,20 +94,11 @@ class BeltOfDestiny extends FlameGame
       );
     }
 
+    // Load images
     incineratorImage = await images.load('Incinerator.png');
-    incineratorSprite = SpriteSheet(
-      image: incineratorImage,
-      srcSize: Vector2.all(400),
-    );
-
     recyclerImage = await images.load('Recycler.png');
-    recyclerSprite = SpriteSheet(
-      image: recyclerImage,
-      srcSize: Vector2.all(400),
-    );
-
-    garbageImage = await images.load('garbage_items.png');
-    recyclableGarbageSpriteSheet = await images.load('recyclable_items.png');
+    garbageItemsSpriteSheet = await images.load('garbage_items.png');
+    recyclableItemsSpriteSheet = await images.load('recyclable_items.png');
 
     // register for performance gainz
     children.register<Machine>();
@@ -157,6 +150,17 @@ class BeltOfDestiny extends FlameGame
     world.add(Garbage(canBeRecycled: randomNumber.isEven));
   }
 
+  void retryGame() {
+    gameOver.value = false;
+    score.value = 0;
+    temperature.value = remoteConfig.lowestTemp;
+    garbageIncinerated = 0;
+    garbageRecycled = 0;
+    garbageRecycledIncorrectly = 0;
+    controlArm.unlockArm();
+    addNewGarbage();
+  }
+
   @override
   void onTap() {
     super.onTap();
@@ -188,8 +192,6 @@ class BeltOfDestiny extends FlameGame
     }
     return KeyEventResult.handled;
   }
-
-  bool _isSwiping = false;
 
   @override
   void onHorizontalDragStart(DragStartInfo info) {
@@ -229,16 +231,5 @@ class BeltOfDestiny extends FlameGame
     if (_isSwiping) {
       _isSwiping = false; // Ready to process a new swipe
     }
-  }
-
-  void retryGame() {
-    gameOver.value = false;
-    score.value = 0;
-    temperature.value = remoteConfig.lowestTemp;
-    garbageIncinerated = 0;
-    garbageRecycled = 0;
-    garbageRecycledIncorrectly = 0;
-    controlArm.unlockArm();
-    addNewGarbage();
   }
 }

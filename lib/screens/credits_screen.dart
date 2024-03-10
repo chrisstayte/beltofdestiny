@@ -210,16 +210,6 @@ Much love and support to all of the packages I relied on to help me build this a
                                         .headlineSmall,
                                   ),
                                   const Text('Sound effects from pixabay'),
-                                  const Gap(10),
-                                  const ListTile(
-                                    title: Text('Title'),
-                                    trailing: Text(
-                                      'Artist',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
                                 ],
                               ),
                             ),

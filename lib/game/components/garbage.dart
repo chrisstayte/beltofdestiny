@@ -37,8 +37,9 @@ class Garbage extends CircleComponent
       paint.color = canBeRecycled ? Palette.pistachio : Palette.valentineRed;
     } else {
       paint.color = Colors.transparent;
-      final spriteSheetImage =
-          canBeRecycled ? game.recyclableGarbageSpriteSheet : game.garbageImage;
+      final spriteSheetImage = canBeRecycled
+          ? game.recyclableItemsSpriteSheet
+          : game.garbageItemsSpriteSheet;
 
       int images = 4;
 

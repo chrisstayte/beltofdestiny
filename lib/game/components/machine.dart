@@ -50,17 +50,7 @@ class Machine extends RectangleComponent
         ),
       );
     } else {
-      // NOTE: Changing the method to animate to remove json
-      // final jsonString = await rootBundle.loadString(
-      //     'assets/data/${isIncinerator ? 'Incinerator' : 'Recycler'}.json');
-      // final json = jsonDecode(jsonString);
-      // final image = await Flame.images
-      //     .load('${isIncinerator ? 'Incinerator' : 'Recycler'}.png');
       final image = isIncinerator ? game.incineratorImage : game.recyclerImage;
-      // final SpriteAnimation animation = SpriteAnimation.fromAsepriteData(
-      //   image,
-      //   json,
-      // );
 
       final SpriteSheet spriteSheet = SpriteSheet(
         image: image,

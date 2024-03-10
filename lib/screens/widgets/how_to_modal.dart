@@ -187,7 +187,7 @@ class HowToPage1 extends StatelessWidget {
         ),
         const Gap(16),
         Expanded(
-          child: SingleChildScrollView(
+          child: NesSingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
