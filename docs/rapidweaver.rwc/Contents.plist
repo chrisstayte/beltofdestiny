@@ -16,7 +16,7 @@
 					<key>page0 - file:///Users/chrisstayte/SourceControl/beltofdestiny/docs/</key>
 					<dict>
 						<key>CreationDate</key>
-						<date>2024-03-01T06:00:42Z</date>
+						<date>2024-03-11T12:33:16Z</date>
 						<key>DigestAlgorithm</key>
 						<string>MD5</string>
 						<key>PageDigests</key>
@@ -105,8 +105,8 @@
 							<dict>
 								<key>Digest</key>
 								<data>
-								w031KMy4+QDm
-								+9EUPVQ6wA==
+								IvMNYDJDpYYK
+								S4HLHojnYw==
 								</data>
 								<key>Size</key>
 								<integer>12256</integer>
@@ -785,7 +785,7 @@
 				E4APgA6AEYAQXxAkNkJCOEZGMDktOTFDNi00QkJELThD
 				MDAtQTYzOUJDMzAxRjk0XkFSQ0FERV9JLndvZmYyXxAk
 				NzkwNTI3MzYtNTExRS00MTMxLTg4NDMtNzMzN0YzQzhG
-				NjZD0lUPVldXTlMudGltZSNBxcjTRct0BIAS0jIzWVpW
+				NjZD0lUPVldXTlMudGltZSNBxc+YxqogPoAS0jIzWVpW
 				TlNEYXRlolk30w0OD1xeYKFdgBShX4AVgBZfEDtmaWxl
 				Oi8vL1VzZXJzL2Nocmlzc3RheXRlL1NvdXJjZUNvbnRy
 				b2wvYmVsdG9mZGVzdGlueS9kb2NzLwjSMjNkZV8QE05T
@@ -796,8 +796,8 @@
 				Skpyc3R1dgiAIIAYgACAAIAegBuAGoAdgBxfECQ2NTgx
 				RTE0Ri1BMTZBLTRGOEItQkUyRi04QzdCNjBCRjI5NUZe
 				QVJDQURFX04ud29mZjJfECQ3N0E1ODk4NC05RTc4LTRE
-				Q0ItOEUwNy01MTk2QkU5ODI1MjPSVQ97VyNBxcjTRct0
-				P4AS0w0OD36AYKF/gB+hX4AVgBZfEDtmaWxlOi8vL1Vz
+				Q0ItOEUwNy01MTk2QkU5ODI1MjPSVQ97VyNBxc+Yxqog
+				cYAS0w0OD36AYKF/gB+hX4AVgBZfEDtmaWxlOi8vL1Vz
 				ZXJzL2Nocmlzc3RheXRlL1NvdXJjZUNvbnRyb2wvYmVs
 				dG9mZGVzdGlueS9kb2NzL18QKy9Vc2Vycy9jaHJpc3N0
 				YXl0ZS9Eb3dubG9hZHMvQVJDQURFX04ud29mZjLaP0AP
@@ -805,7 +805,7 @@
 				JYAkXxAkQkY5NDY4ODctQTFCRS00MTIxLUIwQTgtOTVD
 				ODQxRjVDMDUxXkFSQ0FERV9SLndvZmYyXxAkNjdGMDNC
 				M0UtOUFEMC00RDUzLTlCMUYtMjZBOTM4RjY3MkMz0lUP
-				lFcjQcXI00XLdE+AEtMNDg+XmWChmIAnoV+AFYAWXxA7
+				lFcjQcXPmMaqIIGAEtMNDg+XmWChmIAnoV+AFYAWXxA7
 				ZmlsZTovLy9Vc2Vycy9jaHJpc3N0YXl0ZS9Tb3VyY2VD
 				b250cm9sL2JlbHRvZmRlc3RpbnkvZG9jcy9fECsvVXNl
 				cnMvY2hyaXNzdGF5dGUvRG93bmxvYWRzL0FSQ0FERV9S
@@ -956,7 +956,7 @@
 					<key>PublishingSettingsConfigured</key>
 					<true/>
 					<key>RWBadge</key>
-					<string>{"openInNewWindow":true,"text":"Made in RapidWeaver","delayMillis":1000,"url":"https:\/\/www.realmacsoftware.com","delayType":"time","position":"bottomLeft","imageAlt":"RapidWeaver Icon","hiddenOnTablet":false,"useDefaultImage":true,"delayDistance":30,"hiddenOnMobile":false,"colorScheme":"auto","hiddenOnDesktop":false,"transition":"slide","enabled":false}</string>
+					<string>{"imageAlt":"RapidWeaver Icon","colorScheme":"auto","hiddenOnMobile":false,"position":"bottomLeft","enabled":false,"text":"Made in RapidWeaver","transition":"slide","delayDistance":30,"hiddenOnDesktop":false,"useDefaultImage":true,"delayMillis":1000,"url":"https:\/\/www.realmacsoftware.com","openInNewWindow":true,"delayType":"time","hiddenOnTablet":false}</string>
 					<key>RememberPrivacyMessageDismissed</key>
 					<false/>
 					<key>SelectedPublishingDestinationIndex</key>
